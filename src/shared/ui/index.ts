@@ -1,3 +1,5 @@
-import { Button, buttonVariants } from "./components/button";
+import { Button } from "./button";
 
-export { Button, buttonVariants };
+export { 
+    Button
+};
