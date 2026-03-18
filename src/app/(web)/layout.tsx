@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
+import Providers from "../providers";
+import { Header } from "@/widgets";
 
 export const metadata: Metadata = {
   title: "rl hw 260312",
@@ -15,7 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Providers>
+            <Header />
+            {children}
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
