@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import { LanguageSwitcher } from "@/features/language-switcher";
 
 export default function Items() {
   const t = useTranslations("ItemsPage");
