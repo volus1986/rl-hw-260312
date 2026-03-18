@@ -1,5 +1,4 @@
 import "@/app/globals.css";
-import { NextIntlClientProvider } from "next-intl";
 import Providers from "../providers";
 import {
   dehydrate,
@@ -7,7 +6,6 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import { postsApi } from "@/entities/posts";
-import { Header } from "@/widgets";
 
 export default async function ItemsLayout({
   children,
@@ -24,13 +22,8 @@ export default async function ItemsLayout({
   });
 
   return (
-    <NextIntlClientProvider>
-      <Providers>
-        <HydrationBoundary state={dehydrate(queryClient)}>
-          <Header />
-          {children}
-        </HydrationBoundary>
-      </Providers>
-    </NextIntlClientProvider>
+    <Providers>
+      <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>
+    </Providers>
   );
 }

@@ -10,9 +10,26 @@ export default function Items() {
 
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
-  const limit = Number(searchParams.get("limit")) || 10;
+  const limit = Number(searchParams.get("limit")) || 20;
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
+  const createPageURL = (pageNumber: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("page", pageNumber.toString());
+
+    return `${pathname}?${params.toString()}`;
+  };
 
   const posts = usePostsQuery(page, limit);
+
+  const handlePrevButtonClick = () => {
+    replace(createPageURL(page - 1), { scroll: false });
+  };
+
+  const handleNextButtonClick = () => {
+    replace(createPageURL(page + 1), { scroll: false });
+  };
 
   const postsEls = posts.data?.map((post) => {
     return (
@@ -27,6 +44,11 @@ export default function Items() {
   return (
     <div>
       {postsEls}
+
+      <Button disabled={page <= 1} onClick={handlePrevButtonClick}>
+        {t("prevNavButton")}
+      </Button>
+      <Button onClick={handleNextButtonClick}>{t("nextNavButton")}</Button>
     </div>
   );
 }

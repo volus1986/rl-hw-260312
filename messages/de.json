@@ -1,5 +1,7 @@
 {
   "ItemsPage": {
-    "title": "Hallo Welt!"
+    "title": "Hallo Welt!",
+    "prevNavButton": "Zurück",
+    "nextNavButton": "Weiter"
   }
 }
