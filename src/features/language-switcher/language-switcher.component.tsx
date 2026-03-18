@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-// import { useLocale } from "next-intl";
+
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useParams } from "next/navigation";
 import { Button } from "@/shared/ui";
@@ -13,7 +13,6 @@ export const LanguageSwitcher = () => {
   const router = useRouter();
   const params = useParams();
 
-  // const currentLocale = useLocale();
   const currentLocale = params.locale ?? "en";
 
   const handleChangeLocale = (nextLocale: (typeof locales)[number]) => {
