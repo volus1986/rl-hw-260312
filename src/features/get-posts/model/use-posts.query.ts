@@ -4,9 +4,10 @@ import { useQuery } from "@tanstack/react-query";
 
 import { postsApi } from "@/entities/posts";
 
-export function usePostsQuery() {
+export function usePostsQuery(page: number, limit: number) {
   return useQuery({
-    queryKey: ["posts"],
-    queryFn: postsApi.getPosts,
+    queryKey: ["posts", page, limit],
+    queryFn: () => postsApi.getPosts(page, limit),
+    staleTime: 60 * 60 * 1000,
   });
 }
