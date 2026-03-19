@@ -13,7 +13,7 @@ const Error = () => {
           to home.
         </p>
         <Button asChild size="lg" className="rounded-lg text-base">
-          <a href="#">Back to home page</a>
+          <a href="/">Back to home page</a>
         </Button>
       </div>
 

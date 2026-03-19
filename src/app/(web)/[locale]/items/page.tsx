@@ -4,6 +4,7 @@ import { usePostsQuery } from "@/features/get-posts";
 import { Button } from "@/shared/ui";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function Items() {
   const t = useTranslations("ItemsPage");
@@ -33,10 +34,12 @@ export default function Items() {
 
   const postsEls = posts.data?.map((post) => {
     return (
-      <div key={post.id} className="flex gap-8">
-        <div>{post.id}</div>
-        <div>{post.userId}</div>
-        <div>{post.title}</div>
+      <div className="flex gap-8" key={post.id}>
+        <Link className="flex gap-8" href={`${pathname}/${post.id}`}>
+          <div>{post.id}</div>
+          <div>{post.userId}</div>
+          <div>{post.title}</div>
+        </Link>
       </div>
     );
   });
