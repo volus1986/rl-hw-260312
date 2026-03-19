@@ -1,4 +1,8 @@
 {
+  "Header": {
+    "login": "Login",
+    "items": "Items"
+  },
   "Global404Page": {
     "goToTheMainPageButton": "Go to the Main Page"
   },

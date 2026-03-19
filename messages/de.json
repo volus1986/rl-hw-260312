@@ -1,7 +1,22 @@
 {
+  "Header": {
+    "login": "Anmelden",
+    "items": "Einträge"
+  },
+  "Global404Page": {
+    "goToTheMainPageButton": "Zur Startseite"
+  },
   "ItemsPage": {
-    "title": "Hallo Welt!",
+    "title": "Einträge",
     "prevNavButton": "Zurück",
     "nextNavButton": "Weiter"
+  },
+  "ItemPage": {
+    "previousPageButton": "Zur vorherigen Seite",
+    "notFoundBackButton": "Zur Seite „Einträge“",
+    "postId": "Beitrags-ID",
+    "postUserId": "Benutzer-ID",
+    "postTitle": "Titel",
+    "postDescription": "Beschreibung"
   }
 }
