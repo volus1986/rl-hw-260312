@@ -47,6 +47,8 @@ export default function Items() {
 
   return (
     <div>
+      <div>{t("title")}</div>
+
       {postsEls}
 
       <Button disabled={page <= 1} onClick={handlePrevButtonClick}>

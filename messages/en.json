@@ -1,7 +1,18 @@
 {
+  "Global404Page": {
+    "goToTheMainPageButton": "Go to the Main Page"
+  },
   "ItemsPage": {
-    "title": "Hello world!",
+    "title": "Items",
     "prevNavButton": "Prev",
     "nextNavButton": "Next"
+  },
+  "ItemPage": {
+    "previousPageButton": "Go to the Previous Page",
+    "notFoundBackButton": "Go to the Items Page",
+    "postId": "Post ID",
+    "postUserId": "User ID",
+    "postTitle": "Title",
+    "postDescription": "Description"
   }
 }
