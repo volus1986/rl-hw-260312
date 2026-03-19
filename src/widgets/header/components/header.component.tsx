@@ -15,10 +15,10 @@ export default function Header() {
         <div
           className="text-muted-foreground flex flex-1 items-center gap-8
             font-medium md:justify-center lg:gap-16">
-          <Link href="items" className="hover:text-primary max-md:hidden">
+          <Link href="/items" className="hover:text-primary max-md:hidden">
             {t("items")}
           </Link>
-          <Link href="login" className="hover:text-primary max-md:hidden">
+          <Link href="/login" className="hover:text-primary max-md:hidden">
             {t("login")}
           </Link>
         </div>
