@@ -1,18 +1,34 @@
-import getPost from "@/entities/posts/api/get-post";
+import { postsApi } from "@/entities/posts/api";
 import { notFound } from "next/navigation";
 import { PreviousPageButton } from "./components/previous-page-button.component";
+
+import type { Metadata } from "next";
+
+type Props = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const item = await postsApi.getPost(Number(id));
+
+  return {
+    title: item.title,
+    description: item.body,
+  };
+}
 
 export default async function ItemPage({
   params,
 }: {
-  params: Promise<{ id: string; lang: string }>;
+  params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const item = await postsApi.getPost(Number(id));
 
-  const data = await getPost(Number(id));
-
-  if (!data.id) {
-    throw notFound();
+  if (!item.id) {
+    notFound();
   }
 
   return (
@@ -21,19 +37,19 @@ export default async function ItemPage({
         <tbody>
           <tr>
             <td>id:</td>
-            <td>{data.id}</td>
+            <td>{item.id}</td>
           </tr>
           <tr>
             <td>User id:</td>
-            <td>{data.userId}</td>
+            <td>{item.userId}</td>
           </tr>
           <tr>
             <td>Title:</td>
-            <td>{data.title}</td>
+            <td>{item.title}</td>
           </tr>
           <tr>
             <td className="pr-4">Description:</td>
-            <td>{data.body}</td>
+            <td>{item.body}</td>
           </tr>
         </tbody>
       </table>
