@@ -2,9 +2,10 @@
 
 import { usePostsQuery } from "@/features/get-posts";
 import { Button } from "@/shared/ui";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { useSearchParams } from "next/navigation";
 
 export default function Items() {
   const t = useTranslations("ItemsPage");
@@ -31,6 +32,8 @@ export default function Items() {
   const handleNextButtonClick = () => {
     replace(createPageURL(page + 1), { scroll: false });
   };
+
+  console.log(pathname);
 
   const postsEls = posts.data?.map((post) => {
     return (
