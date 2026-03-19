@@ -22,5 +22,13 @@
     "postUserId": "User ID",
     "postTitle": "Title",
     "postDescription": "Description"
+  },
+  "LoginPage": {
+    "emailLabel": "Email address*",
+    "emailInputPlaceholder": "Enter your email address",
+    "passwordLabel": "password",
+    "loginButton": "Login",
+    "showPasswordText": "Show password",
+    "hidePasswordText": "Hide password"
   }
 }
