@@ -1,4 +1,5 @@
 import { Header } from "./header";
-import { LoginForm } from "./login-form";
+import { UserLoginForm } from "./user-login-form";
+import { UserRegisterForm } from "./user-register-form";
 
-export { Header, LoginForm };
+export { Header, UserLoginForm, UserRegisterForm };

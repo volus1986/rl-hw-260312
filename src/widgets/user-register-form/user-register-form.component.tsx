@@ -7,12 +7,23 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 import { Button, Label, Input } from "@/shared/ui";
 
-export default function LoginForm() {
+export default function UserRegisterForm() {
   const t = useTranslations("LoginPage");
   const [isVisible, setIsVisible] = useState(false);
 
   return (
     <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+      <div className="space-y-1">
+        <Label htmlFor="userName" className="leading-5">
+          {t("nameLabel")}
+        </Label>
+        <Input
+          type="text"
+          id="userName"
+          placeholder={t("nameInputPlaceholder")}
+        />
+      </div>
+
       <div className="space-y-1">
         <Label htmlFor="userEmail" className="leading-5">
           {t("emailLabel")}
@@ -50,7 +61,7 @@ export default function LoginForm() {
       </div>
 
       <Button className="w-full" type="submit">
-        Login
+        {t("signupButton")}
       </Button>
     </form>
   );

@@ -24,11 +24,14 @@
     "postDescription": "Description"
   },
   "LoginPage": {
-    "emailLabel": "Email address*",
+    "nameLabel": "Name",
+    "nameInputPlaceholder": "Name",
+    "emailLabel": "Email address",
     "emailInputPlaceholder": "Enter your email address",
     "passwordLabel": "password",
-    "loginButton": "Login",
     "showPasswordText": "Show password",
-    "hidePasswordText": "Hide password"
+    "hidePasswordText": "Hide password",
+    "loginButton": "Login",
+    "signupButton": "Sign Up"
   }
 }
