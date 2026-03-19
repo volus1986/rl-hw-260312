@@ -1,5 +1,4 @@
-import "@/app/globals.css";
-import Providers from "../providers";
+import Providers from "@/app/providers";
 import {
   dehydrate,
   HydrationBoundary,
@@ -23,7 +22,9 @@ export default async function ItemsLayout({
 
   return (
     <Providers>
-      <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        {children}
+      </HydrationBoundary>
     </Providers>
   );
 }
