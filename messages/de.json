@@ -22,5 +22,18 @@
     "postUserId": "Benutzer-ID",
     "postTitle": "Titel",
     "postDescription": "Beschreibung"
+  },
+  "LoginPage": {
+    "loginTab": "Anmelden",
+    "registerTab": "Registrieren",
+    "nameLabel": "Name",
+    "nameInputPlaceholder": "Name",
+    "emailLabel": "E-Mail-Adresse",
+    "emailInputPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
+    "passwordLabel": "Passwort",
+    "showPasswordText": "Passwort anzeigen",
+    "hidePasswordText": "Passwort ausblenden",
+    "loginButton": "Anmelden",
+    "signupButton": "Registrieren"
   }
 }

@@ -24,11 +24,13 @@
     "postDescription": "Description"
   },
   "LoginPage": {
+    "loginTab": "Login",
+    "registerTab": "Sign Up",
     "nameLabel": "Name",
     "nameInputPlaceholder": "Name",
     "emailLabel": "Email address",
     "emailInputPlaceholder": "Enter your email address",
-    "passwordLabel": "password",
+    "passwordLabel": "Password",
     "showPasswordText": "Show password",
     "hidePasswordText": "Hide password",
     "loginButton": "Login",
