@@ -1,14 +1,22 @@
 "use client";
 
 import { usePostsQuery } from "@/features/get-posts";
-import { Button } from "@/shared/ui";
+import {
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/shared/ui";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 
 export default function Items() {
   const t = useTranslations("ItemsPage");
+  const router = useRouter();
 
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
@@ -33,28 +41,43 @@ export default function Items() {
     replace(createPageURL(page + 1), { scroll: false });
   };
 
+  const handlePostClick = (id: number) => {
+    router.push(`${pathname}/${id}`);
+  };
+
   const postsEls = posts.data?.map((post) => {
     return (
-      <div className="flex gap-8" key={post.id}>
-        <Link className="flex gap-8" href={`${pathname}/${post.id}`}>
-          <div>{post.id}</div>
-          <div>{post.userId}</div>
-          <div>{post.title}</div>
-        </Link>
-      </div>
+      <TableRow
+        key={post.id}
+        className="font-medium cursor-pointer"
+        onClick={() => handlePostClick(post.id)}>
+        <TableCell>{post.id}</TableCell>
+        <TableCell>{post.userId}</TableCell>
+        <TableCell>{post.title}</TableCell>
+      </TableRow>
     );
   });
 
   return (
     <div>
-      <div>{t("title")}</div>
+      <h1 className="text-center">{t("title")}</h1>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>ID</TableHead>
+            <TableHead>User ID</TableHead>
+            <TableHead>Title</TableHead>
+          </TableRow>
+        </TableHeader>
 
-      {postsEls}
-
-      <Button disabled={page <= 1} onClick={handlePrevButtonClick}>
-        {t("prevNavButton")}
-      </Button>
-      <Button onClick={handleNextButtonClick}>{t("nextNavButton")}</Button>
+        <TableBody>{postsEls}</TableBody>
+      </Table>
+      <div className="mt-4 flex gap-1 justify-center">
+        <Button disabled={page <= 1} onClick={handlePrevButtonClick}>
+          {t("prevNavButton")}
+        </Button>
+        <Button onClick={handleNextButtonClick}>{t("nextNavButton")}</Button>
+      </div>
     </div>
   );
 }
