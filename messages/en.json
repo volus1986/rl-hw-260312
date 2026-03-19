@@ -31,6 +31,7 @@
     "emailLabel": "Email address",
     "emailInputPlaceholder": "Enter your email address",
     "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm password",
     "showPasswordText": "Show password",
     "hidePasswordText": "Hide password",
     "loginButton": "Login",

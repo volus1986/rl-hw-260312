@@ -31,6 +31,7 @@
     "emailLabel": "E-Mail-Adresse",
     "emailInputPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
     "passwordLabel": "Passwort",
+    "confirmPasswordLabel": "Passwort bestätigen",
     "showPasswordText": "Passwort anzeigen",
     "hidePasswordText": "Passwort ausblenden",
     "loginButton": "Anmelden",

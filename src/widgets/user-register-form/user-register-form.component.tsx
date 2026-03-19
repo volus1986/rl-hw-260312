@@ -9,7 +9,8 @@ import { Button, Label, Input } from "@/shared/ui";
 
 export default function UserRegisterForm() {
   const t = useTranslations("LoginPage");
-  const [isVisible, setIsVisible] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
   return (
     <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -42,19 +43,50 @@ export default function UserRegisterForm() {
         <div className="relative">
           <Input
             id="password"
-            type={isVisible ? "text" : "password"}
+            type={isPasswordVisible ? "text" : "password"}
             placeholder="••••••••••••••••"
             className="pr-9"
           />
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setIsVisible((prevState) => !prevState)}
+            onClick={() => setIsPasswordVisible((prevState) => !prevState)}
             className="text-muted-foreground focus-visible:ring-ring/50 absolute
               inset-y-0 right-0 rounded-l-none hover:bg-transparent">
-            {isVisible ? <EyeOffIcon /> : <EyeIcon />}
+            {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
             <span className="sr-only">
-              {isVisible ? t("hidePasswordText") : t("showPasswordText")}
+              {isPasswordVisible
+                ? t("hidePasswordText")
+                : t("showPasswordText")}
+            </span>
+          </Button>
+        </div>
+      </div>
+
+      <div className="w-full space-y-1">
+        <Label htmlFor="confirm-password" className="leading-5">
+          {t("confirmPasswordLabel")}
+        </Label>
+        <div className="relative">
+          <Input
+            id="confirm-password"
+            type={isConfirmPasswordVisible ? "text" : "password"}
+            placeholder="••••••••••••••••"
+            className="pr-9"
+          />
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() =>
+              setIsConfirmPasswordVisible((prevState) => !prevState)
+            }
+            className="text-muted-foreground focus-visible:ring-ring/50 absolute
+              inset-y-0 right-0 rounded-l-none hover:bg-transparent">
+            {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
+            <span className="sr-only">
+              {isPasswordVisible
+                ? t("hidePasswordText")
+                : t("showPasswordText")}
             </span>
           </Button>
         </div>
