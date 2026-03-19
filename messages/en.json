@@ -3,13 +3,17 @@
     "login": "Login",
     "items": "Items"
   },
-  "Global404Page": {
-    "goToTheMainPageButton": "Go to the Main Page"
+  "RootPage": {
+    "login": "Login",
+    "items": "Items"
   },
   "ItemsPage": {
     "title": "Items",
     "prevNavButton": "Prev",
-    "nextNavButton": "Next"
+    "nextNavButton": "Next",
+    "pageNotFoundTitle": "Page Not Found",
+    "pageNotFoundDescription": "Selected item not exists",
+    "pageNotFoundGoToItemsPageButton": "Go to the Main Page"
   },
   "ItemPage": {
     "previousPageButton": "Go to the Previous Page",

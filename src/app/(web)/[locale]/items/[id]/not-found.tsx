@@ -2,9 +2,11 @@
 
 import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/shared/ui";
+import { useTranslations } from "next-intl";
 
 export default function NotFound() {
   const router = useRouter();
+  const t = useTranslations("ItemsPage");
 
   const handleClick = () => {
     router.push("/items");
@@ -12,10 +14,10 @@ export default function NotFound() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <h2 className="mb-4 text-3xl font-semibold">Page Not Found</h2>
-      <p className="mb-6">Incorrect Item Id</p>
+      <h2 className="mb-4 text-3xl font-semibold">{t("pageNotFoundTitle")}</h2>
+      <p className="mb-6">{t("pageNotFoundDescription")}</p>
       <Button size="lg" className="rounded-lg text-base" onClick={handleClick}>
-        Go to the items page
+        {t("pageNotFoundGoToItemsPageButton")}
       </Button>
     </div>
   );

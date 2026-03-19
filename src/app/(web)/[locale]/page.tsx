@@ -1,13 +1,16 @@
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export default function RootPage() {
+  const t = useTranslations("RootPage");
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div>
-        <Link href={"items"}>Items</Link>
+        <Link href={"items"}>{t("items")}</Link>
       </div>
       <div>
-        <Link href={"login"}>Login</Link>
+        <Link href={"login"}>{t("login")}</Link>
       </div>
     </div>
   );

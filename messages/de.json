@@ -3,13 +3,17 @@
     "login": "Anmelden",
     "items": "Einträge"
   },
-  "Global404Page": {
-    "goToTheMainPageButton": "Zur Startseite"
+  "RootPage": {
+    "login": "Anmelden",
+    "items": "Einträge"
   },
   "ItemsPage": {
     "title": "Einträge",
     "prevNavButton": "Zurück",
-    "nextNavButton": "Weiter"
+    "nextNavButton": "Weiter",
+    "pageNotFoundTitle": "Seite nicht gefunden",
+    "pageNotFoundDescription": "Der ausgewählte Eintrag existiert nicht",
+    "pageNotFoundGoToItemsPageButton": "Zur Startseite"
   },
   "ItemPage": {
     "previousPageButton": "Zur vorherigen Seite",
