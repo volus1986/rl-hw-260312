@@ -1,11 +1,22 @@
-import { Button } from "./button";
-import { Label } from "@/shared/shadcn/ui/components/label";
-import { Input } from "@/shared/shadcn/ui/components/input";
-import {
+export { Button } from "@/pkg/shadcn/ui/components/button";
+
+export { Input } from "@/pkg/shadcn/ui/components/input";
+
+export { Label } from "@/pkg/shadcn/ui/components/label";
+
+export {
   Tabs,
   TabsList,
   TabsTrigger,
   TabsContent,
-} from "@/shared/shadcn/ui/components/tabs";
+} from "@/pkg/shadcn/ui/components/tabs";
 
-export { Button, Input, Label, Tabs, TabsList, TabsTrigger, TabsContent };
+export {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/pkg/shadcn/ui/components/table";
