@@ -5,7 +5,7 @@ export default function RootPage() {
   const t = useTranslations("RootPage");
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center mt-80">
       <div>
         <Link href={"items"}>{t("items")}</Link>
       </div>
