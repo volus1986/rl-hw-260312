@@ -1,4 +1,6 @@
 import getPost from "@/entities/posts/api/get-post";
+import { notFound } from "next/navigation";
+import { PreviousPageButton } from "./components/previous-page-button.component";
 
 export default async function ItemPage({
   params,
@@ -8,6 +10,10 @@ export default async function ItemPage({
   const { id } = await params;
 
   const data = await getPost(Number(id));
+
+  if (!data.id) {
+    throw notFound();
+  }
 
   return (
     <div>
@@ -31,6 +37,8 @@ export default async function ItemPage({
           </tr>
         </tbody>
       </table>
+
+      <PreviousPageButton />
     </div>
   );
 }
