@@ -33,8 +33,6 @@ export default function Items() {
     replace(createPageURL(page + 1), { scroll: false });
   };
 
-  console.log(pathname);
-
   const postsEls = posts.data?.map((post) => {
     return (
       <div className="flex gap-8" key={post.id}>
