@@ -35,14 +35,7 @@ export const LanguageSwitcher = () => {
         key={code}
         type="button"
         onClick={() => handleChangeLocale(code)}
-        style={{
-          padding: "0.25rem 0.75rem",
-          borderRadius: "0.25rem",
-          border: "1px solid #ccc",
-          backgroundColor: isSelected ? "#111827" : "#ffffff",
-          color: isSelected ? "#ffffff" : "#111827",
-          cursor: isSelected ? "default" : "pointer",
-        }}>
+        disabled={isSelected}>
         {code.toUpperCase()}
       </Button>
     );
