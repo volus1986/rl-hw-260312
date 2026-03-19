@@ -1,6 +1,6 @@
 import { postsApi } from "@/entities/posts/api";
 import { notFound } from "next/navigation";
-import { PreviousPageButton } from "./components/previous-page-button.component";
+import { Item } from "./components/item.component";
 
 import type { Metadata } from "next";
 
@@ -31,30 +31,5 @@ export default async function ItemPage({
     notFound();
   }
 
-  return (
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <td>id:</td>
-            <td>{item.id}</td>
-          </tr>
-          <tr>
-            <td>User id:</td>
-            <td>{item.userId}</td>
-          </tr>
-          <tr>
-            <td>Title:</td>
-            <td>{item.title}</td>
-          </tr>
-          <tr>
-            <td className="pr-4">Description:</td>
-            <td>{item.body}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <PreviousPageButton />
-    </div>
-  );
+  return <Item item={item} />;
 }
