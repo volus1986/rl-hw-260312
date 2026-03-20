@@ -1,4 +1,4 @@
-import { Post } from "../../models/post.model";
+import { Post } from "../../models";
 
 export const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
 

@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 
-import { postsApi } from "@/app/entities/models";
+import { postsApi } from "@/app/entities/api";
 
 export function usePostsQuery(page: number, limit: number) {
   return useQuery({
