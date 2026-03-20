@@ -4,7 +4,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
-import { postsApi } from "@/app/entities/posts";
+import { postsApi } from "@/app/entities/models";
 
 export default async function ItemsLayout({
   children,

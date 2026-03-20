@@ -1,6 +1,6 @@
 "use client";
 
-import { Post } from "@/app/entities/posts";
+import { Post } from "@/app/entities/models";
 import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/app/shared/ui";
 import { useTranslations } from "use-intl";

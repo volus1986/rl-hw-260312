@@ -1,4 +1,4 @@
-import { postsApi } from "@/app/entities/posts/api";
+import { postsApi } from "@/app/entities/api";
 import { notFound } from "next/navigation";
 import { Item } from "./components/item.component";
 
@@ -11,7 +11,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const item = await postsApi.getPost(Number(id));
+  const item = await postsApi.getPostCached(Number(id));
 
   return {
     title: item.title,
@@ -25,7 +25,7 @@ export default async function ItemPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const item = await postsApi.getPost(Number(id));
+  const item = await postsApi.getPostCached(Number(id));
 
   if (!item.id) {
     notFound();
