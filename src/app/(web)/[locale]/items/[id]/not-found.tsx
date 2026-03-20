@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "@/i18n/navigation";
-import { Button } from "@/shared/ui";
+import { Button } from "@/app/shared/ui";
 import { useTranslations } from "next-intl";
 
 export default function NotFound() {

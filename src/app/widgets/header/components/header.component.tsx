@@ -1,6 +1,6 @@
 "use client";
 
-import { LanguageSwitcher } from "@/features/language-switcher";
+import { LanguageSwitcher } from "@/app/features/language-switcher";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 

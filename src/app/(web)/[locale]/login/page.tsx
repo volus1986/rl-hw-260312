@@ -1,6 +1,6 @@
-import { UserLoginForm } from "@/widgets";
-import { UserRegisterForm } from "@/widgets";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/shared/ui";
+import { UserLoginForm } from "@/app/widgets";
+import { UserRegisterForm } from "@/app/widgets";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/app/shared/ui";
 import { useTranslations } from "next-intl";
 
 export default function Page() {

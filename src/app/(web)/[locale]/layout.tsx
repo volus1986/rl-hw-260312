@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { Header } from "@/widgets";
+import { Header } from "@/app/widgets";
 
 export default async function LocaleLayout({
   children,

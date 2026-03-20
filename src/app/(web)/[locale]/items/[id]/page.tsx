@@ -1,4 +1,4 @@
-import { postsApi } from "@/entities/posts/api";
+import { postsApi } from "@/app/entities/posts/api";
 import { notFound } from "next/navigation";
 import { Item } from "./components/item.component";
 

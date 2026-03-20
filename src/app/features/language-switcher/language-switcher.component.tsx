@@ -4,7 +4,7 @@ import React from "react";
 
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useParams } from "next/navigation";
-import { Button } from "@/shared/ui";
+import { Button } from "@/app/shared/ui";
 
 const locales = ["en", "de"] as const;
 

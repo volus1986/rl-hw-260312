@@ -1,6 +1,6 @@
 "use client";
 
-import { usePostsQuery } from "@/features/get-posts";
+import { usePostsQuery } from "@/app/features/get-posts";
 import {
   Button,
   Table,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/shared/ui";
+} from "@/app/shared/ui";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";

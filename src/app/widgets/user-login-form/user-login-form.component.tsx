@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 
-import { Button, Label, Input } from "@/shared/ui";
+import { Button, Label, Input } from "@/app/shared/ui";
 
 export default function UserLoginForm() {
   const t = useTranslations("LoginPage");

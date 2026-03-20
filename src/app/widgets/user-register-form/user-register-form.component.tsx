@@ -5,12 +5,13 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 
-import { Button, Label, Input } from "@/shared/ui";
+import { Button, Label, Input } from "@/app/shared/ui";
 
 export default function UserRegisterForm() {
   const t = useTranslations("LoginPage");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState(false);
 
   return (
     <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
