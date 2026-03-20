@@ -6,21 +6,52 @@ import { useTranslations } from "next-intl";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 import { Button, Label, Input } from "@/app/shared/ui";
+import {
+  useForm,
+  Controller,
+  SubmitHandler,
+  SubmitErrorHandler,
+} from "react-hook-form";
+
+type Inputs = {
+  email: string;
+  password: string;
+};
 
 export default function UserLoginForm() {
   const t = useTranslations("LoginPage");
   const [isVisible, setIsVisible] = useState(false);
+  const { control, handleSubmit } = useForm<Inputs>({
+    defaultValues: { email: "", password: "" },
+  });
+
+  const handleSubmitSuccess: SubmitHandler<Inputs> = (data: Inputs) => {
+    console.log(data);
+  };
+
+  const handleSubmitError: SubmitErrorHandler<Inputs> = (data) => {
+    console.log(data);
+  };
 
   return (
-    <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+    <form
+      className="space-y-4"
+      onSubmit={handleSubmit(handleSubmitSuccess, handleSubmitError)}>
       <div className="space-y-1">
         <Label htmlFor="userEmail" className="leading-5">
           {t("emailLabel")}
         </Label>
-        <Input
-          type="email"
-          id="userEmail"
-          placeholder={t("emailInputPlaceholder")}
+        <Controller
+          name="email"
+          control={control}
+          render={({ field }) => (
+            <Input
+              {...field}
+              type="text"
+              id="userEmail"
+              placeholder={t("emailInputPlaceholder")}
+            />
+          )}
         />
       </div>
 
@@ -29,13 +60,21 @@ export default function UserLoginForm() {
           {t("passwordLabel")}
         </Label>
         <div className="relative">
-          <Input
-            id="password"
-            type={isVisible ? "text" : "password"}
-            placeholder="••••••••••••••••"
-            className="pr-9"
+          <Controller
+            name="password"
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                id="password"
+                type={isVisible ? "text" : "password"}
+                placeholder="••••••••••••••••"
+                className="pr-9"
+              />
+            )}
           />
           <Button
+            type="button"
             variant="ghost"
             size="icon"
             onClick={() => setIsVisible((prevState) => !prevState)}
