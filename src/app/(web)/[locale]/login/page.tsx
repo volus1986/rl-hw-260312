@@ -1,5 +1,5 @@
-import { UserLoginForm } from "@/app/widgets";
-import { UserRegisterForm } from "@/app/widgets";
+import { UserLoginForm } from "@/app/widgets/user-login-form";
+import { UserRegisterForm } from "@/app/widgets/user-register-form";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/app/shared/ui";
 import { useTranslations } from "next-intl";
 
