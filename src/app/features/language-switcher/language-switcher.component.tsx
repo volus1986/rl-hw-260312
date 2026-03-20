@@ -4,7 +4,7 @@ import React from "react";
 
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useParams } from "next/navigation";
-import { Button } from "@/app/shared/ui";
+import { Tabs, TabsList, TabsTrigger } from "@/app/shared/ui";
 
 const locales = ["en", "de"] as const;
 
@@ -28,18 +28,38 @@ export const LanguageSwitcher = () => {
   };
 
   const buttonsRender = locales.map((code) => {
-    const isSelected = code === currentLocale;
-
     return (
-      <Button
+      <TabsTrigger
         key={code}
-        type="button"
-        onClick={() => handleChangeLocale(code)}
-        disabled={isSelected}>
+        value={code}
+        onClick={() => handleChangeLocale(code)}>
         {code.toUpperCase()}
-      </Button>
+      </TabsTrigger>
     );
   });
 
-  return <div style={{ display: "flex", gap: "0.5rem" }}>{buttonsRender}</div>;
+  return (
+    <div className="flex gap-0.5">
+      <Tabs defaultValue={currentLocale.toString()}>
+        <TabsList>{buttonsRender}</TabsList>
+      </Tabs>
+    </div>
+  );
+
+  // Old version style:
+  // const buttonsRender = locales.map((code) => {
+  //   const isSelected = code === currentLocale;
+
+  //   return (
+  //     <Button
+  //       key={code}
+  //       type="button"
+  //       onClick={() => handleChangeLocale(code)}
+  //       disabled={isSelected}>
+  //       {code.toUpperCase()}
+  //     </Button>
+  //   );
+  // });
+
+  // return <div style={{ display: "flex", gap: "0.5rem" }}>{buttonsRender}</div>;
 };
