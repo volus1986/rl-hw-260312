@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/app/shared/ui";
-import { useRouter, usePathname } from "@/i18n/navigation";
+import { useRouter, usePathname } from "@/pkg/locale";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 

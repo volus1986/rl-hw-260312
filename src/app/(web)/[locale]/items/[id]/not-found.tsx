@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "@/i18n/navigation";
+import { useRouter } from "@/pkg/locale";
 import { Button } from "@/app/shared/ui";
 import { useTranslations } from "next-intl";
 

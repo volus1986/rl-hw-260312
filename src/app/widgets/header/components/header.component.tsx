@@ -1,7 +1,7 @@
 "use client";
 
 import { LanguageSwitcher } from "@/app/features/language-switcher";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/pkg/locale";
 import { useTranslations } from "next-intl";
 
 export default function Header() {

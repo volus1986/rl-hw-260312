@@ -1,6 +1,6 @@
 import { Button } from "@/app/shared/ui";
+import { Link } from "@/pkg/locale";
 import Image from "next/image";
-import Link from "next/link";
 
 const Error = () => {
   return (

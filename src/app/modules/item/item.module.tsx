@@ -1,7 +1,7 @@
 "use client";
 
 import { Post } from "@/app/entities/models";
-import { useRouter } from "@/i18n/navigation";
+import { useRouter } from "@/pkg/locale";
 import { Button } from "@/app/shared/ui";
 import { useTranslations } from "use-intl";
 

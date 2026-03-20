@@ -1,4 +1,4 @@
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/pkg/locale";
 import { useTranslations } from "next-intl";
 
 export const MainComponent = () => {
