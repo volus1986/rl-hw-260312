@@ -1,8 +1,8 @@
-import { postsApi } from "@/app/entities/api";
-import { notFound } from "next/navigation";
-import { Item } from "./components/item.component";
-
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import { postsApi } from "@/app/entities/api";
+import { ItemComponent } from "@/app/modules/item";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -31,5 +31,5 @@ export default async function ItemPage({
     notFound();
   }
 
-  return <Item item={item} />;
+  return <ItemComponent item={item} />;
 }

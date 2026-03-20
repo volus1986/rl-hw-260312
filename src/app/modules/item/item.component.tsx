@@ -5,7 +5,7 @@ import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/app/shared/ui";
 import { useTranslations } from "use-intl";
 
-export function Item({ item }: { item: Post }) {
+export const ItemComponent = ({ item }: { item: Post }) => {
   const router = useRouter();
   const t = useTranslations("ItemPage");
 
@@ -39,4 +39,4 @@ export function Item({ item }: { item: Post }) {
       <Button onClick={handleClick}>{t("previousPageButton")}</Button>
     </div>
   );
-}
+};
