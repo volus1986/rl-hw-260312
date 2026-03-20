@@ -1,7 +1,7 @@
-import { ItemsComponent } from "@/app/modules/items";
+import { ItemsModule } from "@/app/modules/items";
 
 const ItemsPage = () => {
-  return <ItemsComponent />;
+  return <ItemsModule />;
 };
 
 export default ItemsPage;

@@ -5,7 +5,7 @@ import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/app/shared/ui";
 import { useTranslations } from "use-intl";
 
-export const ItemComponent = ({ item }: { item: Post }) => {
+export const ItemModule = ({ item }: { item: Post }) => {
   const router = useRouter();
   const t = useTranslations("ItemPage");
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { postsApi } from "@/app/entities/api";
-import { ItemComponent } from "@/app/modules/item";
+import { ItemModule } from "@/app/modules/item";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -31,5 +31,5 @@ export default async function ItemPage({
     notFound();
   }
 
-  return <ItemComponent item={item} />;
+  return <ItemModule item={item} />;
 }

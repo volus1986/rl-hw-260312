@@ -14,7 +14,7 @@ import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 
-export const ItemsComponent = () => {
+export const ItemsModule = () => {
   const t = useTranslations("ItemsPage");
   const router = useRouter();
 
@@ -80,4 +80,4 @@ export const ItemsComponent = () => {
       </div>
     </div>
   );
-}
+};
