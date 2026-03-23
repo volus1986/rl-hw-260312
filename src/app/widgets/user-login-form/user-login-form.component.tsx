@@ -25,7 +25,7 @@ export default function UserLoginForm() {
     defaultValues: { email: "", password: "" },
   });
 
-  const handleSubmitSuccess: SubmitHandler<Inputs> = (data: Inputs) => {
+  const handleSubmitSuccess: SubmitHandler<Inputs> = (data) => {
     console.log(data);
   };
 
