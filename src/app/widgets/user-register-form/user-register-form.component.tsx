@@ -4,23 +4,49 @@ import { useState } from "react";
 
 import { useTranslations } from "next-intl";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-
+import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { Button, Label, Input } from "@/app/shared/ui";
+
+type Inputs = {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
 
 export default function UserRegisterForm() {
   const t = useTranslations("LoginPage");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
+  const { handleSubmit, register } = useForm({
+    defaultValues: {
+      name: "111",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+
+  const handleSubmitSuccess: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+  };
+
+  const handleSubmitError: SubmitErrorHandler<Inputs> = (data) => {
+    console.log(data);
+  };
 
   return (
-    <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+    <form
+      className="space-y-4"
+      onSubmit={handleSubmit(handleSubmitSuccess, handleSubmitError)}>
       <div className="space-y-1">
         <Label htmlFor="userName" className="leading-5">
           {t("nameLabel")}
         </Label>
+
         <Input
-          type="text"
+          {...register("name")}
           id="userName"
           placeholder={t("nameInputPlaceholder")}
         />
@@ -31,7 +57,7 @@ export default function UserRegisterForm() {
           {t("emailLabel")}
         </Label>
         <Input
-          type="email"
+          {...register("email")}
           id="userEmail"
           placeholder={t("emailInputPlaceholder")}
         />
@@ -43,12 +69,14 @@ export default function UserRegisterForm() {
         </Label>
         <div className="relative">
           <Input
+            {...register("password")}
             id="password"
             type={isPasswordVisible ? "text" : "password"}
             placeholder="••••••••••••••••"
             className="pr-9"
           />
           <Button
+            type="button"
             variant="ghost"
             size="icon"
             onClick={() => setIsPasswordVisible((prevState) => !prevState)}
@@ -74,8 +102,10 @@ export default function UserRegisterForm() {
             type={isConfirmPasswordVisible ? "text" : "password"}
             placeholder="••••••••••••••••"
             className="pr-9"
+            {...register("confirmPassword")}
           />
           <Button
+            type="button"
             variant="ghost"
             size="icon"
             onClick={() =>
