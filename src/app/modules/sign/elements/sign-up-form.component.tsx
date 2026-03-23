@@ -10,22 +10,28 @@ import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "./error-message.component";
 
+const MIN_PASSWORD_LENGTH = 8;
+
 const zodSchema = z
   .object({
-    name: z.string().nonempty(),
-    email: z.email().nonempty(),
-    password: z.string().min(8, "Required, min length 8 symbols"),
-    confirmPassword: z.string().min(8, "Required, min length 8 symbols"),
+    name: z.string().nonempty("requiredErrorMessage"),
+    email: z
+      .email("incorrectEmailErrorMessage")
+      .nonempty("requiredErrorMessage"),
+    password: z.string().min(MIN_PASSWORD_LENGTH, "minLengthErrorMessage"),
+    confirmPassword: z
+      .string()
+      .min(MIN_PASSWORD_LENGTH, "minLengthErrorMessage"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
-    message: "Passwords do not match",
+    message: "passwordsAreNotMatchErrorMessage",
   });
 
 type Inputs = z.infer<typeof zodSchema>;
 
 export default function SignUpForm() {
-  const t = useTranslations("LoginPage");
+  const t = useTranslations("SignPage");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
@@ -40,11 +46,11 @@ export default function SignUpForm() {
   });
 
   const handleSubmitSuccess: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+    console.log(data); // todo: add loading
   };
 
   const handleSubmitError: SubmitErrorHandler<Inputs> = (data) => {
-    console.log(data);
+    console.log(data); // todo: add error handler
   };
 
   return (
@@ -61,7 +67,11 @@ export default function SignUpForm() {
           id="userName"
           placeholder={t("nameInputPlaceholder")}
         />
-        <ErrorMessage message={formState.errors.name?.message} />
+        <ErrorMessage
+          message={
+            formState.errors.name?.message && t(formState.errors.name?.message)
+          }
+        />
       </div>
 
       <div className="space-y-1">
@@ -73,7 +83,12 @@ export default function SignUpForm() {
           id="userEmail"
           placeholder={t("emailInputPlaceholder")}
         />
-        <ErrorMessage message={formState.errors.email?.message} />
+        <ErrorMessage
+          message={
+            formState.errors.email?.message &&
+            t(formState.errors.email?.message)
+          }
+        />
       </div>
 
       <div className="w-full space-y-1">
@@ -103,7 +118,14 @@ export default function SignUpForm() {
             </span>
           </Button>
         </div>
-        <ErrorMessage message={formState.errors.password?.message} />
+        <ErrorMessage
+          message={
+            formState.errors.password?.message &&
+            t(formState.errors.password?.message, {
+              minLength: MIN_PASSWORD_LENGTH,
+            })
+          }
+        />
       </div>
 
       <div className="w-full space-y-1">
@@ -135,7 +157,14 @@ export default function SignUpForm() {
             </span>
           </Button>
         </div>
-        <ErrorMessage message={formState.errors.confirmPassword?.message} />
+        <ErrorMessage
+          message={
+            formState.errors.confirmPassword?.message &&
+            t(formState.errors.confirmPassword?.message, {
+              minLength: MIN_PASSWORD_LENGTH,
+            })
+          }
+        />
       </div>
 
       <Button className="w-full" type="submit">

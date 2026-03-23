@@ -23,7 +23,7 @@
     "postTitle": "Titel",
     "postDescription": "Beschreibung"
   },
-  "LoginPage": {
+  "SignPage": {
     "loginTab": "Anmelden",
     "registerTab": "Registrieren",
     "nameLabel": "Name",
@@ -35,6 +35,10 @@
     "showPasswordText": "Passwort anzeigen",
     "hidePasswordText": "Passwort ausblenden",
     "loginButton": "Anmelden",
-    "signupButton": "Registrieren"
+    "signupButton": "Registrieren",
+    "requiredErrorMessage": "Erforderlich",
+    "incorrectEmailErrorMessage": "Ungültiges E-Mail-Format",
+    "passwordsAreNotMatchErrorMessage": "Passwörter stimmen nicht überein",
+    "minLengthErrorMessage": "Die Mindestlänge beträgt {minLength} Zeichen"
   }
 }

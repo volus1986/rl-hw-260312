@@ -23,7 +23,7 @@
     "postTitle": "Title",
     "postDescription": "Description"
   },
-  "LoginPage": {
+  "SignPage": {
     "loginTab": "Login",
     "registerTab": "Sign Up",
     "nameLabel": "Name",
@@ -35,6 +35,10 @@
     "showPasswordText": "Show password",
     "hidePasswordText": "Hide password",
     "loginButton": "Login",
-    "signupButton": "Sign Up"
+    "signupButton": "Sign Up",
+    "requiredErrorMessage": "Required",
+    "incorrectEmailErrorMessage": "Incorrect email format",
+    "passwordsAreNotMatchErrorMessage": "Passwords are tor match",
+    "minLengthErrorMessage": "Min length is {minLength} symbols"
   }
 }

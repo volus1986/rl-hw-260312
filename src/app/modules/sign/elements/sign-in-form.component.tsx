@@ -17,14 +17,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "./error-message.component";
 
 const zodSchema = z.object({
-  email: z.email().nonempty(),
-  password: z.string().nonempty(),
+  email: z.email("incorrectEmailErrorMessage").nonempty("requiredErrorMessage"),
+  password: z.string().nonempty("requiredErrorMessage"),
 });
 
 type Inputs = z.infer<typeof zodSchema>;
 
 export default function SignInForm() {
-  const t = useTranslations("LoginPage");
+  const t = useTranslations("SignPage");
   const [isVisible, setIsVisible] = useState(false);
   const { control, handleSubmit } = useForm<Inputs>({
     defaultValues: { email: "", password: "" },
@@ -32,11 +32,11 @@ export default function SignInForm() {
   });
 
   const handleSubmitSuccess: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+    console.log(data); // todo: add loading
   };
 
   const handleSubmitError: SubmitErrorHandler<Inputs> = (data) => {
-    console.log(data);
+    console.log(data); //  todo: add error handler
   };
 
   return (
@@ -58,7 +58,11 @@ export default function SignInForm() {
                 id="userEmail"
                 placeholder={t("emailInputPlaceholder")}
               />
-              <ErrorMessage message={fieldState?.error?.message} />
+              <ErrorMessage
+                message={
+                  fieldState?.error?.message && t(fieldState.error.message)
+                }
+              />
             </>
           )}
         />
@@ -81,7 +85,12 @@ export default function SignInForm() {
                   placeholder="••••••••••••••••"
                   className="pr-9"
                 />
-                <ErrorMessage message={fieldState?.error?.message} />
+                <ErrorMessage
+                  message={
+                    fieldState?.error?.message && t(fieldState?.error?.message)
+                  }
+                />
+                {console.log(fieldState)}
               </>
             )}
           />

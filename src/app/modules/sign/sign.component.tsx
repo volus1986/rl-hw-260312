@@ -5,7 +5,7 @@ import SignInForm from "./elements/sign-in-form.component";
 import SignUpForm from "./elements/sign-up-form.component";
 
 export const SignModule = () => {
-  const t = useTranslations("LoginPage");
+  const t = useTranslations("SignPage");
 
   return (
     <div className="flex mt-80 justify-center items-center">
