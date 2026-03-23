@@ -14,6 +14,7 @@ import {
 } from "react-hook-form";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import ErrorMessage from "./error-message.component";
 
 const zodSchema = z.object({
   email: z.email(),
@@ -22,7 +23,7 @@ const zodSchema = z.object({
 
 type Inputs = z.infer<typeof zodSchema>;
 
-export default function UserLoginForm() {
+export default function SignInForm() {
   const t = useTranslations("LoginPage");
   const [isVisible, setIsVisible] = useState(false);
   const { control, handleSubmit } = useForm<Inputs>({
@@ -49,13 +50,16 @@ export default function UserLoginForm() {
         <Controller
           name="email"
           control={control}
-          render={({ field }) => (
-            <Input
-              {...field}
-              type="text"
-              id="userEmail"
-              placeholder={t("emailInputPlaceholder")}
-            />
+          render={({ field, fieldState }) => (
+            <>
+              <Input
+                {...field}
+                type="text"
+                id="userEmail"
+                placeholder={t("emailInputPlaceholder")}
+              />
+              <ErrorMessage message={fieldState?.error?.message} />
+            </>
           )}
         />
       </div>
@@ -68,14 +72,17 @@ export default function UserLoginForm() {
           <Controller
             name="password"
             control={control}
-            render={({ field }) => (
-              <Input
-                {...field}
-                id="password"
-                type={isVisible ? "text" : "password"}
-                placeholder="••••••••••••••••"
-                className="pr-9"
-              />
+            render={({ field, fieldState }) => (
+              <>
+                <Input
+                  {...field}
+                  id="password"
+                  type={isVisible ? "text" : "password"}
+                  placeholder="••••••••••••••••"
+                  className="pr-9"
+                />
+                <ErrorMessage message={fieldState?.error?.message} />
+              </>
             )}
           />
           <Button

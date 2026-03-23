@@ -1,9 +1,10 @@
-import { UserLoginForm } from "@/app/widgets/user-login-form";
-import { UserRegisterForm } from "@/app/widgets/user-register-form";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/app/shared/ui";
 import { useTranslations } from "next-intl";
 
-export const LoginModule = () => {
+import SignInForm from "./elements/sign-in-form.component";
+import SignUpForm from "./elements/sign-up-form.component";
+
+export const SignModule = () => {
   const t = useTranslations("LoginPage");
 
   return (
@@ -14,10 +15,10 @@ export const LoginModule = () => {
           <TabsTrigger value="register">{t("registerTab")}</TabsTrigger>
         </TabsList>
         <TabsContent value="login">
-          <UserLoginForm />
+          <SignInForm />
         </TabsContent>
         <TabsContent value="register">
-          <UserRegisterForm />
+          <SignUpForm />
         </TabsContent>
       </Tabs>
     </div>

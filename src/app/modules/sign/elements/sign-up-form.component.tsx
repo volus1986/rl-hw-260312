@@ -14,7 +14,7 @@ type Inputs = {
   confirmPassword: string;
 };
 
-export default function UserRegisterForm() {
+export default function SignUpForm() {
   const t = useTranslations("LoginPage");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =

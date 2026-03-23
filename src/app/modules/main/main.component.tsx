@@ -10,7 +10,7 @@ export const MainComponent = () => {
         <Link href={"items"}>{t("items")}</Link>
       </div>
       <div>
-        <Link href={"login"}>{t("login")}</Link>
+        <Link href={"sign"}>{t("login")}</Link>
       </div>
     </div>
   );

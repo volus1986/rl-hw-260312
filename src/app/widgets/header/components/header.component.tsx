@@ -18,7 +18,7 @@ export default function Header() {
           <Link href="/items" className="hover:text-primary max-md:hidden">
             {t("items")}
           </Link>
-          <Link href="/login" className="hover:text-primary max-md:hidden">
+          <Link href="/sign" className="hover:text-primary max-md:hidden">
             {t("login")}
           </Link>
         </div>
