@@ -12,17 +12,22 @@ import {
   SubmitHandler,
   SubmitErrorHandler,
 } from "react-hook-form";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-type Inputs = {
-  email: string;
-  password: string;
-};
+const zodSchema = z.object({
+  email: z.email(),
+  password: z.string().min(8, "Required, min length 8 symbols"),
+});
+
+type Inputs = z.infer<typeof zodSchema>;
 
 export default function UserLoginForm() {
   const t = useTranslations("LoginPage");
   const [isVisible, setIsVisible] = useState(false);
   const { control, handleSubmit } = useForm<Inputs>({
     defaultValues: { email: "", password: "" },
+    resolver: zodResolver(zodSchema),
   });
 
   const handleSubmitSuccess: SubmitHandler<Inputs> = (data) => {
