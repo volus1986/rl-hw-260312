@@ -24,8 +24,8 @@
     "postDescription": "Beschreibung"
   },
   "SignPage": {
-    "loginTab": "Anmelden",
-    "registerTab": "Registrieren",
+    "signInTab": "Anmelden",
+    "signUpTab": "Registrieren",
     "nameLabel": "Name",
     "nameInputPlaceholder": "Name",
     "emailLabel": "E-Mail-Adresse",
@@ -34,8 +34,8 @@
     "confirmPasswordLabel": "Passwort bestätigen",
     "showPasswordText": "Passwort anzeigen",
     "hidePasswordText": "Passwort ausblenden",
-    "loginButton": "Anmelden",
-    "signupButton": "Registrieren",
+    "signInButton": "Anmelden",
+    "signUpButton": "Registrieren",
     "requiredErrorMessage": "Erforderlich",
     "incorrectEmailErrorMessage": "Ungültiges E-Mail-Format",
     "passwordsAreNotMatchErrorMessage": "Passwörter stimmen nicht überein",

@@ -24,8 +24,8 @@
     "postDescription": "Description"
   },
   "SignPage": {
-    "loginTab": "Login",
-    "registerTab": "Sign Up",
+    "signInTab": "Sign In",
+    "signUpTab": "Sign Up",
     "nameLabel": "Name",
     "nameInputPlaceholder": "Name",
     "emailLabel": "Email address",
@@ -34,8 +34,8 @@
     "confirmPasswordLabel": "Confirm password",
     "showPasswordText": "Show password",
     "hidePasswordText": "Hide password",
-    "loginButton": "Login",
-    "signupButton": "Sign Up",
+    "signInButton": "Sign In",
+    "signUpButton": "Sign Up",
     "requiredErrorMessage": "Required",
     "incorrectEmailErrorMessage": "Incorrect email format",
     "passwordsAreNotMatchErrorMessage": "Passwords are tor match",

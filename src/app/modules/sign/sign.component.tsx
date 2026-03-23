@@ -11,8 +11,8 @@ export const SignModule = () => {
     <div className="flex mt-80 justify-center items-center">
       <Tabs defaultValue="login" className="w-[400px]">
         <TabsList>
-          <TabsTrigger value="login">{t("loginTab")}</TabsTrigger>
-          <TabsTrigger value="register">{t("registerTab")}</TabsTrigger>
+          <TabsTrigger value="login">{t("signInTab")}</TabsTrigger>
+          <TabsTrigger value="register">{t("signUpTab")}</TabsTrigger>
         </TabsList>
         <TabsContent value="login">
           <SignInForm />

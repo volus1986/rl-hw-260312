@@ -168,7 +168,7 @@ export default function SignUpForm() {
       </div>
 
       <Button className="w-full" type="submit">
-        {t("signupButton")}
+        {t("signUpButton")}
       </Button>
     </form>
   );

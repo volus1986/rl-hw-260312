@@ -110,7 +110,7 @@ export default function SignInForm() {
       </div>
 
       <Button className="w-full" type="submit">
-        Login
+        {t("signInTab")}
       </Button>
     </form>
   );
