@@ -17,8 +17,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "./error-message.component";
 
 const zodSchema = z.object({
-  email: z.email(),
-  password: z.string().min(8, "Required, min length 8 symbols"),
+  email: z.email().nonempty(),
+  password: z.string().nonempty(),
 });
 
 type Inputs = z.infer<typeof zodSchema>;

@@ -6,26 +6,37 @@ import { useTranslations } from "next-intl";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { Button, Label, Input } from "@/app/shared/ui";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import ErrorMessage from "./error-message.component";
 
-type Inputs = {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
+const zodSchema = z
+  .object({
+    name: z.string().nonempty(),
+    email: z.email().nonempty(),
+    password: z.string().min(8, "Required, min length 8 symbols"),
+    confirmPassword: z.string().min(8, "Required, min length 8 symbols"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Passwords do not match",
+  });
+
+type Inputs = z.infer<typeof zodSchema>;
 
 export default function SignUpForm() {
   const t = useTranslations("LoginPage");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
-  const { handleSubmit, register } = useForm({
+  const { handleSubmit, register, formState } = useForm({
     defaultValues: {
-      name: "111",
+      name: "",
       email: "",
       password: "",
       confirmPassword: "",
     },
+    resolver: zodResolver(zodSchema),
   });
 
   const handleSubmitSuccess: SubmitHandler<Inputs> = (data) => {
@@ -50,6 +61,7 @@ export default function SignUpForm() {
           id="userName"
           placeholder={t("nameInputPlaceholder")}
         />
+        <ErrorMessage message={formState.errors.name?.message} />
       </div>
 
       <div className="space-y-1">
@@ -61,6 +73,7 @@ export default function SignUpForm() {
           id="userEmail"
           placeholder={t("emailInputPlaceholder")}
         />
+        <ErrorMessage message={formState.errors.email?.message} />
       </div>
 
       <div className="w-full space-y-1">
@@ -90,6 +103,7 @@ export default function SignUpForm() {
             </span>
           </Button>
         </div>
+        <ErrorMessage message={formState.errors.password?.message} />
       </div>
 
       <div className="w-full space-y-1">
@@ -121,6 +135,7 @@ export default function SignUpForm() {
             </span>
           </Button>
         </div>
+        <ErrorMessage message={formState.errors.confirmPassword?.message} />
       </div>
 
       <Button className="w-full" type="submit">
