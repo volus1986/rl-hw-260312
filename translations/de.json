@@ -16,6 +16,7 @@
     "pageNotFoundGoToItemsPageButton": "Zur Startseite"
   },
   "ItemPage": {
+    "title": "Einzelheiten",
     "previousPageButton": "Zur vorherigen Seite",
     "notFoundBackButton": "Zur Seite „Einträge“",
     "postId": "Beitrags-ID",

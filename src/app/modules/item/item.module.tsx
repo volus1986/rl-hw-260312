@@ -15,6 +15,7 @@ export const ItemModule = ({ item }: { item: Post }) => {
 
   return (
     <div>
+      <h1 className="text-center">{t("title")}</h1>
       <table>
         <tbody>
           <tr>

@@ -16,6 +16,7 @@
     "pageNotFoundGoToItemsPageButton": "Go to the Main Page"
   },
   "ItemPage": {
+    "title": "Details",
     "previousPageButton": "Go to the Previous Page",
     "notFoundBackButton": "Go to the Items Page",
     "postId": "Post ID",
