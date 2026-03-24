@@ -21,10 +21,7 @@ export const LanguageSwitcher = () => {
     const normalizedPathname =
       pathname.replace(/^\/(en|de)(?=\/|$)/, "") || "/";
 
-    router.replace(
-      { pathname: normalizedPathname, params },
-      { locale: nextLocale },
-    );
+    router.replace({ pathname: normalizedPathname }, { locale: nextLocale });
   };
 
   const buttonsRender = locales.map((code) => {
