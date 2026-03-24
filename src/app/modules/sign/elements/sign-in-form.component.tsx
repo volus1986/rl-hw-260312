@@ -15,7 +15,7 @@ import {
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "./error-message.component";
-import { useToken } from "@/app/shared/store";
+import { userTokenStore } from "@/app/shared/store";
 import { useRouter } from "@/pkg/locale";
 
 const zodSchema = z.object({
@@ -38,7 +38,10 @@ export default function SignInForm() {
     resolver: zodResolver(zodSchema),
   });
 
-  const setToken = useToken((state) => state.setToken);
+  //  todo: logger, for testing
+  if (userTokenStore.getState().token)
+    console.log("the token is already exists");
+  else console.log("the token not exists");
 
   const handleSubmitSuccess: SubmitHandler<Inputs> = async (data) => {
     try {
@@ -47,7 +50,7 @@ export default function SignInForm() {
         setTimeout(() => resolve("111"), 2000);
       });
 
-      setToken(res);
+      userTokenStore.getState().setToken(res);
 
       router.push("/items");
     } catch (err) {
