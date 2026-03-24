@@ -27,10 +27,13 @@ type Inputs = z.infer<typeof zodSchema>;
 
 export default function SignInForm() {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const t = useTranslations("SignPage");
   const [isVisible, setIsVisible] = useState(false);
-  const { control, handleSubmit } = useForm<Inputs>({
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<Inputs>({
     defaultValues: { email: "", password: "" },
     resolver: zodResolver(zodSchema),
   });
@@ -39,8 +42,6 @@ export default function SignInForm() {
 
   const handleSubmitSuccess: SubmitHandler<Inputs> = async (data) => {
     try {
-      setIsLoading(true);
-
       // todo: add handler
       const res: string = await new Promise((resolve) => {
         setTimeout(() => resolve("111"), 2000);
@@ -49,8 +50,8 @@ export default function SignInForm() {
       setToken(res);
 
       router.push("/items");
-    } finally {
-      setIsLoading(false);
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -62,7 +63,7 @@ export default function SignInForm() {
     <form
       className="space-y-4"
       onSubmit={handleSubmit(handleSubmitSuccess, handleSubmitError)}>
-      <fieldset disabled={isLoading}>
+      <fieldset disabled={isSubmitting}>
         <div className="space-y-1">
           <Label htmlFor="userEmail" className="leading-5">
             {t("emailLabel")}
