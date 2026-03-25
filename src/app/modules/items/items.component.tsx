@@ -6,7 +6,7 @@ import { useRouter, usePathname } from '@/pkg/locale';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
-export const ItemsComponent = () => {
+const ItemsComponent = () => {
   const t = useTranslations('ItemsPage');
 
   const router = useRouter();

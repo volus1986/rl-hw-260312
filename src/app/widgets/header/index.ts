@@ -1,3 +1,1 @@
-import Header from './components/header.component';
-
-export { Header };
+export { default as Header } from './components/header.component';
