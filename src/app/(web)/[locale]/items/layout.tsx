@@ -1,9 +1,12 @@
 import Providers from '@/app/providers';
+import { type ReactNode } from 'react';
 
-export default async function ItemsLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return <Providers>{children}</Providers>;
+interface IProps {
+  children: ReactNode;
 }
+
+const ItemsLayout = ({ children }: IProps) => {
+  return <Providers>{children}</Providers>;
+};
+
+export default ItemsLayout;

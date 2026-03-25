@@ -15,13 +15,9 @@ const MIN_PASSWORD_LENGTH = 8;
 const zodSchema = z
   .object({
     name: z.string().nonempty('requiredErrorMessage'),
-    email: z
-      .email('incorrectEmailErrorMessage')
-      .nonempty('requiredErrorMessage'),
+    email: z.email('incorrectEmailErrorMessage').nonempty('requiredErrorMessage'),
     password: z.string().min(MIN_PASSWORD_LENGTH, 'minLengthErrorMessage'),
-    confirmPassword: z
-      .string()
-      .min(MIN_PASSWORD_LENGTH, 'minLengthErrorMessage'),
+    confirmPassword: z.string().min(MIN_PASSWORD_LENGTH, 'minLengthErrorMessage'),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ['confirmPassword'],
@@ -30,11 +26,10 @@ const zodSchema = z
 
 type Inputs = z.infer<typeof zodSchema>;
 
-export default function SignUpForm() {
+const SignUpForm = () => {
   const t = useTranslations('SignPage');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
-    useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
   const { handleSubmit, register, formState } = useForm({
     defaultValues: {
       name: '',
@@ -54,41 +49,22 @@ export default function SignUpForm() {
   };
 
   return (
-    <form
-      className='space-y-4'
-      onSubmit={handleSubmit(handleSubmitSuccess, handleSubmitError)}>
+    <form className='space-y-4' onSubmit={handleSubmit(handleSubmitSuccess, handleSubmitError)}>
       <div className='space-y-1'>
         <Label htmlFor='userName' className='leading-5'>
           {t('nameLabel')}
         </Label>
 
-        <Input
-          {...register('name')}
-          id='userName'
-          placeholder={t('nameInputPlaceholder')}
-        />
-        <ErrorMessage
-          message={
-            formState.errors.name?.message && t(formState.errors.name?.message)
-          }
-        />
+        <Input {...register('name')} id='userName' placeholder={t('nameInputPlaceholder')} />
+        <ErrorMessage message={formState.errors.name?.message && t(formState.errors.name?.message)} />
       </div>
 
       <div className='space-y-1'>
         <Label htmlFor='userEmail' className='leading-5'>
           {t('emailLabel')}
         </Label>
-        <Input
-          {...register('email')}
-          id='userEmail'
-          placeholder={t('emailInputPlaceholder')}
-        />
-        <ErrorMessage
-          message={
-            formState.errors.email?.message &&
-            t(formState.errors.email?.message)
-          }
-        />
+        <Input {...register('email')} id='userEmail' placeholder={t('emailInputPlaceholder')} />
+        <ErrorMessage message={formState.errors.email?.message && t(formState.errors.email?.message)} />
       </div>
 
       <div className='w-full space-y-1'>
@@ -108,14 +84,10 @@ export default function SignUpForm() {
             variant='ghost'
             size='icon'
             onClick={() => setIsPasswordVisible((prevState) => !prevState)}
-            className='text-muted-foreground focus-visible:ring-ring/50 absolute
-              inset-y-0 right-0 rounded-l-none hover:bg-transparent'>
+            className='text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-l-none
+              hover:bg-transparent'>
             {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
-            <span className='sr-only'>
-              {isPasswordVisible
-                ? t('hidePasswordText')
-                : t('showPasswordText')}
-            </span>
+            <span className='sr-only'>{isPasswordVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
           </Button>
         </div>
         <ErrorMessage
@@ -144,17 +116,11 @@ export default function SignUpForm() {
             type='button'
             variant='ghost'
             size='icon'
-            onClick={() =>
-              setIsConfirmPasswordVisible((prevState) => !prevState)
-            }
-            className='text-muted-foreground focus-visible:ring-ring/50 absolute
-              inset-y-0 right-0 rounded-l-none hover:bg-transparent'>
+            onClick={() => setIsConfirmPasswordVisible((prevState) => !prevState)}
+            className='text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-l-none
+              hover:bg-transparent'>
             {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
-            <span className='sr-only'>
-              {isPasswordVisible
-                ? t('hidePasswordText')
-                : t('showPasswordText')}
-            </span>
+            <span className='sr-only'>{isPasswordVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
           </Button>
         </div>
         <ErrorMessage
@@ -172,4 +138,6 @@ export default function SignUpForm() {
       </Button>
     </form>
   );
-}
+};
+
+export default SignUpForm;

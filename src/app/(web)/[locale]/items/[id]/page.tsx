@@ -4,11 +4,11 @@ import { notFound } from 'next/navigation';
 import { postsApi } from '@/app/entities/api';
 import { ItemModule } from '@/app/modules/item';
 
-type Props = {
+interface IProps {
   params: Promise<{ id: string }>;
-};
+}
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export const generateMetadata = async ({ params }: IProps): Promise<Metadata> => {
   const { id } = await params;
   const item = await postsApi.getPostCached(Number(id));
 
@@ -16,13 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: item.title,
     description: item.body,
   };
-}
+};
 
-export default async function ItemPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+const ItemPage = async ({ params }: IProps) => {
   const { id } = await params;
   const item = await postsApi.getPostCached(Number(id));
 
@@ -31,4 +27,6 @@ export default async function ItemPage({
   }
 
   return <ItemModule item={item} />;
-}
+};
+
+export default ItemPage;

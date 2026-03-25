@@ -4,7 +4,7 @@ import { useRouter } from '@/pkg/locale';
 import { Button } from '@/app/shared/ui';
 import { useTranslations } from 'next-intl';
 
-export default function NotFound() {
+const NotFound = () => {
   const router = useRouter();
   const t = useTranslations('ItemsPage');
 
@@ -21,4 +21,6 @@ export default function NotFound() {
       </Button>
     </div>
   );
-}
+};
+
+export default NotFound;

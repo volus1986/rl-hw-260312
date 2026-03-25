@@ -1,14 +1,14 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { Header } from '@/app/widgets/header';
+import { type ReactNode } from 'react';
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
+interface IParams {
+  children: ReactNode;
   params: Promise<{ locale: string }>;
-}) {
+}
+
+const LocaleLayout = async ({ children, params }: IParams) => {
   const { locale } = await params;
   const messages = await getMessages();
 
@@ -18,4 +18,6 @@ export default async function LocaleLayout({
       {children}
     </NextIntlClientProvider>
   );
-}
+};
+
+export default LocaleLayout;
