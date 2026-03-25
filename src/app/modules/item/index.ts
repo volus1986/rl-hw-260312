@@ -1,1 +1,1 @@
-export { ItemModule } from './item.module';
+export { default as ItemComponent } from './item.component';

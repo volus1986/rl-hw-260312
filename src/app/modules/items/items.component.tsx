@@ -1,23 +1,15 @@
 'use client';
 
 import { usePostsQuery } from '@/app/features/get-posts';
-import {
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/app/shared/ui';
+import { Button, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/app/shared/ui';
 import { useRouter, usePathname } from '@/pkg/locale';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
-export const ItemsModule = () => {
+export const ItemsComponent = () => {
   const t = useTranslations('ItemsPage');
-  const router = useRouter();
 
+  const router = useRouter();
   const searchParams = useSearchParams();
   const page = Number(searchParams.get('page')) || 1;
   const limit = Number(searchParams.get('limit')) || 20;
@@ -47,10 +39,7 @@ export const ItemsModule = () => {
 
   const postsEls = posts.data?.map((post) => {
     return (
-      <TableRow
-        key={post.id}
-        className='font-medium cursor-pointer'
-        onClick={() => handlePostClick(post.id)}>
+      <TableRow key={post.id} className='font-medium cursor-pointer' onClick={() => handlePostClick(post.id)}>
         <TableCell>{post.id}</TableCell>
         <TableCell>{post.userId}</TableCell>
         <TableCell>{post.title}</TableCell>
@@ -81,3 +70,5 @@ export const ItemsModule = () => {
     </div>
   );
 };
+
+export default ItemsComponent;

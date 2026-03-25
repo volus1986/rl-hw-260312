@@ -1,7 +1,7 @@
 import { Link } from '@/pkg/locale';
 import { useTranslations } from 'next-intl';
 
-export const MainComponent = () => {
+const MainComponent = () => {
   const t = useTranslations('RootPage');
 
   return (
@@ -15,3 +15,5 @@ export const MainComponent = () => {
     </div>
   );
 };
+
+export default MainComponent;

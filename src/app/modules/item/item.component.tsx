@@ -1,15 +1,15 @@
 'use client';
 
-import { Post } from '@/app/entities/models';
+import { type IPost } from '@/app/entities/models';
 import { useRouter } from '@/pkg/locale';
 import { Button } from '@/app/shared/ui';
 import { useTranslations } from 'use-intl';
 
-export const ItemModule = ({ item }: { item: Post }) => {
+const ItemComponent = ({ item }: { item: IPost }) => {
   const router = useRouter();
   const t = useTranslations('ItemPage');
 
-  const handleClick = () => {
+  const handlePreviousPageButtonClick = () => {
     router.back();
   };
 
@@ -37,7 +37,9 @@ export const ItemModule = ({ item }: { item: Post }) => {
         </tbody>
       </table>
 
-      <Button onClick={handleClick}>{t('previousPageButton')}</Button>
+      <Button onClick={handlePreviousPageButtonClick}>{t('previousPageButton')}</Button>
     </div>
   );
 };
+
+export default ItemComponent;
