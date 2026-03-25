@@ -1,5 +1,6 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/shared/ui';
 import { useTranslations } from 'next-intl';
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/shared/ui';
 
 import { SignInFormComponent, SignUpFormComponent } from './elements';
 

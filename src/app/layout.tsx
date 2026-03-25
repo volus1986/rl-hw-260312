@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import '@/config/styles/globals.css';
 import { type ReactNode } from 'react';
+
+import '@/config/styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'rl hw 260312',

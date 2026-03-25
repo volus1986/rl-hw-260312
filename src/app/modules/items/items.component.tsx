@@ -1,10 +1,11 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+
 import { usePostsQuery } from '@/app/features/get-posts';
 import { Button, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/app/shared/ui';
-import { useRouter, usePathname } from '@/pkg/locale';
-import { useTranslations } from 'next-intl';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from '@/pkg/locale';
 
 const ItemsComponent = () => {
   const t = useTranslations('ItemsPage');

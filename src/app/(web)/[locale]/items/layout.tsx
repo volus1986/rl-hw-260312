@@ -1,5 +1,6 @@
-import Providers from '@/app/providers';
 import { type ReactNode } from 'react';
+
+import Providers from '@/app/providers';
 
 interface IProps {
   children: ReactNode;

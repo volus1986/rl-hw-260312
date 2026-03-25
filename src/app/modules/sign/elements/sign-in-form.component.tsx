@@ -1,16 +1,18 @@
 'use client';
 
-import { useState } from 'react';
-
-import { useTranslations } from 'next-intl';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
-import { Button, Label, Input } from '@/app/shared/ui';
-import { useForm, Controller, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
+import { useState } from 'react';
+import { Controller, SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import z from 'zod';
+
 import { zodResolver } from '@hookform/resolvers/zod';
-import ErrorMessage from './error-message.component';
+
 import { userTokenStore } from '@/app/shared/store';
+import { Button, Input, Label } from '@/app/shared/ui';
 import { useRouter } from '@/pkg/locale';
+
+import ErrorMessage from './error-message.component';
 
 const zodSchema = z.object({
   email: z.email('incorrectEmailErrorMessage').nonempty('requiredErrorMessage'),

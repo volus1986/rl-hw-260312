@@ -1,5 +1,6 @@
 import { envClient } from '@/config/env';
-import { IPost } from '../../models';
+
+import { type IPost } from '../../models';
 
 const getPosts = async (page: number, limit: number) => {
   const res = await fetch(`${envClient.NEXT_PUBLIC_POSTS_API_URL}?_page=${page}&_limit=${limit}`, {

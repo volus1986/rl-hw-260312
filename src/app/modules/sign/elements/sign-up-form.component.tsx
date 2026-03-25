@@ -1,13 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-
-import { useTranslations } from 'next-intl';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
-import { Button, Label, Input } from '@/app/shared/ui';
 import z from 'zod';
+
 import { zodResolver } from '@hookform/resolvers/zod';
+
+import { Button, Input, Label } from '@/app/shared/ui';
+
 import ErrorMessage from './error-message.component';
 
 const MIN_PASSWORD_LENGTH = 8;

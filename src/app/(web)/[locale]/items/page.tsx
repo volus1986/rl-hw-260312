@@ -1,7 +1,7 @@
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
-import { ItemsComponent } from '@/app/modules/items';
 import { postsApi } from '@/app/entities/api';
+import { ItemsComponent } from '@/app/modules/items';
 
 const ItemsPage = async ({
   searchParams,

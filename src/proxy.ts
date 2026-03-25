@@ -1,4 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
+
 import { routing } from './pkg/locale/routing';
 
 export default createMiddleware(routing);

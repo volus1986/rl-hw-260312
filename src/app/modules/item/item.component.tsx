@@ -1,9 +1,10 @@
 'use client';
 
-import { type IPost } from '@/app/entities/models';
-import { useRouter } from '@/pkg/locale';
-import { Button } from '@/app/shared/ui';
 import { useTranslations } from 'use-intl';
+
+import { type IPost } from '@/app/entities/models';
+import { Button } from '@/app/shared/ui';
+import { useRouter } from '@/pkg/locale';
 
 const ItemComponent = ({ item }: { item: IPost }) => {
   const router = useRouter();

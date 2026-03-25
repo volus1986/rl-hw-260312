@@ -1,10 +1,9 @@
 'use client';
 
-import React from 'react';
-
-import { usePathname, useRouter } from '@/pkg/locale';
 import { useParams } from 'next/navigation';
+
 import { Tabs, TabsList, TabsTrigger } from '@/app/shared/ui';
+import { usePathname, useRouter } from '@/pkg/locale';
 
 const locales = ['en', 'de'] as const;
 

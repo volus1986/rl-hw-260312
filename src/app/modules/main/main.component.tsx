@@ -1,5 +1,6 @@
-import { Link } from '@/pkg/locale';
 import { useTranslations } from 'next-intl';
+
+import { Link } from '@/pkg/locale';
 
 const MainComponent = () => {
   const t = useTranslations('RootPage');

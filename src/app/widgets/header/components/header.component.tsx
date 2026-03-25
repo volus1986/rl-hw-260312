@@ -1,8 +1,9 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { LanguageSwitcherComponent } from '@/app/features/language-switcher';
 import { Link } from '@/pkg/locale';
-import { useTranslations } from 'next-intl';
 
 const HeaderComponent = () => {
   const t = useTranslations('Header');

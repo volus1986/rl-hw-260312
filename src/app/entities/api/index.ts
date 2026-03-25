@@ -1,4 +1,5 @@
 import { cache } from 'react';
+
 import { getPost } from './post';
 import { getPosts } from './posts';
 
