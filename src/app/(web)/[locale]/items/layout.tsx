@@ -1,13 +1,13 @@
 import { type ReactNode } from 'react';
 
-import Providers from '@/app/providers';
+import { TanstackQueryClientProvider } from '@/pkg/providers';
 
 interface IProps {
   children: ReactNode;
 }
 
 const ItemsLayout = ({ children }: IProps) => {
-  return <Providers>{children}</Providers>;
+  return <TanstackQueryClientProvider>{children}</TanstackQueryClientProvider>;
 };
 
 export default ItemsLayout;

@@ -8,10 +8,10 @@ interface IProps {
   children: ReactNode;
 }
 
-const Providers = ({ children }: IProps) => {
+const TanstackQueryClientProvider = ({ children }: IProps) => {
   const [queryClient] = useState(() => new QueryClient());
 
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 };
 
-export default Providers;
+export default TanstackQueryClientProvider;
