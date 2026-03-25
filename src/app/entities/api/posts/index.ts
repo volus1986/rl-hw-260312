@@ -1,1 +1,1 @@
-export { getPost, getPosts } from './posts.query';
+export { default as getPosts } from './posts.query';

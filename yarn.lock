@@ -1735,6 +1735,18 @@
   dependencies:
     "@swc/counter" "^0.1.3"
 
+"@t3-oss/env-core@0.13.11":
+  version "0.13.11"
+  resolved "https://registry.yarnpkg.com/@t3-oss/env-core/-/env-core-0.13.11.tgz#c8e0da67986978a6915783efa3535435416753b0"
+  integrity sha512-sM7GYY+KL7H/Hl0BE0inWfk3nRHZOLhmVn7sHGxaZt9FAR6KqREXAE+6TqKfiavfXmpRxO/OZ2QgKRd+oiBYRQ==
+
+"@t3-oss/env-nextjs@^0.13.8":
+  version "0.13.11"
+  resolved "https://registry.yarnpkg.com/@t3-oss/env-nextjs/-/env-nextjs-0.13.11.tgz#900ce47a3395118f286b740165a0394965a67ba8"
+  integrity sha512-NC+3j7YWgpzdFu1t5y/8wqibTK0lm5RS4bjXA1n8uwik3wIR4iZM4Fa+U2BaMa5k3Qk8RZiYhoAIX0WogmGkzg==
+  dependencies:
+    "@t3-oss/env-core" "0.13.11"
+
 "@tailwindcss/node@4.2.2":
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@tailwindcss/node/-/node-4.2.2.tgz#840e904226dc1b379609de8a72323fc211568993"
