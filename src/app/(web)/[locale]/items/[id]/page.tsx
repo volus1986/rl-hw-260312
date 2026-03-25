@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { postsApi } from '@/app/entities/api';
-import { ItemModule } from '@/app/modules/item';
+import { ItemComponent } from '@/app/modules/item';
 
 interface IProps {
   params: Promise<{ id: string }>;
@@ -26,7 +26,7 @@ const ItemPage = async ({ params }: IProps) => {
     notFound();
   }
 
-  return <ItemModule item={item} />;
+  return <ItemComponent item={item} />;
 };
 
 export default ItemPage;

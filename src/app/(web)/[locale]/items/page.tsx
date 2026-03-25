@@ -1,10 +1,6 @@
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from '@tanstack/react-query';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
-import { ItemsModule } from '@/app/modules/items';
+import { ItemsComponent } from '@/app/modules/items';
 import { postsApi } from '@/app/entities/api';
 
 const ItemsPage = async ({
@@ -26,7 +22,7 @@ const ItemsPage = async ({
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <ItemsModule />
+      <ItemsComponent />
     </HydrationBoundary>
   );
 };
