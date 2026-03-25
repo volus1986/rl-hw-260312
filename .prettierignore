@@ -1,3 +1,6 @@
+.next
+translations/**
+
 .cursor/
 .idea/
 .vscode/
