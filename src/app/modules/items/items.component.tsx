@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { usePostsQuery } from '@/app/features/get-posts';
 import { Button, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/app/shared/ui';
 import { usePathname, useRouter } from '@/pkg/locale';
+import { TableRowsComponent } from './elements';
 
 const ItemsComponent = () => {
   const t = useTranslations('ItemsPage');
@@ -38,19 +39,10 @@ const ItemsComponent = () => {
     router.push(`${pathname}/${id}`);
   };
 
-  const postsEls = posts.data?.map((post) => {
-    return (
-      <TableRow key={post.id} className='font-medium cursor-pointer' onClick={() => handlePostClick(post.id)}>
-        <TableCell>{post.id}</TableCell>
-        <TableCell>{post.userId}</TableCell>
-        <TableCell>{post.title}</TableCell>
-      </TableRow>
-    );
-  });
-
   return (
     <div>
       <h1 className='text-center'>{t('title')}</h1>
+      
       <Table>
         <TableHeader>
           <TableRow>
@@ -60,8 +52,11 @@ const ItemsComponent = () => {
           </TableRow>
         </TableHeader>
 
-        <TableBody>{postsEls}</TableBody>
+        <TableBody>
+          <TableRowsComponent data={posts.data} handleItemClickCallback={handlePostClick} />
+        </TableBody>
       </Table>
+
       <div className='mt-4 flex gap-1 justify-center'>
         <Button disabled={page <= 1} onClick={handlePrevButtonClick}>
           {t('prevNavButton')}
