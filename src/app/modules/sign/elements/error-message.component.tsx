@@ -1,5 +1,5 @@
-const ErrorMessage = ({ message }: { message?: string }) => {
+const ErrorMessageComponent = ({ message }: { message?: string }) => {
   return message && <span className='text-red-600'>{message}</span>;
 };
 
-export default ErrorMessage;
+export default ErrorMessageComponent;

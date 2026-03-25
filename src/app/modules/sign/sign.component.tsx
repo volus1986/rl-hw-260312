@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import SignInForm from './elements/sign-in-form.component';
 import SignUpForm from './elements/sign-up-form.component';
 
-export const SignModule = () => {
+const SignComponent = () => {
   const t = useTranslations('SignPage');
 
   return (
@@ -14,9 +14,11 @@ export const SignModule = () => {
           <TabsTrigger value='login'>{t('signInTab')}</TabsTrigger>
           <TabsTrigger value='register'>{t('signUpTab')}</TabsTrigger>
         </TabsList>
+
         <TabsContent value='login'>
           <SignInForm />
         </TabsContent>
+
         <TabsContent value='register'>
           <SignUpForm />
         </TabsContent>
@@ -24,3 +26,5 @@ export const SignModule = () => {
     </div>
   );
 };
+
+export default SignComponent;

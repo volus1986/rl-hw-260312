@@ -19,7 +19,7 @@ const zodSchema = z.object({
 
 type Inputs = z.infer<typeof zodSchema>;
 
-const SignInForm = () => {
+const SignInFormComponent = () => {
   const router = useRouter();
   const t = useTranslations('SignPage');
   const [isVisible, setIsVisible] = useState(false);
@@ -117,4 +117,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignInFormComponent;

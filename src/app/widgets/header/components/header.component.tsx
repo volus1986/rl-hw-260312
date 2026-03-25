@@ -1,10 +1,10 @@
 'use client';
 
-import { LanguageSwitcher } from '@/app/features/language-switcher';
+import { LanguageSwitcherComponent } from '@/app/features/language-switcher';
 import { Link } from '@/pkg/locale';
 import { useTranslations } from 'next-intl';
 
-const Header = () => {
+const HeaderComponent = () => {
   const t = useTranslations('Header');
 
   return (
@@ -20,11 +20,11 @@ const Header = () => {
         </div>
 
         <div className='flex items-center gap-6'>
-          <LanguageSwitcher />
+          <LanguageSwitcherComponent />
         </div>
       </div>
     </header>
   );
 };
 
-export default Header;
+export default HeaderComponent;

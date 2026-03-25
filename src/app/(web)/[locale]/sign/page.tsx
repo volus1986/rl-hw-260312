@@ -1,7 +1,7 @@
-import { SignModule } from '@/app/modules/sign';
+import { SignComponent } from '@/app/modules/sign';
 
 const SignPage = () => {
-  return <SignModule />;
+  return <SignComponent />;
 };
 
 export default SignPage;

@@ -1,1 +1,1 @@
-export { SignModule } from './sign.component';
+export { default as SignComponent } from './sign.component';

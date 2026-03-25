@@ -26,7 +26,7 @@ const zodSchema = z
 
 type Inputs = z.infer<typeof zodSchema>;
 
-const SignUpForm = () => {
+const SignUpFormComponent = () => {
   const t = useTranslations('SignPage');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
@@ -140,4 +140,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default SignUpFormComponent;
