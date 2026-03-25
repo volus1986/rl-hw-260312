@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-import { postsApi } from "@/app/entities/api";
-import { ItemModule } from "@/app/modules/item";
+import { postsApi } from '@/app/entities/api';
+import { ItemModule } from '@/app/modules/item';
 
 type Props = {
   params: Promise<{ id: string }>;

@@ -1,2 +1,1 @@
-export { usePostsQuery } from "./model/use-posts.query";
-
+export { usePostsQuery } from './model/use-posts.query';

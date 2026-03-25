@@ -4,11 +4,15 @@
   "private": true,
   "scripts": {
     "test": "playwright test",
-    "testDebug": "playwright test --debug",
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
-    "lint": "eslint"
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss}\"",
+    "type-check": "tsc --noEmit",
+    "format": "yarn run type-check && yarn run lint && yarn run prettier",
+    "deploy": "opennextjs-cloudflare build --env=$CLOUDFLARE_ENV && opennextjs-cloudflare deploy --env=$CLOUDFLARE_ENV",
+    "devsafe": "rm -rf .next && rm -rf .open-next && next dev",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview --env=$CLOUDFLARE_ENV",
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -37,10 +41,21 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.5.12",
+    "eslint-config-next": "16.0.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.8.1",
     "prettier-plugin-classnames": "^0.9.0",
+    "prettier-plugin-tailwindcss": "^0.7.1",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "packageManager": "yarn@1.22.22",
+  "volta": {
+    "node": "22.22.0",
+    "yarn": "1.22.22"
   }
 }

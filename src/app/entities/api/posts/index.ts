@@ -1,1 +1,1 @@
-export { getPost, getPosts } from "./posts.query";
+export { getPost, getPosts } from './posts.query';

@@ -1,4 +1,4 @@
-import { SignModule } from "@/app/modules/sign";
+import { SignModule } from '@/app/modules/sign';
 
 const SignPage = () => {
   return <SignModule />;

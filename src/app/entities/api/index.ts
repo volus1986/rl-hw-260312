@@ -1,5 +1,5 @@
-import { cache } from "react";
-import { getPosts, getPost } from "./posts/posts.query";
+import { cache } from 'react';
+import { getPosts, getPost } from './posts/posts.query';
 
 export const postsApi = {
   getPosts,

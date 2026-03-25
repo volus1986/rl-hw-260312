@@ -1,4 +1,4 @@
-import Providers from "@/app/providers";
+import Providers from '@/app/providers';
 
 export default async function ItemsLayout({
   children,

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { usePostsQuery } from "@/app/features/get-posts";
+import { usePostsQuery } from '@/app/features/get-posts';
 import {
   Button,
   Table,
@@ -9,24 +9,24 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/app/shared/ui";
-import { useRouter, usePathname } from "@/pkg/locale";
-import { useTranslations } from "next-intl";
-import { useSearchParams } from "next/navigation";
+} from '@/app/shared/ui';
+import { useRouter, usePathname } from '@/pkg/locale';
+import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
 
 export const ItemsModule = () => {
-  const t = useTranslations("ItemsPage");
+  const t = useTranslations('ItemsPage');
   const router = useRouter();
 
   const searchParams = useSearchParams();
-  const page = Number(searchParams.get("page")) || 1;
-  const limit = Number(searchParams.get("limit")) || 20;
+  const page = Number(searchParams.get('page')) || 1;
+  const limit = Number(searchParams.get('limit')) || 20;
   const pathname = usePathname();
   const { replace } = useRouter();
 
   const createPageURL = (pageNumber: number) => {
     const params = new URLSearchParams(searchParams);
-    params.set("page", pageNumber.toString());
+    params.set('page', pageNumber.toString());
 
     return `${pathname}?${params.toString()}`;
   };
@@ -49,7 +49,7 @@ export const ItemsModule = () => {
     return (
       <TableRow
         key={post.id}
-        className="font-medium cursor-pointer"
+        className='font-medium cursor-pointer'
         onClick={() => handlePostClick(post.id)}>
         <TableCell>{post.id}</TableCell>
         <TableCell>{post.userId}</TableCell>
@@ -60,7 +60,7 @@ export const ItemsModule = () => {
 
   return (
     <div>
-      <h1 className="text-center">{t("title")}</h1>
+      <h1 className='text-center'>{t('title')}</h1>
       <Table>
         <TableHeader>
           <TableRow>
@@ -72,11 +72,11 @@ export const ItemsModule = () => {
 
         <TableBody>{postsEls}</TableBody>
       </Table>
-      <div className="mt-4 flex gap-1 justify-center">
+      <div className='mt-4 flex gap-1 justify-center'>
         <Button disabled={page <= 1} onClick={handlePrevButtonClick}>
-          {t("prevNavButton")}
+          {t('prevNavButton')}
         </Button>
-        <Button onClick={handleNextButtonClick}>{t("nextNavButton")}</Button>
+        <Button onClick={handleNextButtonClick}>{t('nextNavButton')}</Button>
       </div>
     </div>
   );

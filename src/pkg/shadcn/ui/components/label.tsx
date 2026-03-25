@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Label as LabelPrimitive } from "radix-ui";
+import * as React from 'react';
+import { Label as LabelPrimitive } from 'radix-ui';
 
-import { cn } from "@/pkg/shadcn/lib/utils";
+import { cn } from '@/pkg/shadcn/lib/utils';
 
 function Label({
   className,
@@ -11,7 +11,7 @@ function Label({
 }: React.ComponentProps<typeof LabelPrimitive.Root>) {
   return (
     <LabelPrimitive.Root
-      data-slot="label"
+      data-slot='label'
       className={cn(
         `flex items-center gap-2 text-sm leading-none font-medium select-none
         group-data-[disabled=true]:pointer-events-none

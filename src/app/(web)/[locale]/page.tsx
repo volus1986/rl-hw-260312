@@ -1,4 +1,4 @@
-import { MainComponent } from "@/app/modules/main";
+import { MainComponent } from '@/app/modules/main';
 
 const MainPage = () => {
   return <MainComponent />;

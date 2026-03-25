@@ -1,46 +1,46 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { useTranslations } from "next-intl";
-import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
-import { Button, Label, Input } from "@/app/shared/ui";
-import z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import ErrorMessage from "./error-message.component";
+import { useTranslations } from 'next-intl';
+import { EyeIcon, EyeOffIcon } from 'lucide-react';
+import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
+import { Button, Label, Input } from '@/app/shared/ui';
+import z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import ErrorMessage from './error-message.component';
 
 const MIN_PASSWORD_LENGTH = 8;
 
 const zodSchema = z
   .object({
-    name: z.string().nonempty("requiredErrorMessage"),
+    name: z.string().nonempty('requiredErrorMessage'),
     email: z
-      .email("incorrectEmailErrorMessage")
-      .nonempty("requiredErrorMessage"),
-    password: z.string().min(MIN_PASSWORD_LENGTH, "minLengthErrorMessage"),
+      .email('incorrectEmailErrorMessage')
+      .nonempty('requiredErrorMessage'),
+    password: z.string().min(MIN_PASSWORD_LENGTH, 'minLengthErrorMessage'),
     confirmPassword: z
       .string()
-      .min(MIN_PASSWORD_LENGTH, "minLengthErrorMessage"),
+      .min(MIN_PASSWORD_LENGTH, 'minLengthErrorMessage'),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    path: ["confirmPassword"],
-    message: "passwordsAreNotMatchErrorMessage",
+    path: ['confirmPassword'],
+    message: 'passwordsAreNotMatchErrorMessage',
   });
 
 type Inputs = z.infer<typeof zodSchema>;
 
 export default function SignUpForm() {
-  const t = useTranslations("SignPage");
+  const t = useTranslations('SignPage');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
   const { handleSubmit, register, formState } = useForm({
     defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     },
     resolver: zodResolver(zodSchema),
   });
@@ -55,17 +55,17 @@ export default function SignUpForm() {
 
   return (
     <form
-      className="space-y-4"
+      className='space-y-4'
       onSubmit={handleSubmit(handleSubmitSuccess, handleSubmitError)}>
-      <div className="space-y-1">
-        <Label htmlFor="userName" className="leading-5">
-          {t("nameLabel")}
+      <div className='space-y-1'>
+        <Label htmlFor='userName' className='leading-5'>
+          {t('nameLabel')}
         </Label>
 
         <Input
-          {...register("name")}
-          id="userName"
-          placeholder={t("nameInputPlaceholder")}
+          {...register('name')}
+          id='userName'
+          placeholder={t('nameInputPlaceholder')}
         />
         <ErrorMessage
           message={
@@ -74,14 +74,14 @@ export default function SignUpForm() {
         />
       </div>
 
-      <div className="space-y-1">
-        <Label htmlFor="userEmail" className="leading-5">
-          {t("emailLabel")}
+      <div className='space-y-1'>
+        <Label htmlFor='userEmail' className='leading-5'>
+          {t('emailLabel')}
         </Label>
         <Input
-          {...register("email")}
-          id="userEmail"
-          placeholder={t("emailInputPlaceholder")}
+          {...register('email')}
+          id='userEmail'
+          placeholder={t('emailInputPlaceholder')}
         />
         <ErrorMessage
           message={
@@ -91,30 +91,30 @@ export default function SignUpForm() {
         />
       </div>
 
-      <div className="w-full space-y-1">
-        <Label htmlFor="password" className="leading-5">
-          {t("passwordLabel")}
+      <div className='w-full space-y-1'>
+        <Label htmlFor='password' className='leading-5'>
+          {t('passwordLabel')}
         </Label>
-        <div className="relative">
+        <div className='relative'>
           <Input
-            {...register("password")}
-            id="password"
-            type={isPasswordVisible ? "text" : "password"}
-            placeholder="••••••••••••••••"
-            className="pr-9"
+            {...register('password')}
+            id='password'
+            type={isPasswordVisible ? 'text' : 'password'}
+            placeholder='••••••••••••••••'
+            className='pr-9'
           />
           <Button
-            type="button"
-            variant="ghost"
-            size="icon"
+            type='button'
+            variant='ghost'
+            size='icon'
             onClick={() => setIsPasswordVisible((prevState) => !prevState)}
-            className="text-muted-foreground focus-visible:ring-ring/50 absolute
-              inset-y-0 right-0 rounded-l-none hover:bg-transparent">
+            className='text-muted-foreground focus-visible:ring-ring/50 absolute
+              inset-y-0 right-0 rounded-l-none hover:bg-transparent'>
             {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
-            <span className="sr-only">
+            <span className='sr-only'>
               {isPasswordVisible
-                ? t("hidePasswordText")
-                : t("showPasswordText")}
+                ? t('hidePasswordText')
+                : t('showPasswordText')}
             </span>
           </Button>
         </div>
@@ -128,32 +128,32 @@ export default function SignUpForm() {
         />
       </div>
 
-      <div className="w-full space-y-1">
-        <Label htmlFor="confirm-password" className="leading-5">
-          {t("confirmPasswordLabel")}
+      <div className='w-full space-y-1'>
+        <Label htmlFor='confirm-password' className='leading-5'>
+          {t('confirmPasswordLabel')}
         </Label>
-        <div className="relative">
+        <div className='relative'>
           <Input
-            id="confirm-password"
-            type={isConfirmPasswordVisible ? "text" : "password"}
-            placeholder="••••••••••••••••"
-            className="pr-9"
-            {...register("confirmPassword")}
+            id='confirm-password'
+            type={isConfirmPasswordVisible ? 'text' : 'password'}
+            placeholder='••••••••••••••••'
+            className='pr-9'
+            {...register('confirmPassword')}
           />
           <Button
-            type="button"
-            variant="ghost"
-            size="icon"
+            type='button'
+            variant='ghost'
+            size='icon'
             onClick={() =>
               setIsConfirmPasswordVisible((prevState) => !prevState)
             }
-            className="text-muted-foreground focus-visible:ring-ring/50 absolute
-              inset-y-0 right-0 rounded-l-none hover:bg-transparent">
+            className='text-muted-foreground focus-visible:ring-ring/50 absolute
+              inset-y-0 right-0 rounded-l-none hover:bg-transparent'>
             {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
-            <span className="sr-only">
+            <span className='sr-only'>
               {isPasswordVisible
-                ? t("hidePasswordText")
-                : t("showPasswordText")}
+                ? t('hidePasswordText')
+                : t('showPasswordText')}
             </span>
           </Button>
         </div>
@@ -167,8 +167,8 @@ export default function SignUpForm() {
         />
       </div>
 
-      <Button className="w-full" type="submit">
-        {t("signUpButton")}
+      <Button className='w-full' type='submit'>
+        {t('signUpButton')}
       </Button>
     </form>
   );

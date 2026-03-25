@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 type TokenStore = {
   token: string;
@@ -10,11 +10,11 @@ type TokenStore = {
 const userTokenStore = create<TokenStore>()(
   persist(
     (set) => ({
-      token: "",
+      token: '',
       setToken: (token: string) => set(() => ({ token })),
-      clearToken: () => set({ token: "" }),
+      clearToken: () => set({ token: '' }),
     }),
-    { name: "user-token-storage" },
+    { name: 'user-token-storage' },
   ),
 );
 

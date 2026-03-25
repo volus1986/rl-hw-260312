@@ -2,10 +2,10 @@ import {
   dehydrate,
   HydrationBoundary,
   QueryClient,
-} from "@tanstack/react-query";
+} from '@tanstack/react-query';
 
-import { ItemsModule } from "@/app/modules/items";
-import { postsApi } from "@/app/entities/api";
+import { ItemsModule } from '@/app/modules/items';
+import { postsApi } from '@/app/entities/api';
 
 const ItemsPage = async ({
   searchParams,
@@ -20,7 +20,7 @@ const ItemsPage = async ({
   const limit = 20;
 
   await queryClient.prefetchQuery({
-    queryKey: ["posts", page, limit],
+    queryKey: ['posts', page, limit],
     queryFn: () => postsApi.getPosts(page, limit),
   });
 

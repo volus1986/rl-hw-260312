@@ -1,15 +1,15 @@
-export { Button } from "@/pkg/shadcn/ui/components/button";
+export { Button } from '@/pkg/shadcn/ui/components/button';
 
-export { Input } from "@/pkg/shadcn/ui/components/input";
+export { Input } from '@/pkg/shadcn/ui/components/input';
 
-export { Label } from "@/pkg/shadcn/ui/components/label";
+export { Label } from '@/pkg/shadcn/ui/components/label';
 
 export {
   Tabs,
   TabsList,
   TabsTrigger,
   TabsContent,
-} from "@/pkg/shadcn/ui/components/tabs";
+} from '@/pkg/shadcn/ui/components/tabs';
 
 export {
   Table,
@@ -19,4 +19,4 @@ export {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/pkg/shadcn/ui/components/table";
+} from '@/pkg/shadcn/ui/components/table';

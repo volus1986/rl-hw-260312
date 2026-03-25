@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { Post } from "@/app/entities/models";
-import { useRouter } from "@/pkg/locale";
-import { Button } from "@/app/shared/ui";
-import { useTranslations } from "use-intl";
+import { Post } from '@/app/entities/models';
+import { useRouter } from '@/pkg/locale';
+import { Button } from '@/app/shared/ui';
+import { useTranslations } from 'use-intl';
 
 export const ItemModule = ({ item }: { item: Post }) => {
   const router = useRouter();
-  const t = useTranslations("ItemPage");
+  const t = useTranslations('ItemPage');
 
   const handleClick = () => {
     router.back();
@@ -15,29 +15,29 @@ export const ItemModule = ({ item }: { item: Post }) => {
 
   return (
     <div>
-      <h1 className="text-center">{t("title")}</h1>
+      <h1 className='text-center'>{t('title')}</h1>
       <table>
         <tbody>
           <tr>
-            <td>{t("postId")}</td>
+            <td>{t('postId')}</td>
             <td>{item.id}</td>
           </tr>
           <tr>
-            <td>{t("postUserId")}</td>
+            <td>{t('postUserId')}</td>
             <td>{item.userId}</td>
           </tr>
           <tr>
-            <td>{t("postTitle")}</td>
+            <td>{t('postTitle')}</td>
             <td>{item.title}</td>
           </tr>
           <tr>
-            <td className="pr-4">{t("postDescription")}</td>
+            <td className='pr-4'>{t('postDescription')}</td>
             <td>{item.body}</td>
           </tr>
         </tbody>
       </table>
 
-      <Button onClick={handleClick}>{t("previousPageButton")}</Button>
+      <Button onClick={handleClick}>{t('previousPageButton')}</Button>
     </div>
   );
 };

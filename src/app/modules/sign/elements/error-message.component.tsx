@@ -1,3 +1,3 @@
 export default function ErrorMessage({ message }: { message?: string }) {
-  return message && <span className="text-red-600">{message}</span>;
+  return message && <span className='text-red-600'>{message}</span>;
 }
