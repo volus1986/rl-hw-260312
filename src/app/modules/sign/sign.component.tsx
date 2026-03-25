@@ -1,8 +1,7 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/shared/ui';
 import { useTranslations } from 'next-intl';
 
-import SignInForm from './elements/sign-in-form.component';
-import SignUpForm from './elements/sign-up-form.component';
+import { SignInFormComponent, SignUpFormComponent } from './elements';
 
 const SignComponent = () => {
   const t = useTranslations('SignPage');
@@ -16,11 +15,11 @@ const SignComponent = () => {
         </TabsList>
 
         <TabsContent value='login'>
-          <SignInForm />
+          <SignInFormComponent />
         </TabsContent>
 
         <TabsContent value='register'>
-          <SignUpForm />
+          <SignUpFormComponent />
         </TabsContent>
       </Tabs>
     </div>
