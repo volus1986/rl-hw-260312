@@ -12,5 +12,6 @@
   "htmlWhitespaceSensitivity": "css",
   "endOfLine": "auto",
   "embeddedLanguageFormatting": "auto",
+  "printWidth": 120,
   "plugins": ["prettier-plugin-classnames"]
 }
