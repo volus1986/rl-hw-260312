@@ -9,9 +9,9 @@
 - **TanStack Query**
 - **Zustand**
 - **React Hook Form**,
-- **Zod**, **@hookform/resolvers**
-- **next-intl**
-- **shadcn**
+- **Zod**,
+- **Next-intl**
+- **Shadcn**
 - **Playwright**
 
 ## Deployed URL:
