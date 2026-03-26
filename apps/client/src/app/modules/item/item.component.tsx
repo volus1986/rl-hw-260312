@@ -23,14 +23,17 @@ const ItemComponent = ({ item }: { item: PostDetails }) => {
             <td>{t('postId')}</td>
             <td>{item.id}</td>
           </tr>
+
           <tr>
             <td>{t('postUserId')}</td>
             <td>{item.userId}</td>
           </tr>
+
           <tr>
             <td>{t('postTitle')}</td>
             <td>{item.title}</td>
           </tr>
+
           <tr>
             <td className='pr-4'>{t('postDescription')}</td>
             <td>{item.body}</td>

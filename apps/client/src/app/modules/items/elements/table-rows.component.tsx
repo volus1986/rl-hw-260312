@@ -15,9 +15,11 @@ const TableRowsComponent = ({ data, isLoading, skeletonRowsCount = 10, handleIte
         <TableCell>
           <div className='h-4 w-10 rounded bg-muted animate-pulse' />
         </TableCell>
+
         <TableCell>
           <div className='h-4 w-16 rounded bg-muted animate-pulse' />
         </TableCell>
+
         <TableCell>
           <div className='h-4 w-[70%] rounded bg-muted animate-pulse' />
         </TableCell>

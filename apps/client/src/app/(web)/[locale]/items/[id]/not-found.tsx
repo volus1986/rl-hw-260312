@@ -17,6 +17,7 @@ const NotFound = () => {
     <div className='flex flex-col items-center justify-center mt-80'>
       <h2 className='mb-4 text-3xl font-semibold'>{t('pageNotFoundTitle')}</h2>
       <p className='mb-6'>{t('pageNotFoundDescription')}</p>
+
       <Button size='lg' className='rounded-lg text-base' onClick={handleClick}>
         {t('pageNotFoundGoToItemsPageButton')}
       </Button>
