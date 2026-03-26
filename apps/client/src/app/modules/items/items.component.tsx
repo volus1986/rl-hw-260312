@@ -46,35 +46,37 @@ const ItemsComponent = () => {
   };
 
   return (
-    <div>
-      <h1 className='text-center'>{t('title')}</h1>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>ID</TableHead>
-            <TableHead>User ID</TableHead>
-            <TableHead>Title</TableHead>
-          </TableRow>
-        </TableHeader>
+    <div className='grid justify-center'>
+      <div className='w-[960]'>
+        <h1 className='text-center'>{t('title')}</h1>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className='w-16'>ID</TableHead>
+              <TableHead className='w-16'>User ID</TableHead>
+              <TableHead>Title</TableHead>
+            </TableRow>
+          </TableHeader>
 
-        <TableBody>
-          <TableRowsComponent
-            data={posts.data}
-            isLoading={isInitialLoading}
-            skeletonRowsCount={showItemsLimit}
-            handleItemClickCallback={handlePostClick}
-          />
-        </TableBody>
-      </Table>
+          <TableBody>
+            <TableRowsComponent
+              data={posts.data}
+              isLoading={isInitialLoading}
+              skeletonRowsCount={showItemsLimit}
+              handleItemClickCallback={handlePostClick}
+            />
+          </TableBody>
+        </Table>
 
-      <div className='mt-4 flex gap-1 justify-center'>
-        <Button disabled={page <= 1} onClick={handlePrevButtonClick}>
-          {t('prevNavButton')}
-        </Button>
+        <div className='mt-4 flex gap-1 justify-center'>
+          <Button disabled={page <= 1} onClick={handlePrevButtonClick}>
+            {t('prevNavButton')}
+          </Button>
 
-        <Button disabled={page >= pages} onClick={handleNextButtonClick}>
-          {t('nextNavButton')}
-        </Button>
+          <Button disabled={page >= pages} onClick={handleNextButtonClick}>
+            {t('nextNavButton')}
+          </Button>
+        </div>
       </div>
     </div>
   );
