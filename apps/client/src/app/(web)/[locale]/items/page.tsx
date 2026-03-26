@@ -12,12 +12,13 @@ const ItemsPage = async ({
   const queries = await searchParams;
 
   console.log(queries);
+
   const page = Number(queries.page) || 1;
   const limit = 20;
 
   await queryClient.prefetchQuery({
     queryKey: ['posts', page, limit],
-    queryFn: () => postsApi.getPosts(page, limit),
+    queryFn: () => postsApi.getPostList(page, limit),
   });
 
   return (
