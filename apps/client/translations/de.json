@@ -13,7 +13,7 @@
     "nextNavButton": "Weiter",
     "pageNotFoundTitle": "Seite nicht gefunden",
     "pageNotFoundDescription": "Der ausgewählte Eintrag existiert nicht",
-    "pageNotFoundGoToItemsPageButton": "Zur Startseite"
+    "pageNotFoundGoToItemsPageButton": "Zur Einträge"
   },
   "ItemPage": {
     "title": "Einzelheiten",

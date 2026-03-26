@@ -1,8 +1,9 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRouter } from '@/pkg/locale';
+
 import { Button } from '@/app/shared/ui';
+import { useRouter } from '@/pkg/locale';
 
 const NotFound = () => {
   const router = useRouter();
