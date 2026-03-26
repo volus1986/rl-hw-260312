@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { postsApi } from '@/app/entities/api';
+import { getPostDetails } from '@/app/entities/api';
 import { ItemComponent } from '@/app/modules/item';
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
 
 export const generateMetadata = async ({ params }: IProps): Promise<Metadata> => {
   const { id } = await params;
-  const item = await postsApi.getPostDetailsCached(Number(id));
+  const item = await getPostDetails(Number(id));
 
   return {
     title: item.title,
@@ -20,7 +20,7 @@ export const generateMetadata = async ({ params }: IProps): Promise<Metadata> =>
 
 const ItemPage = async ({ params }: IProps) => {
   const { id } = await params;
-  const item = await postsApi.getPostDetailsCached(Number(id));
+  const item = await getPostDetails(Number(id));
 
   if (!item.id) {
     notFound();
