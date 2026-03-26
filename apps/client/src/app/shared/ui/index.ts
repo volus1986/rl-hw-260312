@@ -1,7 +1,6 @@
 export { Button } from '@/pkg/shadcn/ui/components/button';
 export { Input } from '@/pkg/shadcn/ui/components/input';
 export { Label } from '@/pkg/shadcn/ui/components/label';
-export { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/shadcn/ui/components/tabs';
 export {
   Table,
   TableBody,
@@ -11,3 +10,4 @@ export {
   TableHeader,
   TableRow,
 } from '@/pkg/shadcn/ui/components/table';
+export { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/shadcn/ui/components/tabs';
