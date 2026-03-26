@@ -7,3 +7,5 @@ export const postsApi = {
   getPosts,
   getPostCached: cache((id: number) => getPost(id)),
 };
+
+export { userSignIn } from './user';

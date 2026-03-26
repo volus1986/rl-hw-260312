@@ -8,7 +8,8 @@ import z from 'zod';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { userTokenStore } from '@/app/shared/store';
+import { userSignIn } from '@/app/entities/api';
+import { userTokenStore, useUserStore } from '@/app/shared/store';
 import { Button, Input, Label } from '@/app/shared/ui';
 import { useRouter } from '@/pkg/locale';
 
@@ -25,6 +26,7 @@ const SignInFormComponent = () => {
   const router = useRouter();
   const t = useTranslations('SignPage');
   const [isVisible, setIsVisible] = useState(false);
+  const userStore = useUserStore();
 
   const {
     control,
@@ -39,14 +41,19 @@ const SignInFormComponent = () => {
   if (userTokenStore.getState().token) console.log('the token is already exists');
   else console.log('the token not exists');
 
+  if (userStore.user) console.log(`User: ${JSON.stringify(userStore.user)}`);
+
   const handleSubmitSuccess: SubmitHandler<Inputs> = async (data) => {
     try {
-      // todo: add handler
-      const res: string = await new Promise((resolve) => {
-        setTimeout(() => resolve('111'), 2000);
-      });
+      const res = await userSignIn(data.email, data.password);
 
-      userTokenStore.getState().setToken(res);
+      userTokenStore.getState().setToken(res.data.token);
+
+      userStore.setUser({
+        id: res.data.id,
+        email: res.data.email,
+        name: res.data.name,
+      });
 
       router.push('/items');
     } catch (err) {

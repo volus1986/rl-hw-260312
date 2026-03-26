@@ -1,1 +1,1 @@
-export { default as getPosts } from './posts.query';
+export { getPosts } from './posts.api';
