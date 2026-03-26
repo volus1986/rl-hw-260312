@@ -27,9 +27,13 @@ const TableRowsComponent = ({ data, isLoading, skeletonRowsCount = 10, handleIte
 
   if (!data) return null;
 
+  const handleTableRowClick = (id: number) => {
+    handleItemClickCallback(id);
+  };
+
   return data.map((post) => {
     return (
-      <TableRow key={post.id} className='font-medium cursor-pointer' onClick={() => handleItemClickCallback(post.id)}>
+      <TableRow key={post.id} className='font-medium cursor-pointer' onClick={() => handleTableRowClick(post.id)}>
         <TableCell>{post.id}</TableCell>
         <TableCell>{post.userId}</TableCell>
         <TableCell>{post.title}</TableCell>

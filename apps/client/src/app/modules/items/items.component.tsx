@@ -6,10 +6,12 @@ import { useTranslations } from 'next-intl';
 import { usePostsQuery } from '@/app/features/get-posts';
 import { Button, Table, TableBody, TableHead, TableHeader, TableRow } from '@/app/shared/ui';
 import { usePathname, useRouter } from '@/pkg/locale';
+
 import { TableRowsComponent } from './elements';
 
 const ItemsComponent = () => {
   const t = useTranslations('ItemsPage');
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -17,7 +19,7 @@ const ItemsComponent = () => {
 
   const page = Number(searchParams.get('page')) || 1;
   const showItemsLimit = Number(searchParams.get('limit')) || 20;
-  const pages = Math.floor(100 / showItemsLimit); //  API has not data about the pagination
+  const pages = Math.floor(100 / showItemsLimit); //  todo: mock data because API has not data about the pagination
 
   const posts = usePostsQuery(page, showItemsLimit);
   const isInitialLoading = posts.isLoading;
