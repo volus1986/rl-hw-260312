@@ -1,11 +1,11 @@
 import { cache } from 'react';
 
-import { getPost } from './post';
+import { getPostDetails } from './post-details';
 import { getPosts } from './posts';
 
 export const postsApi = {
   getPosts,
-  getPostCached: cache((id: number) => getPost(id)),
+  getPostDetailsCached: cache((id: number) => getPostDetails(id)),
 };
 
 export { userSignIn } from './user';

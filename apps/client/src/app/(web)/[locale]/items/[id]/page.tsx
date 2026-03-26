@@ -10,7 +10,7 @@ interface IProps {
 
 export const generateMetadata = async ({ params }: IProps): Promise<Metadata> => {
   const { id } = await params;
-  const item = await postsApi.getPostCached(Number(id));
+  const item = await postsApi.getPostDetailsCached(Number(id));
 
   return {
     title: item.title,
@@ -20,7 +20,7 @@ export const generateMetadata = async ({ params }: IProps): Promise<Metadata> =>
 
 const ItemPage = async ({ params }: IProps) => {
   const { id } = await params;
-  const item = await postsApi.getPostCached(Number(id));
+  const item = await postsApi.getPostDetailsCached(Number(id));
 
   if (!item.id) {
     notFound();
