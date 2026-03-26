@@ -22,6 +22,7 @@ const ItemsComponent = () => {
   const pages = Math.floor(100 / showItemsLimit); //  todo: mock data because API has not data about the pagination
 
   const posts = usePostsQuery(page, showItemsLimit);
+
   const isInitialLoading = posts.isLoading;
 
   const createPageURL = (pageNumber: number) => {

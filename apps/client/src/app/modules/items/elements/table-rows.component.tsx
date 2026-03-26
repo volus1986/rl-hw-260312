@@ -1,8 +1,8 @@
-import { IPost } from '@/app/entities/models';
+import { type PostList } from '@/app/entities/models';
 import { TableCell, TableRow } from '@/app/shared/ui';
 
 interface IProps {
-  data?: IPost[];
+  data?: PostList;
   isLoading?: boolean;
   skeletonRowsCount?: number;
   handleItemClickCallback: (id: number) => void;

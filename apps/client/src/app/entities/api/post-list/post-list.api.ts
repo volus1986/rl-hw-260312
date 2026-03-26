@@ -1,13 +1,13 @@
 import { envClient } from '@/config/env';
 
-import { type IPost } from '../../models';
+import { type PostList } from '../../models';
 
-export const getPosts = async (page: number, limit: number) => {
+export const getPostList = async (page: number, limit: number) => {
   const res = await fetch(`${envClient.NEXT_PUBLIC_POSTS_API_URL}?_page=${page}&_limit=${limit}`, {
     next: {
       revalidate: 3600,
     },
   });
 
-  return (await res.json()) as IPost[];
+  return (await res.json()) as PostList;
 };

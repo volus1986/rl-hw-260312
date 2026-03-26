@@ -2,11 +2,11 @@
 
 import { useTranslations } from 'use-intl';
 
-import { type IPost } from '@/app/entities/models';
+import { type PostDetails } from '@/app/entities/models';
 import { Button } from '@/app/shared/ui';
 import { useRouter } from '@/pkg/locale';
 
-const ItemComponent = ({ item }: { item: IPost }) => {
+const ItemComponent = ({ item }: { item: PostDetails }) => {
   const router = useRouter();
   const t = useTranslations('ItemPage');
 

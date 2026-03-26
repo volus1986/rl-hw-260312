@@ -1,7 +1,7 @@
 import { cache } from 'react';
 
 import { getPostDetails } from './post-details';
-import { getPosts } from './posts';
+import { getPosts } from './post-list';
 
 export const postsApi = {
   getPosts,
