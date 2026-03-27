@@ -10,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button, Input, Label } from '@/app/shared/ui';
 
-import ErrorMessage from './error-message.component';
+import { ErrorMessageComponent } from '../error-message';
 
 const MIN_PASSWORD_LENGTH = 8;
 
@@ -58,7 +58,7 @@ const SignUpFormComponent: FC = () => {
         </Label>
 
         <Input {...register('name')} id='userName' placeholder={t('nameInputPlaceholder')} />
-        <ErrorMessage message={formState.errors.name?.message && t(formState.errors.name?.message)} />
+        <ErrorMessageComponent message={formState.errors.name?.message && t(formState.errors.name?.message)} />
       </div>
 
       <div className='space-y-1'>
@@ -66,7 +66,7 @@ const SignUpFormComponent: FC = () => {
           {t('emailLabel')}
         </Label>
         <Input {...register('email')} id='userEmail' placeholder={t('emailInputPlaceholder')} />
-        <ErrorMessage message={formState.errors.email?.message && t(formState.errors.email?.message)} />
+        <ErrorMessageComponent message={formState.errors.email?.message && t(formState.errors.email?.message)} />
       </div>
 
       <div className='w-full space-y-1'>
@@ -92,7 +92,7 @@ const SignUpFormComponent: FC = () => {
             <span className='sr-only'>{isPasswordVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
           </Button>
         </div>
-        <ErrorMessage
+        <ErrorMessageComponent
           message={
             formState.errors.password?.message &&
             t(formState.errors.password?.message, {
@@ -125,7 +125,7 @@ const SignUpFormComponent: FC = () => {
             <span className='sr-only'>{isPasswordVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
           </Button>
         </div>
-        <ErrorMessage
+        <ErrorMessageComponent
           message={
             formState.errors.confirmPassword?.message &&
             t(formState.errors.confirmPassword?.message, {

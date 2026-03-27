@@ -13,7 +13,7 @@ import { userTokenStore, useUserStore } from '@/app/shared/store';
 import { Button, Input, Label } from '@/app/shared/ui';
 import { useRouter } from '@/pkg/locale';
 
-import ErrorMessageComponent from './error-message.component';
+import { ErrorMessageComponent } from '../error-message';
 
 const zodSchema = z.object({
   email: z.email('incorrectEmailErrorMessage').nonempty('requiredErrorMessage'),
