@@ -1,4 +1,4 @@
-export type PostDetails = {
+export type TPostDetails = {
   id: number;
   userId: number;
   title: string;

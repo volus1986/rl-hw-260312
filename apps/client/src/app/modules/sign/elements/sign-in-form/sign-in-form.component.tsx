@@ -20,7 +20,7 @@ const zodSchema = z.object({
   password: z.string().nonempty('requiredErrorMessage'),
 });
 
-type Inputs = z.infer<typeof zodSchema>;
+type TInputs = z.infer<typeof zodSchema>;
 
 const SignInFormComponent: FC = () => {
   const router = useRouter();
@@ -32,7 +32,7 @@ const SignInFormComponent: FC = () => {
     control,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm<Inputs>({
+  } = useForm<TInputs>({
     defaultValues: { email: '', password: '' },
     resolver: zodResolver(zodSchema),
   });
@@ -43,7 +43,7 @@ const SignInFormComponent: FC = () => {
 
   if (userStore.user) console.log(`User: ${JSON.stringify(userStore.user)}`);
 
-  const handleSubmitSuccess: SubmitHandler<Inputs> = async (data) => {
+  const handleSubmitSuccess: SubmitHandler<TInputs> = async (data) => {
     try {
       const res = await userSignIn(data.email, data.password);
 

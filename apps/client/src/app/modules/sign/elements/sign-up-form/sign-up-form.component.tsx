@@ -26,7 +26,7 @@ const zodSchema = z
     message: 'passwordsAreNotMatchErrorMessage',
   });
 
-type Inputs = z.infer<typeof zodSchema>;
+type TInputs = z.infer<typeof zodSchema>;
 
 const SignUpFormComponent: FC = () => {
   const t = useTranslations('SignPage');
@@ -42,7 +42,7 @@ const SignUpFormComponent: FC = () => {
     resolver: zodResolver(zodSchema),
   });
 
-  const handleSubmitSuccess: SubmitHandler<Inputs> = (data) => {
+  const handleSubmitSuccess: SubmitHandler<TInputs> = (data) => {
     console.log(data); // todo: add loading
   };
 

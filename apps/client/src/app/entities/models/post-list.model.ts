@@ -1,7 +1,7 @@
-type Post = {
+type TPost = {
   id: number;
   userId: number;
   title: string;
 };
 
-export type PostList = Post[];
+export type TPostList = TPost[];

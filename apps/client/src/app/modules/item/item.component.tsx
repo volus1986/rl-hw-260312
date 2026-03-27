@@ -3,12 +3,12 @@
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { type PostDetails } from '@/app/entities/models';
+import { type TPostDetails } from '@/app/entities/models';
 import { Button, Table, TableBody, TableCell, TableRow } from '@/app/shared/ui';
 import { useRouter } from '@/pkg/locale';
 
 interface IProps {
-  item: PostDetails;
+  item: TPostDetails;
 }
 
 const ItemComponent: FC<Readonly<IProps>> = (props) => {

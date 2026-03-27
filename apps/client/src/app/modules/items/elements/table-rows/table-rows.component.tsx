@@ -1,10 +1,10 @@
 import { type FC } from 'react';
 
-import { type PostList } from '@/app/entities/models';
+import { type TPostList } from '@/app/entities/models';
 import { TableCell, TableRow } from '@/app/shared/ui';
 
 interface IProps {
-  data?: PostList;
+  data?: TPostList;
   isLoading?: boolean;
   skeletonRowsCount?: number;
   handleItemClickCallback: (id: number) => void;

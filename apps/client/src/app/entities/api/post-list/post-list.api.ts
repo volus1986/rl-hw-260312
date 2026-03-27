@@ -1,17 +1,15 @@
 import { envClient } from '@/config/env';
 
-import { type PostList } from '../../models';
+import { type TPostList } from '../../models';
 
-type Props = {
+type TProps = {
   page: number;
   limit: number;
   signal: AbortSignal;
 };
 
-export const getPostList = async (props: Props) => {
+export const getPostList = async (props: TProps) => {
   const { page, limit, signal } = props;
-
-  console.log(page, limit, signal);
 
   const res = await fetch(`${envClient.NEXT_PUBLIC_POSTS_API_URL}?_page=${page}&_limit=${limit}`, {
     next: {
@@ -20,5 +18,5 @@ export const getPostList = async (props: Props) => {
     signal,
   });
 
-  return (await res.json()) as PostList;
+  return (await res.json()) as TPostList;
 };
