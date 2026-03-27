@@ -1,10 +1,11 @@
 import { useTranslations } from 'next-intl';
+import { type FC } from 'react';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/shared/ui';
 
 import { SignInFormComponent, SignUpFormComponent } from './elements';
 
-const SignComponent = () => {
+const SignComponent: FC = () => {
   const t = useTranslations('SignPage');
 
   return (

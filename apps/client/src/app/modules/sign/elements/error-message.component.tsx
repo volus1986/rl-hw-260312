@@ -1,8 +1,10 @@
+import { type FC } from 'react';
+
 interface IProps {
   message: string;
 }
 
-const ErrorMessageComponent = (props: Readonly<IProps>) => {
+const ErrorMessageComponent: FC<Readonly<IProps>> = (props) => {
   return props.message && <span className='text-red-600'>{props.message}</span>;
 };
 

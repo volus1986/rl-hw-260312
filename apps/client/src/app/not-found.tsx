@@ -1,9 +1,10 @@
+import { type NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { Button } from '@/app/shared/ui';
 
-const Error = () => {
+const Error: NextPage = () => {
   return (
     <div className='grid min-h-screen grid-cols-1 lg:grid-cols-2'>
       <div className='flex flex-col items-center justify-center px-4 py-8 text-center'>

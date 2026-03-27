@@ -1,8 +1,9 @@
 import { useTranslations } from 'next-intl';
+import { type FC } from 'react';
 
 import { Link } from '@/pkg/locale';
 
-const MainComponent = () => {
+const MainComponent: FC = () => {
   const t = useTranslations('RootPage');
 
   return (

@@ -2,7 +2,7 @@
 
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { type FC, useState } from 'react';
 import { Controller, SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import z from 'zod';
 
@@ -22,7 +22,7 @@ const zodSchema = z.object({
 
 type Inputs = z.infer<typeof zodSchema>;
 
-const SignInFormComponent = () => {
+const SignInFormComponent: FC = () => {
   const router = useRouter();
   const t = useTranslations('SignPage');
   const [isVisible, setIsVisible] = useState(false);

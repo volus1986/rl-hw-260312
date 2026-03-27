@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { type FC } from 'react';
 
 import { usePostsQuery } from '@/app/features/get-posts';
 import { Button, Table, TableBody, TableHead, TableHeader, TableRow } from '@/app/shared/ui';
@@ -9,7 +10,7 @@ import { usePathname, useRouter } from '@/pkg/locale';
 
 import { TableRowsComponent } from './elements';
 
-const ItemsComponent = () => {
+const ItemsComponent: FC = () => {
   const t = useTranslations('ItemsPage');
 
   const router = useRouter();

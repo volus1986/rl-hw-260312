@@ -1,11 +1,12 @@
 'use client';
 
+import { type NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 
 import { Button } from '@/app/shared/ui';
 import { useRouter } from '@/pkg/locale';
 
-const NotFound = () => {
+const NotFound: NextPage = () => {
   const router = useRouter();
   const t = useTranslations('ItemsPage');
 

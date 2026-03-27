@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, NextPage } from 'next';
 import { notFound } from 'next/navigation';
 
 import { getPostDetails } from '@/app/entities/api';
@@ -18,7 +18,7 @@ export const generateMetadata = async (props: Readonly<IProps>): Promise<Metadat
   };
 };
 
-const Page = async (props: Readonly<IProps>) => {
+const Page: NextPage<Readonly<IProps>> = async (props) => {
   const { id } = await props.params;
   const item = await getPostDetails(Number(id));
 

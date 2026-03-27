@@ -1,3 +1,5 @@
+import { type FC } from 'react';
+
 import { type PostList } from '@/app/entities/models';
 import { TableCell, TableRow } from '@/app/shared/ui';
 
@@ -8,7 +10,7 @@ interface IProps {
   handleItemClickCallback: (id: number) => void;
 }
 
-const TableRowsComponent = (props: Readonly<IProps>) => {
+const TableRowsComponent: FC<Readonly<IProps>> = (props) => {
   if (props.isLoading) {
     return Array.from({ length: props.skeletonRowsCount ?? 10 }).map((_, idx) => (
       <TableRow key={`skeleton-${idx}`} className='font-medium'>

@@ -1,5 +1,6 @@
 'use client';
 
+import { type FC } from 'react';
 import { useTranslations } from 'use-intl';
 
 import { type PostDetails } from '@/app/entities/models';
@@ -10,7 +11,7 @@ interface IProps {
   item: PostDetails;
 }
 
-const ItemComponent = (props: Readonly<IProps>) => {
+const ItemComponent: FC<Readonly<IProps>> = (props) => {
   const router = useRouter();
   const t = useTranslations('ItemPage');
 
