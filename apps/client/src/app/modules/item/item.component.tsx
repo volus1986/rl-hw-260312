@@ -1,7 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
-import { useTranslations } from 'use-intl';
 
 import { type PostDetails } from '@/app/entities/models';
 import { Button, Table, TableBody, TableCell, TableRow } from '@/app/shared/ui';

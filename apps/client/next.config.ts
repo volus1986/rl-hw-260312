@@ -32,5 +32,10 @@ const nextConfig: NextConfig = {
 
 // export default nextConfig;
 
-const withNextIntl = createNextIntlPlugin('./src/pkg/locale/request.ts');
+const withNextIntl = createNextIntlPlugin({
+  requestConfig: './src/pkg/locale/request.ts',
+  experimental: {
+    createMessagesDeclaration: './translations/en.json',
+  },
+});
 export default withNextIntl(nextConfig);
