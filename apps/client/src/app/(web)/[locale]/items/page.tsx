@@ -20,7 +20,7 @@ const ItemsPage: NextPage<Readonly<IProps>> = async (props) => {
 
   await queryClient.prefetchQuery({
     queryKey: ['posts', page, limit],
-    queryFn: () => getPostList(page, limit),
+    queryFn: ({ signal }) => getPostList({ page, limit, signal }),
   });
 
   return (

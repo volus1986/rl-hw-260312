@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 
 interface IProps {
-  message: string;
+  message?: string;
 }
 
 const ErrorMessageComponent: FC<Readonly<IProps>> = (props) => {
