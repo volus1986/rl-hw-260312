@@ -3,7 +3,7 @@
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { type FC, useState } from 'react';
-import { Controller, SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import z from 'zod';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -61,17 +61,14 @@ const SignInFormComponent: FC = () => {
     }
   };
 
-  const handleSubmitError: SubmitErrorHandler<Inputs> = (data) => {
-    console.log(data); //  todo: add error handler
-  };
-
   return (
-    <form className='space-y-4' onSubmit={handleSubmit(handleSubmitSuccess, handleSubmitError)}>
+    <form className='space-y-4' onSubmit={handleSubmit(handleSubmitSuccess)}>
       <fieldset disabled={isSubmitting}>
         <div className='space-y-1'>
           <Label htmlFor='userEmail' className='leading-5'>
             {t('emailLabel')}
           </Label>
+
           <Controller
             name='email'
             control={control}
@@ -88,6 +85,7 @@ const SignInFormComponent: FC = () => {
           <Label htmlFor='password' className='leading-5'>
             {t('passwordLabel')}
           </Label>
+
           <div className='relative'>
             <Controller
               name='password'
@@ -105,6 +103,7 @@ const SignInFormComponent: FC = () => {
                 </>
               )}
             />
+
             <Button
               type='button'
               variant='ghost'

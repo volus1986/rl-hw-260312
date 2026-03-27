@@ -3,7 +3,7 @@
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { type FC, useState } from 'react';
-import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import z from 'zod';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -46,12 +46,8 @@ const SignUpFormComponent: FC = () => {
     console.log(data); // todo: add loading
   };
 
-  const handleSubmitError: SubmitErrorHandler<Inputs> = (data) => {
-    console.log(data); // todo: add error handler
-  };
-
   return (
-    <form className='space-y-4' onSubmit={handleSubmit(handleSubmitSuccess, handleSubmitError)}>
+    <form className='space-y-4' onSubmit={handleSubmit(handleSubmitSuccess)}>
       <div className='space-y-1'>
         <Label htmlFor='userName' className='leading-5'>
           {t('nameLabel')}
@@ -73,6 +69,7 @@ const SignUpFormComponent: FC = () => {
         <Label htmlFor='password' className='leading-5'>
           {t('passwordLabel')}
         </Label>
+
         <div className='relative'>
           <Input
             {...register('password')}
@@ -92,6 +89,7 @@ const SignUpFormComponent: FC = () => {
             <span className='sr-only'>{isPasswordVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
           </Button>
         </div>
+
         <ErrorMessageComponent
           message={
             formState.errors.password?.message &&
@@ -106,6 +104,7 @@ const SignUpFormComponent: FC = () => {
         <Label htmlFor='confirm-password' className='leading-5'>
           {t('confirmPasswordLabel')}
         </Label>
+
         <div className='relative'>
           <Input
             id='confirm-password'
@@ -125,6 +124,7 @@ const SignUpFormComponent: FC = () => {
             <span className='sr-only'>{isPasswordVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
           </Button>
         </div>
+
         <ErrorMessageComponent
           message={
             formState.errors.confirmPassword?.message &&
