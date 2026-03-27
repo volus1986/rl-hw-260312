@@ -6,8 +6,8 @@ interface IProps {
   children: ReactNode;
 }
 
-const ItemsLayout = ({ children }: IProps) => {
-  return <TanstackQueryClientProvider>{children}</TanstackQueryClientProvider>;
+const ItemsLayout = (props: Readonly<IProps>) => {
+  return <TanstackQueryClientProvider>{props.children}</TanstackQueryClientProvider>;
 };
 
 export default ItemsLayout;

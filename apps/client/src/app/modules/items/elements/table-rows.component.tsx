@@ -8,9 +8,9 @@ interface IProps {
   handleItemClickCallback: (id: number) => void;
 }
 
-const TableRowsComponent = ({ data, isLoading, skeletonRowsCount = 10, handleItemClickCallback }: IProps) => {
-  if (isLoading) {
-    return Array.from({ length: skeletonRowsCount }).map((_, idx) => (
+const TableRowsComponent = (props: Readonly<IProps>) => {
+  if (props.isLoading) {
+    return Array.from({ length: props.skeletonRowsCount ?? 10 }).map((_, idx) => (
       <TableRow key={`skeleton-${idx}`} className='font-medium'>
         <TableCell>
           <div className='h-4 w-10 rounded bg-muted animate-pulse' />
@@ -27,13 +27,13 @@ const TableRowsComponent = ({ data, isLoading, skeletonRowsCount = 10, handleIte
     ));
   }
 
-  if (!data) return null;
+  if (!props.data) return null;
 
   const handleTableRowClick = (id: number) => {
-    handleItemClickCallback(id);
+    props.handleItemClickCallback(id);
   };
 
-  return data.map((post) => {
+  return props.data.map((post) => {
     return (
       <TableRow key={post.id} className='font-medium cursor-pointer' onClick={() => handleTableRowClick(post.id)}>
         <TableCell>{post.id}</TableCell>

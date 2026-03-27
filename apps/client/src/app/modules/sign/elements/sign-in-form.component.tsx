@@ -13,7 +13,7 @@ import { userTokenStore, useUserStore } from '@/app/shared/store';
 import { Button, Input, Label } from '@/app/shared/ui';
 import { useRouter } from '@/pkg/locale';
 
-import ErrorMessage from './error-message.component';
+import ErrorMessageComponent from './error-message.component';
 
 const zodSchema = z.object({
   email: z.email('incorrectEmailErrorMessage').nonempty('requiredErrorMessage'),
@@ -78,7 +78,7 @@ const SignInFormComponent = () => {
             render={({ field, fieldState }) => (
               <>
                 <Input {...field} type='text' id='userEmail' placeholder={t('emailInputPlaceholder')} />
-                <ErrorMessage message={fieldState?.error?.message && t(fieldState.error.message)} />
+                <ErrorMessageComponent message={fieldState?.error?.message && t(fieldState.error.message)} />
               </>
             )}
           />
@@ -101,7 +101,7 @@ const SignInFormComponent = () => {
                     placeholder='••••••••••••••••'
                     className='pr-9'
                   />
-                  <ErrorMessage message={fieldState?.error?.message && t(fieldState?.error?.message)} />
+                  <ErrorMessageComponent message={fieldState?.error?.message && t(fieldState?.error?.message)} />
                 </>
               )}
             />

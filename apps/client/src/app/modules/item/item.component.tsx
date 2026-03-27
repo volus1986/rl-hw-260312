@@ -6,7 +6,11 @@ import { type PostDetails } from '@/app/entities/models';
 import { Button, Table, TableBody, TableCell, TableRow } from '@/app/shared/ui';
 import { useRouter } from '@/pkg/locale';
 
-const ItemComponent = ({ item }: { item: PostDetails }) => {
+interface IProps {
+  item: PostDetails;
+}
+
+const ItemComponent = (props: Readonly<IProps>) => {
   const router = useRouter();
   const t = useTranslations('ItemPage');
 
@@ -29,10 +33,10 @@ const ItemComponent = ({ item }: { item: PostDetails }) => {
         <h1 className='text-center'>{t('title')}</h1>
         <Table>
           <TableBody>
-            {rowEl(t('postId'), item.id)}
-            {rowEl(t('postUserId'), item.userId)}
-            {rowEl(t('postTitle'), item.title)}
-            {rowEl(t('postDescription'), item.body)}
+            {rowEl(t('postId'), props.item.id)}
+            {rowEl(t('postUserId'), props.item.userId)}
+            {rowEl(t('postTitle'), props.item.title)}
+            {rowEl(t('postDescription'), props.item.body)}
           </TableBody>
         </Table>
 

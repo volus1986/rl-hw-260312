@@ -8,8 +8,8 @@ interface IProps {
   params: Promise<{ id: string }>;
 }
 
-export const generateMetadata = async ({ params }: IProps): Promise<Metadata> => {
-  const { id } = await params;
+export const generateMetadata = async (props: Readonly<IProps>): Promise<Metadata> => {
+  const { id } = await props.params;
   const item = await getPostDetails(Number(id));
 
   return {
@@ -18,8 +18,8 @@ export const generateMetadata = async ({ params }: IProps): Promise<Metadata> =>
   };
 };
 
-const ItemPage = async ({ params }: IProps) => {
-  const { id } = await params;
+const Page = async (props: Readonly<IProps>) => {
+  const { id } = await props.params;
   const item = await getPostDetails(Number(id));
 
   if (!item.id) {
@@ -29,4 +29,4 @@ const ItemPage = async ({ params }: IProps) => {
   return <ItemComponent item={item} />;
 };
 
-export default ItemPage;
+export default Page;
