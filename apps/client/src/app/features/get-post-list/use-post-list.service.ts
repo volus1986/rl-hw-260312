@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { getPostList } from '@/app/entities/api';
 
-export const usePostsQuery = (page: number, limit: number) => {
+export const usePostListService = (page: number, limit: number) => {
   return useQuery({
     queryKey: ['posts', page, limit],
     queryFn: () => getPostList(page, limit),

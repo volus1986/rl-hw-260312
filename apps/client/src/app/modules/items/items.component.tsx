@@ -4,7 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { usePostsQuery } from '@/app/features/get-posts';
+import { usePostListService } from '@/app/features/get-post-list';
 import { Button, Table, TableBody, TableHead, TableHeader, TableRow } from '@/app/shared/ui';
 import { usePathname, useRouter } from '@/pkg/locale';
 
@@ -22,7 +22,7 @@ const ItemsComponent: FC = () => {
   const showItemsLimit = Number(searchParams.get('limit')) || 20;
   const pages = Math.floor(100 / showItemsLimit); //  todo: mock data because API has not data about the pagination
 
-  const posts = usePostsQuery(page, showItemsLimit);
+  const posts = usePostListService(page, showItemsLimit);
 
   const isInitialLoading = posts.isLoading;
 
