@@ -1,5 +1,6 @@
 import type { Metadata, NextPage } from 'next';
-import { notFound } from 'next/navigation';
+
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
 import { getPostDetails } from '@/app/entities/api';
 import { ItemComponent } from '@/app/modules/item';
@@ -10,7 +11,7 @@ interface IProps {
 
 export const generateMetadata = async (props: Readonly<IProps>): Promise<Metadata> => {
   const { id } = await props.params;
-  const item = await getPostDetails(Number(id));
+  const item = await getPostDetails({ id: Number(id) });
 
   return {
     title: item.title,
@@ -19,14 +20,23 @@ export const generateMetadata = async (props: Readonly<IProps>): Promise<Metadat
 };
 
 const Page: NextPage<Readonly<IProps>> = async (props) => {
-  const { id } = await props.params;
-  const item = await getPostDetails(Number(id));
+  const id = Number((await props.params).id);
+  const queryClient = new QueryClient();
 
-  if (!item.id) {
-    notFound();
+  try {
+    await queryClient.prefetchQuery({
+      queryKey: ['postDetails', id],
+      queryFn: ({ signal }) => getPostDetails({ id, signal }),
+    });
+  } catch (error) {
+    console.error(error);
   }
 
-  return <ItemComponent item={item} />;
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <ItemComponent id={Number(id)} />
+    </HydrationBoundary>
+  );
 };
 
 export default Page;

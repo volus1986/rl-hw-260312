@@ -1,19 +1,25 @@
 'use client';
 
+import { notFound } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { type TPostDetails } from '@/app/entities/models';
+import { usePostDetailsService } from '@/app/features/get-post-details';
 import { Button, Table, TableBody, TableCell, TableRow } from '@/app/shared/ui';
 import { useRouter } from '@/pkg/locale';
 
 interface IProps {
-  item: TPostDetails;
+  id: number;
 }
 
 const ItemComponent: FC<Readonly<IProps>> = (props) => {
   const router = useRouter();
   const t = useTranslations('ItemPage');
+  const { data, isError } = usePostDetailsService(props.id);
+
+  if (isError || !data?.id) {
+    notFound();
+  }
 
   const handlePreviousPageButtonClick = () => {
     router.back();
@@ -34,10 +40,10 @@ const ItemComponent: FC<Readonly<IProps>> = (props) => {
         <h1 className='text-center'>{t('title')}</h1>
         <Table>
           <TableBody>
-            {rowEl(t('postId'), props.item.id)}
-            {rowEl(t('postUserId'), props.item.userId)}
-            {rowEl(t('postTitle'), props.item.title)}
-            {rowEl(t('postDescription'), props.item.body)}
+            {rowEl(t('postId'), data.id)}
+            {rowEl(t('postUserId'), data.userId)}
+            {rowEl(t('postTitle'), data.title)}
+            {rowEl(t('postDescription'), data.body)}
           </TableBody>
         </Table>
 
