@@ -1,6 +1,7 @@
 {
   "Header": {
     "login": "Anmelden",
+    "logout": "Abmelden",
     "items": "Einträge"
   },
   "RootPage": {

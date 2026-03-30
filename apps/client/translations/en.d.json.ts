@@ -4,6 +4,7 @@
 declare const messages: {
   "Header": {
     "login": "Login",
+    "logout": "Logout",
     "items": "Items"
   },
   "RootPage": {

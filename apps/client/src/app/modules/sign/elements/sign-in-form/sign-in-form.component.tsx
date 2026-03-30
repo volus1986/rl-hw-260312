@@ -2,7 +2,7 @@
 
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { type FC, useState } from 'react';
+import { type FC, useEffect, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import z from 'zod';
 
@@ -41,7 +41,11 @@ const SignInFormComponent: FC = () => {
   if (userTokenStore.getState().token) console.log('the token is already exists');
   else console.log('the token not exists');
 
-  if (userStore.user) console.log(`User: ${JSON.stringify(userStore.user)}`);
+  useEffect(() => {
+    if (userStore.user) {
+      router.push('/items');
+    }
+  }, [userStore.user]);
 
   const handleSubmitSuccess: SubmitHandler<TInputs> = async (data) => {
     try {

@@ -1,6 +1,7 @@
 {
   "Header": {
     "login": "Login",
+    "logout": "Logout",
     "items": "Items"
   },
   "RootPage": {
