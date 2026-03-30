@@ -62,8 +62,8 @@ const SignInFormComponent: FC = () => {
   };
 
   return (
-    <form className='space-y-4' onSubmit={handleSubmit(handleSubmitSuccess)}>
-      <fieldset disabled={isSubmitting}>
+    <form onSubmit={handleSubmit(handleSubmitSuccess)}>
+      <fieldset className='space-y-4' disabled={isSubmitting}>
         <div className='space-y-1'>
           <Label htmlFor='userEmail' className='leading-5'>
             {t('emailLabel')}
