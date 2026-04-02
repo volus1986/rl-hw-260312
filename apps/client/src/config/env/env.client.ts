@@ -13,7 +13,7 @@ export const envClient = createEnv({
   },
   emptyStringAsUndefined: true,
   runtimeEnv: {
-    NEXT_PUBLIC_POSTS_API_URL: 'https://jsonplaceholder.typicode.com/posts',
+    NEXT_PUBLIC_POSTS_API_URL: process.env.NEXT_PUBLIC_POSTS_API_URL,
     // NEXT_PUBLIC_CLIENT_WEB_URL: process.env.NEXT_PUBLIC_CLIENT_WEB_URL,
     // NEXT_PUBLIC_CLIENT_API_URL: process.env.NEXT_PUBLIC_CLIENT_API_URL,
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
