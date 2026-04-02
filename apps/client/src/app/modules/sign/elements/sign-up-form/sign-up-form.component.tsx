@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { userSignUp } from '@/app/entities/api/user';
 import { Button, Input, Label } from '@/app/shared/ui';
+import { useRouter } from '@/pkg/locale';
 
 import { ErrorMessageComponent } from '../error-message';
 
@@ -30,9 +31,12 @@ const zodSchema = z
 type TInputs = z.infer<typeof zodSchema>;
 
 const SignUpFormComponent: FC = () => {
+  const router = useRouter();
   const t = useTranslations('SignPage');
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+
   const { handleSubmit, register, formState } = useForm({
     defaultValues: {
       name: '',
@@ -52,6 +56,8 @@ const SignUpFormComponent: FC = () => {
 
     if (res.error?.message) {
       console.log('error:', res.error.message);
+    } else if (res.data?.id) {
+      router.refresh();
     }
   };
 

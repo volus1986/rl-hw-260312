@@ -51,15 +51,11 @@ const SignInFormComponent: FC = () => {
     try {
       const res = await userSignIn(data.email, data.password);
 
-      userTokenStore.getState().setToken(res.data.token);
-
-      userStore.setUser({
-        id: res.data.id,
-        email: res.data.email,
-        name: res.data.name,
-      });
-
-      router.push('/items');
+      if (!res.error?.message) {
+        router.push('/items');
+      } else {
+        console.log('error:', res.error.message);
+      }
     } catch (err) {
       console.error(err);
     }

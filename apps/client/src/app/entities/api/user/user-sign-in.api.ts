@@ -1,33 +1,46 @@
-import { IUser } from '@/app/shared/interfaces';
+import { type User } from '@supabase/auth-js';
 
-interface IResponseData extends IUser {
-  token: string;
-}
+import { userTokenStore, useUserStore } from '@/app/shared/store';
+import { createClient } from '@/app/shared/utils/supabase/client';
 
 interface IResponse {
-  data: IResponseData;
+  data: User | null;
   error: {
     message: string;
   };
 }
 
 export const userSignIn = async (email: string, password: string): Promise<IResponse> => {
-  // todo: add handler
-  return await new Promise((resolve) => {
-    setTimeout(
-      () =>
-        resolve({
-          data: {
-            id: '1',
-            email,
-            name: 'Mocked User Name',
-            token: Date.now().toString(),
-          },
-          error: {
-            message: '',
-          },
-        }),
-      2000,
-    );
+  const supabaseClient = createClient();
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password,
   });
+
+  if (error) {
+    return {
+      data: null,
+      error: {
+        message: error.message,
+      },
+    };
+  }
+
+  if (data.session?.access_token && data.user) {
+    userTokenStore.getState().setToken(data.session?.access_token);
+
+    useUserStore.getState().setUser({
+      id: data.user.id,
+      email: data.user.email || '',
+      name: data.user.user_metadata.name,
+    });
+  }
+
+  return {
+    data: data.user,
+    error: {
+      message: '',
+    },
+  };
 };
