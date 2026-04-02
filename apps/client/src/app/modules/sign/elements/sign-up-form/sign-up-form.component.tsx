@@ -57,7 +57,9 @@ const SignUpFormComponent: FC = () => {
     if (res.error?.message) {
       console.log('error:', res.error.message);
     } else if (res.data?.id) {
-      router.refresh();
+      router.push('/items'); // Handle case when login after registration.
+    } else {
+      window.location.reload(); // Handle case when not login after registration.
     }
   };
 
