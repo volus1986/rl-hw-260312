@@ -1,12 +1,23 @@
-import createMiddleware from 'next-intl/middleware';
+import type { NextRequest } from 'next/server';
+import createIntlMiddleware from 'next-intl/middleware';
+
+import { updateSession } from '@/app/shared/utils/supabase';
 
 import { routing } from './pkg/locale/routing';
 
-export default createMiddleware(routing);
+const intlMiddleware = createIntlMiddleware(routing);
+
+export async function proxy(request: NextRequest) {
+  const supabaseResponse = await updateSession(request);
+  const intlResponse = intlMiddleware(request);
+
+  supabaseResponse.cookies.getAll().forEach((cookie) => {
+    intlResponse.cookies.set(cookie.name, cookie.value, cookie);
+  });
+
+  return intlResponse;
+}
 
 export const config = {
-  // Match all pathnames except for
-  // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
-  // - … the ones containing a dot (e.g. `favicon.ico`)
   matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
 };
