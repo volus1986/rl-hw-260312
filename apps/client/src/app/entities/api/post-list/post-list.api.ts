@@ -18,5 +18,12 @@ export const getPostList = async (props: TProps) => {
     signal,
   });
 
-  return (await res.json()) as TPostList;
+  if (!res.ok) {
+    throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`);
+  }
+
+  return {
+    data: (await res.json()) as TPostList,
+    meta: { total_results: 100 }, // mocked data because jsonplaceholder API has no data about the pagination items amount
+  };
 };

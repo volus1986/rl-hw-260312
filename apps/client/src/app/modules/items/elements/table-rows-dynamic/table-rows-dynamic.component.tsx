@@ -26,7 +26,9 @@ const TableRowsDynamicComponent: FC = () => {
 
   if (posts.isLoading) return <TableRowsSkeletonComponent />;
 
-  return <TableRowsComponent data={posts.data} handleItemClickCallback={handlePostClick} />;
+  if (posts.isError) return <p className='text-center text-destructive py-4'>{posts.error.message}</p>;
+
+  return <TableRowsComponent data={posts.data?.data} handleItemClickCallback={handlePostClick} />;
 };
 
 export default TableRowsDynamicComponent;

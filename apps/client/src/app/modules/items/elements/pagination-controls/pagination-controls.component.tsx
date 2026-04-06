@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
+import { usePostListService } from '@/app/features/get-post-list';
 import { Button } from '@/app/shared/ui';
 import { usePathname, useRouter } from '@/pkg/locale';
 
@@ -17,7 +18,12 @@ const PaginationControlsComponent: FC = () => {
 
   const page = Number(searchParams.get(PAGINATION_PARAMS.pageParamKey)) || PAGINATION_PARAMS.defaultPage;
   const limit = Number(searchParams.get(PAGINATION_PARAMS.limitParamKey)) || PAGINATION_PARAMS.defaultLimit;
-  const pages = Math.floor(100 / limit); // mocked data because jsonplaceholder API has no data about the pagination
+
+  const posts = usePostListService(page, limit);
+
+  if (posts.isError) return null;
+
+  const pages = Math.floor((posts.data?.meta?.total_results ?? 0) / limit);
 
   const createPageURL = (pageNumber: number) => {
     const params = new URLSearchParams(searchParams);
