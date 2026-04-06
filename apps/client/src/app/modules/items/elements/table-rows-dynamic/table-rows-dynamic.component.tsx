@@ -6,6 +6,7 @@ import { type FC } from 'react';
 import { usePostListService } from '@/app/features/get-post-list';
 import { usePathname, useRouter } from '@/pkg/locale';
 
+import { PAGINATION_PARAMS } from '../../items.constant';
 import { TableRowsComponent } from '../table-rows';
 import { TableRowsSkeletonComponent } from '../table-rows-skeleton';
 
@@ -14,8 +15,8 @@ const TableRowsDynamicComponent: FC = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const page = Number(searchParams.get('page')) || 1;
-  const limit = Number(searchParams.get('limit')) || 20;
+  const page = Number(searchParams.get(PAGINATION_PARAMS.pageParamKey)) || PAGINATION_PARAMS.defaultPage;
+  const limit = Number(searchParams.get(PAGINATION_PARAMS.limitParamKey)) || PAGINATION_PARAMS.defaultLimit;
 
   const posts = usePostListService(page, limit);
 

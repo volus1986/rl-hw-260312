@@ -7,15 +7,17 @@ import { type FC } from 'react';
 import { Button } from '@/app/shared/ui';
 import { usePathname, useRouter } from '@/pkg/locale';
 
+import { PAGINATION_PARAMS } from '../../items.constant';
+
 const PaginationControlsComponent: FC = () => {
   const t = useTranslations('ItemsPage');
   const { replace } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const page = Number(searchParams.get('page')) || 1;
-  const limit = Number(searchParams.get('limit')) || 20;
-  const pages = Math.floor(100 / limit); // todo: mock data because API has no data about the pagination
+  const page = Number(searchParams.get(PAGINATION_PARAMS.pageParamKey)) || PAGINATION_PARAMS.defaultPage;
+  const limit = Number(searchParams.get(PAGINATION_PARAMS.limitParamKey)) || PAGINATION_PARAMS.defaultLimit;
+  const pages = Math.floor(100 / limit); // mocked data because jsonplaceholder API has no data about the pagination
 
   const createPageURL = (pageNumber: number) => {
     const params = new URLSearchParams(searchParams);
