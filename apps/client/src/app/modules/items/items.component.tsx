@@ -1,55 +1,18 @@
-'use client';
+import { getTranslations } from 'next-intl/server';
+import { type FC, Suspense } from 'react';
 
-import { useSearchParams } from 'next/navigation';
-import { useTranslations } from 'next-intl';
-import { type FC } from 'react';
+import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/app/shared/ui';
 
-import { usePostListService } from '@/app/features/get-post-list';
-import { Button, Table, TableBody, TableHead, TableHeader, TableRow } from '@/app/shared/ui';
-import { usePathname, useRouter } from '@/pkg/locale';
+import { PaginationControlsComponent, TableRowsDynamicComponent, TableRowsSkeletonComponent } from './elements';
 
-import { TableRowsComponent } from './elements';
-
-const ItemsComponent: FC = () => {
-  const t = useTranslations('ItemsPage');
-
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
-
-  const page = Number(searchParams.get('page')) || 1;
-  const showItemsLimit = Number(searchParams.get('limit')) || 20;
-  const pages = Math.floor(100 / showItemsLimit); //  todo: mock data because API has not data about the pagination
-
-  const posts = usePostListService(page, showItemsLimit);
-
-  const isInitialLoading = posts.isLoading;
-
-  const createPageURL = (pageNumber: number) => {
-    const params = new URLSearchParams(searchParams);
-
-    params.set('page', pageNumber.toString());
-
-    return `${pathname}?${params.toString()}`;
-  };
-
-  const handlePrevButtonClick = () => {
-    replace(createPageURL(page - 1), { scroll: false });
-  };
-
-  const handleNextButtonClick = () => {
-    replace(createPageURL(page + 1), { scroll: false });
-  };
-
-  const handlePostClick = (id: number) => {
-    router.push(`${pathname}/${id}`);
-  };
+const ItemsComponent: FC = async () => {
+  const t = await getTranslations('ItemsPage');
 
   return (
     <div className='grid justify-center'>
       <div className='w-[960]'>
         <h1 className='text-center'>{t('title')}</h1>
+
         <Table>
           <TableHeader>
             <TableRow>
@@ -60,24 +23,15 @@ const ItemsComponent: FC = () => {
           </TableHeader>
 
           <TableBody>
-            <TableRowsComponent
-              data={posts.data}
-              isLoading={isInitialLoading}
-              skeletonRowsCount={showItemsLimit}
-              handleItemClickCallback={handlePostClick}
-            />
+            <Suspense fallback={<TableRowsSkeletonComponent />}>
+              <TableRowsDynamicComponent />
+            </Suspense>
           </TableBody>
         </Table>
 
-        <div className='mt-4 flex gap-1 justify-center'>
-          <Button disabled={page <= 1} onClick={handlePrevButtonClick}>
-            {t('prevNavButton')}
-          </Button>
-
-          <Button disabled={page >= pages} onClick={handleNextButtonClick}>
-            {t('nextNavButton')}
-          </Button>
-        </div>
+        <Suspense fallback={<div className='mt-4 h-10' />}>
+          <PaginationControlsComponent />
+        </Suspense>
       </div>
     </div>
   );

@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   /* config options here */
   // eslint: { ignoreDuringBuilds: true }
 
+  // cacheComponents: true,
+
   logging: {
     fetches: {
       fullUrl: process.env.NODE_ENV !== 'production',

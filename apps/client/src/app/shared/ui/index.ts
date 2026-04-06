@@ -1,6 +1,7 @@
 export { Button } from '@/pkg/shadcn/ui/components/button';
 export { Input } from '@/pkg/shadcn/ui/components/input';
 export { Label } from '@/pkg/shadcn/ui/components/label';
+export { Skeleton } from '@/pkg/shadcn/ui/components/skeleton';
 export {
   Table,
   TableBody,
