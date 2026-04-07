@@ -2,7 +2,7 @@ import { type User } from '@supabase/auth-js';
 
 import { useUserStore } from '@/app/shared/store';
 import { userTokenStore } from '@/app/shared/store/user-token.store';
-import { createClient } from '@/app/shared/utils/supabase/client';
+import { createClient } from '@/pkg/supabase/client';
 
 interface IResponse {
   data: User | null;

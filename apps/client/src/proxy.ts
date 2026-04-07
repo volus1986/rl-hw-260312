@@ -1,7 +1,7 @@
 import type { NextRequest } from 'next/server';
 import createIntlMiddleware from 'next-intl/middleware';
 
-import { updateSession } from '@/app/shared/utils/supabase';
+import { updateSession } from '@/pkg/supabase';
 
 import { routing } from './pkg/locale/routing';
 
