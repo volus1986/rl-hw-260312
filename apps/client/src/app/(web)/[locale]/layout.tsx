@@ -3,7 +3,7 @@ import { getMessages } from 'next-intl/server';
 import type { FC, ReactNode } from 'react';
 
 import { Header } from '@/app/widgets/header';
-import { TanstackQueryClientProvider } from '@/pkg/providers';
+import { RestApiProvider } from '@/pkg/rest-api';
 
 interface IProps {
   children: ReactNode;
@@ -16,10 +16,10 @@ const LocaleLayout: FC<Readonly<IProps>> = async (props) => {
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <TanstackQueryClientProvider>
+      <RestApiProvider>
         <Header />
         {props.children}
-      </TanstackQueryClientProvider>
+      </RestApiProvider>
     </NextIntlClientProvider>
   );
 };
