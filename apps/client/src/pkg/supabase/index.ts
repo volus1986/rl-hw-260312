@@ -1,2 +1,2 @@
-export { createClient as createBrowserSupabaseClient } from './client';
-export { updateSession } from './middleware';
+export { createClient } from './client';
+export { updateSession } from './proxy';

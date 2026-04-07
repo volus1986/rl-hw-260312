@@ -9,7 +9,7 @@ export const envClient = createEnv({
     // NEXT_PUBLIC_CLIENT_WEB_URL: z.string().nonempty({ message: 'NEXT_PUBLIC_CLIENT_WEB_URL is required' }),
     // NEXT_PUBLIC_CLIENT_API_URL: z.string().nonempty({ message: 'NEXT_PUBLIC_CLIENT_API_URL is required' }),
     NEXT_PUBLIC_SUPABASE_URL: z.url(),
-    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY: z.string().nonempty(),
+    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: z.string().nonempty(),
   },
   emptyStringAsUndefined: true,
   runtimeEnv: {
@@ -17,6 +17,6 @@ export const envClient = createEnv({
     // NEXT_PUBLIC_CLIENT_WEB_URL: process.env.NEXT_PUBLIC_CLIENT_WEB_URL,
     // NEXT_PUBLIC_CLIENT_API_URL: process.env.NEXT_PUBLIC_CLIENT_API_URL,
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY,
+    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
   },
 });
