@@ -9,5 +9,6 @@ export const usePostListService = (page: number, limit: number) => {
     queryKey: ['posts', page, limit],
     queryFn: ({ signal }) => getPostList({ page, limit, signal }),
     staleTime: 60 * 60 * 1000,
+    retry: 3,
   });
 };

@@ -23,18 +23,15 @@ const Page: NextPage<Readonly<IProps>> = async (props) => {
   const id = Number((await props.params).id);
   const queryClient = new QueryClient();
 
-  try {
-    await queryClient.prefetchQuery({
-      queryKey: ['postDetails', id],
-      queryFn: ({ signal }) => getPostDetails({ id, signal }),
-    });
-  } catch (error) {
-    console.error(error);
-  }
+  await queryClient.prefetchQuery({
+    queryKey: ['postDetails', id],
+    queryFn: ({ signal }) => getPostDetails({ id, signal }),
+    staleTime: 60 * 60 * 1000,
+  });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <ItemComponent id={Number(id)} />
+      <ItemComponent id={id} />
     </HydrationBoundary>
   );
 };

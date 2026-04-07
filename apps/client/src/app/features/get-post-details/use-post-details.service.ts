@@ -9,5 +9,6 @@ export const usePostDetailsService = (id: number) => {
     queryKey: ['postDetails', id],
     queryFn: ({ signal }) => getPostDetails({ id, signal }),
     staleTime: 60 * 60 * 1000,
+    retry: 3,
   });
 };
