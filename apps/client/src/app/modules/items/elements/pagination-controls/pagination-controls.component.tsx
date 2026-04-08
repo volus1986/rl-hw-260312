@@ -10,7 +10,11 @@ import { usePathname, useRouter } from '@/pkg/locale';
 
 import { PAGINATION_PARAMS } from '../../items.constant';
 
-const PaginationControlsComponent: FC = () => {
+// interface
+interface IProps {}
+
+// component
+const PaginationControlsComponent: FC<Readonly<IProps>> = () => {
   const t = useTranslations('ItemsPage');
   const { replace } = useRouter();
   const pathname = usePathname();
@@ -33,6 +37,7 @@ const PaginationControlsComponent: FC = () => {
     return `${pathname}?${params.toString()}`;
   };
 
+  // return
   return (
     <div className='mt-4 flex gap-1 justify-center'>
       <Button disabled={page <= 1} onClick={() => replace(createPageURL(page - 1), { scroll: false })}>

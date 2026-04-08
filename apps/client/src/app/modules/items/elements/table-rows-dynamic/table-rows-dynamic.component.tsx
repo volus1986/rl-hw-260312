@@ -10,7 +10,11 @@ import { PAGINATION_PARAMS } from '../../items.constant';
 import { TableRowsComponent } from '../table-rows';
 import { TableRowsSkeletonComponent } from '../table-rows-skeleton';
 
-const TableRowsDynamicComponent: FC = () => {
+// interface
+interface IProps {}
+
+// component
+const TableRowsDynamicComponent: FC<Readonly<IProps>> = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -28,6 +32,7 @@ const TableRowsDynamicComponent: FC = () => {
 
   if (posts.isError) return <p className='text-center text-destructive py-4'>{posts.error.message}</p>;
 
+  // return
   return <TableRowsComponent data={posts.data?.data} handleItemClickCallback={handlePostClick} />;
 };
 

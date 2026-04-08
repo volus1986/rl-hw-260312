@@ -5,9 +5,14 @@ import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/app/shared
 
 import { PaginationControlsComponent, TableRowsDynamicComponent, TableRowsSkeletonComponent } from './elements';
 
-const ItemsComponent: FC = async () => {
+// interface
+interface IProps {}
+
+// component
+const ItemsComponent: FC<Readonly<IProps>> = async () => {
   const t = await getTranslations('ItemsPage');
 
+  // return
   return (
     <div className='grid justify-center'>
       <div className='w-[960]'>
