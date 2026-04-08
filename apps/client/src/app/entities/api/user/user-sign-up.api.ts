@@ -4,6 +4,7 @@ import { useUserStore } from '@/app/shared/store';
 import { userTokenStore } from '@/app/shared/store/user-token.store';
 import { createClient } from '@/pkg/supabase/client';
 
+// interface
 interface IResponse {
   data: User | null;
   error: {
@@ -11,26 +12,31 @@ interface IResponse {
   } | null;
 }
 
+// interface
 interface IProps {
   email: string;
   password: string;
   name: string;
 }
 
-export const userSignUp = async (props: IProps): Promise<IResponse> => {
+// function
+export const userSignUp = async (props: Readonly<IProps>): Promise<IResponse> => {
+  const { email, password, name } = props;
+
   const supabaseClient = createClient();
 
   const { data, error } = await supabaseClient.auth.signUp({
-    email: props.email,
-    password: props.password,
+    email: email,
+    password: password,
     options: {
       data: {
-        name: props.name,
+        name: name,
       },
     },
   });
 
   if (error) {
+    // return
     return {
       data: null,
       error: {
@@ -41,6 +47,7 @@ export const userSignUp = async (props: IProps): Promise<IResponse> => {
 
   // todo: as task requirements, remove after.
   console.log(data);
+
   if (data.session?.access_token) {
     userTokenStore.getState().setToken(data.session?.access_token);
 
@@ -53,6 +60,7 @@ export const userSignUp = async (props: IProps): Promise<IResponse> => {
     }
   }
 
+  // return
   return {
     data: data.user,
     error: {

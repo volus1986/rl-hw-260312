@@ -8,14 +8,19 @@ export const metadata: Metadata = {
   description: 'rl hw 260312',
 };
 
+// interface
 interface IProps {
   children: ReactNode;
 }
 
+// component
 const RootLayout: FC<Readonly<IProps>> = (props) => {
+  const { children } = props;
+
+  // return
   return (
     <html lang='en'>
-      <body className='dark'>{props.children}</body>
+      <body className='dark'>{children}</body>
     </html>
   );
 };

@@ -15,9 +15,11 @@ interface IProps {
 
 // component
 const ItemComponent: FC<Readonly<IProps>> = (props) => {
+  const { id } = props;
+
   const router = useRouter();
   const t = useTranslations('ItemPage');
-  const { data, isError } = usePostDetailsService(props.id);
+  const { data, isError } = usePostDetailsService(id);
 
   if (isError || !data?.id) {
     notFound();

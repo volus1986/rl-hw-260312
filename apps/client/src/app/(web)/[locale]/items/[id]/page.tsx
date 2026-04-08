@@ -14,7 +14,9 @@ interface IProps {
 
 // generateMetadata
 export const generateMetadata = async (props: Readonly<IProps>): Promise<Metadata> => {
-  const { id } = await props.params;
+  const { params } = props;
+
+  const { id } = await params;
   const item = await getPostDetails({ id: Number(id) });
 
   // return
