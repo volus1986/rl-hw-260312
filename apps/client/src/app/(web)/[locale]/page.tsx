@@ -2,7 +2,12 @@ import { NextPage } from 'next';
 
 import { MainComponent } from '@/app/modules/main';
 
-const MainPage: NextPage = () => {
+// interface
+interface IProps {}
+
+// component
+const MainPage: NextPage<Readonly<IProps>> = () => {
+  // return
   return <MainComponent />;
 };
 
