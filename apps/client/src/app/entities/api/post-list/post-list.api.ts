@@ -1,6 +1,6 @@
 import { envClient } from '@/config/env';
 
-import { type TPostList } from '../../models';
+import { type IPostList } from '../../models';
 
 type TProps = {
   page: number;
@@ -23,7 +23,7 @@ export const getPostList = async (props: TProps) => {
   }
 
   return {
-    data: (await res.json()) as TPostList,
+    data: (await res.json()) as IPostList,
     meta: { total_results: 100 }, // mocked data because jsonplaceholder API has no data about the pagination items amount
   };
 };

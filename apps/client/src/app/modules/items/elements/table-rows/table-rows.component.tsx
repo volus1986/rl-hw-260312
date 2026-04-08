@@ -1,11 +1,11 @@
 import { type FC } from 'react';
 
-import { type TPostList } from '@/app/entities/models';
+import { type IPostList } from '@/app/entities/models';
 import { TableCell, TableRow } from '@/app/shared/components';
 
 // interface
 interface IProps {
-  data?: TPostList;
+  data?: IPostList;
   handleItemClickCallback: (id: number) => void;
 }
 

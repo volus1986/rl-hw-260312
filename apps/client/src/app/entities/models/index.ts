@@ -1,2 +1,2 @@
-export { type TPostDetails } from './post-details.model';
-export { type TPostList } from './post-list.model';
+export { type IPostDetails } from './post-details.model';
+export { type IPostList } from './post-list.model';

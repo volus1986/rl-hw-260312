@@ -1,7 +1,7 @@
-type TPost = {
+interface IPost {
   id: number;
   userId: number;
   title: string;
-};
+}
 
-export type TPostList = TPost[];
+export interface IPostList extends Array<IPost> {}

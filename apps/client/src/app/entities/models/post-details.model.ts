@@ -1,4 +1,4 @@
-export type TPostDetails = {
+export interface IPostDetails {
   id: number;
   userId: number;
   title: string;
