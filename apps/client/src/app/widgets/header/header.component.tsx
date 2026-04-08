@@ -4,40 +4,12 @@ import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
 import { Button, LanguageSwitcherComponent } from '@/app/shared/components';
-import { userTokenStore, useUserStore } from '@/app/shared/store';
-import { Link, useRouter } from '@/pkg/locale';
+import { Link } from '@/pkg/locale';
+
+import { SignButtonComponent } from './elements/sign-button';
 
 const HeaderComponent: FC = () => {
   const t = useTranslations('Header');
-  const router = useRouter();
-
-  const userStore = useUserStore();
-  const isLoggedIn = !!userStore.user?.id;
-
-  const signButton = () => {
-    const handleLogoutButtonClick = () => {
-      userStore.clearUser();
-      userTokenStore.getState().clearToken();
-
-      router.push('/sign');
-    };
-
-    if (!isLoggedIn) {
-      return (
-        <Link href='/sign'>
-          <Button variant='link' className='hover:text-primary max-md:hidden'>
-            {t('login')}
-          </Button>
-        </Link>
-      );
-    }
-
-    return (
-      <Button variant='link' className='hover:text-primary max-md:hidden' onClick={handleLogoutButtonClick}>
-        {t('logout')}
-      </Button>
-    );
-  };
 
   return (
     <header className='bg-background sticky top-0 z-50'>
@@ -49,7 +21,7 @@ const HeaderComponent: FC = () => {
             </Button>
           </Link>
 
-          {signButton()}
+          <SignButtonComponent />
         </div>
 
         <div className='flex items-center gap-6'>
