@@ -9,7 +9,7 @@ import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { userSignUp } from '@/app/entities/api/user';
-import { Button, Input, Label } from '@/app/shared/ui';
+import { Button, Input, Label } from '@/app/shared/components';
 import { useRouter } from '@/pkg/locale';
 
 import { ErrorMessageComponent } from '../error-message';

@@ -9,8 +9,8 @@ import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { userSignIn } from '@/app/entities/api';
+import { Button, Input, Label } from '@/app/shared/components';
 import { userTokenStore, useUserStore } from '@/app/shared/store';
-import { Button, Input, Label } from '@/app/shared/ui';
 import { useRouter } from '@/pkg/locale';
 
 import { ErrorMessageComponent } from '../error-message';

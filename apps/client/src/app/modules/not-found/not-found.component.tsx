@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { type FC } from 'react';
 
-import { Button } from '@/app/shared/ui';
+import { Button } from '@/app/shared/components';
 import { Link } from '@/pkg/locale';
 
 // interface

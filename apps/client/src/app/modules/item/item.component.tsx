@@ -4,8 +4,8 @@ import { notFound } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { usePostDetailsService } from '@/app/features/get-post-details';
-import { Button, Table, TableBody, TableCell, TableRow } from '@/app/shared/ui';
+import { usePostDetailsQuery } from '@/app/entities/api/post-details';
+import { Button, Table, TableBody, TableCell, TableRow } from '@/app/shared/components';
 import { useRouter } from '@/pkg/locale';
 
 // interface
@@ -19,7 +19,7 @@ const ItemComponent: FC<Readonly<IProps>> = (props) => {
 
   const router = useRouter();
   const t = useTranslations('ItemPage');
-  const { data, isError } = usePostDetailsService(id);
+  const { data, isError } = usePostDetailsQuery(id);
 
   if (isError || !data?.id) {
     notFound();

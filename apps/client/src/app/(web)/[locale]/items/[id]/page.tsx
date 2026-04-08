@@ -3,6 +3,7 @@ import type { Metadata, NextPage } from 'next';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
 import { getPostDetails } from '@/app/entities/api';
+import { postDetailsQueryOptions } from '@/app/entities/api/post-details';
 import { ItemComponent } from '@/app/modules/item';
 
 export const revalidate = 3600;
@@ -33,11 +34,7 @@ const Page: NextPage<Readonly<IProps>> = async (props) => {
   const id = Number((await params).id);
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery({
-    queryKey: ['postDetails', id],
-    queryFn: ({ signal }) => getPostDetails({ id, signal }),
-    staleTime: 60 * 60 * 1000,
-  });
+  await queryClient.prefetchQuery(postDetailsQueryOptions(id));
 
   // return
   return (

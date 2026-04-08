@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { type FC } from 'react';
 
-import { usePostListService } from '@/app/features/get-post-list';
+import { usePostListQuery } from '@/app/entities/api/post-list';
 import { usePathname, useRouter } from '@/pkg/locale';
 
 import { PAGINATION_PARAMS } from '../../items.constant';
@@ -22,7 +22,7 @@ const TableRowsDynamicComponent: FC<Readonly<IProps>> = () => {
   const page = Number(searchParams.get(PAGINATION_PARAMS.pageParamKey)) || PAGINATION_PARAMS.defaultPage;
   const limit = Number(searchParams.get(PAGINATION_PARAMS.limitParamKey)) || PAGINATION_PARAMS.defaultLimit;
 
-  const posts = usePostListService(page, limit);
+  const posts = usePostListQuery(page, limit);
 
   const handlePostClick = (id: number) => {
     router.push(`${pathname}/${id}`);

@@ -3,9 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { LanguageSwitcherComponent } from '@/app/features/language-switcher';
+import { Button, LanguageSwitcherComponent } from '@/app/shared/components';
 import { userTokenStore, useUserStore } from '@/app/shared/store';
-import { Button } from '@/app/shared/ui';
 import { Link, useRouter } from '@/pkg/locale';
 
 const HeaderComponent: FC = () => {

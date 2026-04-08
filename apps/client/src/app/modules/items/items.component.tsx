@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { type FC, Suspense } from 'react';
 
-import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/app/shared/ui';
+import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/app/shared/components';
 
 import { PaginationControlsComponent, TableRowsDynamicComponent, TableRowsSkeletonComponent } from './elements';
 

@@ -1,3 +1,4 @@
+export { LanguageSwitcherComponent } from './language-switcher';
 export { Button } from '@/pkg/shadcn/ui/components/button';
 export { Input } from '@/pkg/shadcn/ui/components/input';
 export { Label } from '@/pkg/shadcn/ui/components/label';

@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { Skeleton, TableCell, TableRow } from '@/app/shared/ui';
+import { Skeleton, TableCell, TableRow } from '@/app/shared/components';
 
 const SKELETON_ROWS_COUNT = 10;
 

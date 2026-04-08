@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 
 import { type TPostList } from '@/app/entities/models';
-import { TableCell, TableRow } from '@/app/shared/ui';
+import { TableCell, TableRow } from '@/app/shared/components';
 
 // interface
 interface IProps {

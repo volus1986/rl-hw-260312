@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 
-import { Tabs, TabsList, TabsTrigger } from '@/app/shared/ui';
+import { Tabs, TabsList, TabsTrigger } from '@/app/shared/components';
 import { usePathname, useRouter } from '@/pkg/locale';
 
 const locales = ['en', 'de'] as const;
