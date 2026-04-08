@@ -1,6 +1,7 @@
 import type { NextRequest } from 'next/server';
 import createIntlMiddleware from 'next-intl/middleware';
 
+import { mergeCookies } from '@/app/shared/utils';
 import { updateSession } from '@/pkg/supabase';
 
 import { routing } from './pkg/locale/routing';
@@ -11,9 +12,7 @@ export async function proxy(request: NextRequest) {
   const supabaseResponse = await updateSession(request);
   const intlResponse = intlMiddleware(request);
 
-  supabaseResponse.cookies.getAll().forEach((cookie) => {
-    intlResponse.cookies.set(cookie.name, cookie.value, cookie);
-  });
+  mergeCookies(supabaseResponse, intlResponse);
 
   return intlResponse;
 }
