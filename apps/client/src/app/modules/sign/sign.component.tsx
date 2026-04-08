@@ -5,9 +5,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/shared/ui';
 
 import { SignInFormComponent, SignUpFormComponent } from './elements';
 
-const SignComponent: FC = () => {
+// interface
+interface IProps {}
+
+// component
+const SignComponent: FC<Readonly<IProps>> = () => {
   const t = useTranslations('SignPage');
 
+  // return
   return (
     <div className='flex mt-80 justify-center items-center'>
       <Tabs defaultValue='login' className='w-[400px]'>

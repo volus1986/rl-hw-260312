@@ -22,7 +22,11 @@ const zodSchema = z.object({
 
 type TInputs = z.infer<typeof zodSchema>;
 
-const SignInFormComponent: FC = () => {
+// interface
+interface IProps {}
+
+// component
+const SignInFormComponent: FC<Readonly<IProps>> = () => {
   const router = useRouter();
   const t = useTranslations('SignPage');
   const [isVisible, setIsVisible] = useState(false);
@@ -61,6 +65,7 @@ const SignInFormComponent: FC = () => {
     }
   };
 
+  // return
   return (
     <form onSubmit={handleSubmit(handleSubmitSuccess)}>
       <fieldset className='space-y-4' disabled={isSubmitting}>
@@ -99,6 +104,7 @@ const SignInFormComponent: FC = () => {
                     placeholder='••••••••••••••••'
                     className='pr-9'
                   />
+
                   <ErrorMessageComponent message={fieldState?.error?.message && t(fieldState?.error?.message)} />
                 </>
               )}
@@ -112,6 +118,7 @@ const SignInFormComponent: FC = () => {
               className='text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-l-none
                 hover:bg-transparent'>
               {isVisible ? <EyeOffIcon /> : <EyeIcon />}
+
               <span className='sr-only'>{isVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
             </Button>
           </div>

@@ -30,7 +30,11 @@ const zodSchema = z
 
 type TInputs = z.infer<typeof zodSchema>;
 
-const SignUpFormComponent: FC = () => {
+// interface
+interface IProps {}
+
+// component
+const SignUpFormComponent: FC<Readonly<IProps>> = () => {
   const router = useRouter();
   const t = useTranslations('SignPage');
 
@@ -63,6 +67,7 @@ const SignUpFormComponent: FC = () => {
     }
   };
 
+  // return
   return (
     <form className='space-y-4' onSubmit={handleSubmit(handleSubmitSuccess)}>
       <fieldset className='space-y-4' disabled={formState.isSubmitting}>
@@ -70,6 +75,7 @@ const SignUpFormComponent: FC = () => {
           <Label htmlFor='userName' className='leading-5'>
             {t('nameLabel')}
           </Label>
+
           <Input {...register('name')} id='userName' placeholder={t('nameInputPlaceholder')} />
           <ErrorMessageComponent message={formState.errors.name?.message && t(formState.errors.name?.message)} />
         </div>
@@ -78,6 +84,7 @@ const SignUpFormComponent: FC = () => {
           <Label htmlFor='userEmail' className='leading-5'>
             {t('emailLabel')}
           </Label>
+
           <Input {...register('email')} id='userEmail' placeholder={t('emailInputPlaceholder')} />
           <ErrorMessageComponent message={formState.errors.email?.message && t(formState.errors.email?.message)} />
         </div>
@@ -95,6 +102,7 @@ const SignUpFormComponent: FC = () => {
               placeholder='••••••••••••••••'
               className='pr-9'
             />
+
             <Button
               type='button'
               variant='ghost'
