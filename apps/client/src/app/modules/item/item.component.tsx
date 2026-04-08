@@ -8,10 +8,12 @@ import { usePostDetailsService } from '@/app/features/get-post-details';
 import { Button, Table, TableBody, TableCell, TableRow } from '@/app/shared/ui';
 import { useRouter } from '@/pkg/locale';
 
+// interface
 interface IProps {
   id: number;
 }
 
+// component
 const ItemComponent: FC<Readonly<IProps>> = (props) => {
   const router = useRouter();
   const t = useTranslations('ItemPage');
@@ -25,25 +27,32 @@ const ItemComponent: FC<Readonly<IProps>> = (props) => {
     router.back();
   };
 
-  const rowEl = (title: string, value: number | string) => {
-    return (
-      <TableRow className='font-medium'>
-        <TableCell>{title}</TableCell>
-        <TableCell className='text-wrap'>{value}</TableCell>
-      </TableRow>
-    );
-  };
-
+  // return
   return (
     <div className='grid justify-center'>
       <div className='text-wrap'>
         <h1 className='text-center'>{t('title')}</h1>
         <Table>
           <TableBody>
-            {rowEl(t('postId'), data.id)}
-            {rowEl(t('postUserId'), data.userId)}
-            {rowEl(t('postTitle'), data.title)}
-            {rowEl(t('postDescription'), data.body)}
+            <TableRow className='font-medium'>
+              <TableCell>{t('postId')}</TableCell>
+              <TableCell className='text-wrap'>{data.id}</TableCell>
+            </TableRow>
+
+            <TableRow className='font-medium'>
+              <TableCell>{t('postUserId')}</TableCell>
+              <TableCell className='text-wrap'>{data.userId}</TableCell>
+            </TableRow>
+
+            <TableRow className='font-medium'>
+              <TableCell>{t('postTitle')}</TableCell>
+              <TableCell className='text-wrap'>{data.title}</TableCell>
+            </TableRow>
+
+            <TableRow className='font-medium'>
+              <TableCell>{t('postDescription')}</TableCell>
+              <TableCell className='text-wrap'>{data.body}</TableCell>
+            </TableRow>
           </TableBody>
         </Table>
 
