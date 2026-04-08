@@ -1,6 +1,13 @@
+import { NextPage } from 'next';
+
 import { SignComponent } from '@/app/modules/sign';
 
-const SignPage = () => {
+// interface
+interface IProps {}
+
+// component
+const SignPage: NextPage<Readonly<IProps>> = () => {
+  // return
   return <SignComponent />;
 };
 
