@@ -1,10 +1,15 @@
-import { type NextPage } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import { type FC } from 'react';
 
 import { Button } from '@/app/shared/ui';
+import { Link } from '@/pkg/locale';
 
-const Error: NextPage = () => {
+// interface
+interface IProps {}
+
+// component
+const NotFound: FC<Readonly<IProps>> = () => {
+  // return
   return (
     <div className='grid min-h-screen grid-cols-1 lg:grid-cols-2'>
       <div className='flex flex-col items-center justify-center px-4 py-8 text-center'>
@@ -13,6 +18,7 @@ const Error: NextPage = () => {
         <p className='text-muted-foreground mb-6 max-w-sm'>
           The page you&apos;re looking for isn&apos;t found, we suggest you back to home.
         </p>
+
         <Button asChild size='lg' className='rounded-lg text-base'>
           <Link href='/'>Back to home page</Link>
         </Button>
@@ -20,6 +26,7 @@ const Error: NextPage = () => {
 
       <div className='relative max-h-screen w-full p-2 max-lg:hidden'>
         <div className='h-full w-full rounded-2xl bg-black'></div>
+
         <Image
           src='/images/not-found-404-global.webp'
           alt='404 illustration'
@@ -32,4 +39,4 @@ const Error: NextPage = () => {
   );
 };
 
-export default Error;
+export default NotFound;
