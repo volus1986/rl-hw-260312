@@ -1,15 +1,14 @@
-import { envClient } from '@/config/env';
+import { restApiFetcher } from '@/pkg/rest-api';
 
 import { type IPostDetails } from '../../models';
 
-type TProps = {
+interface IProps {
   id: number;
   signal?: AbortSignal | null;
-};
+}
 
-export const getPostDetails = async ({ id, signal = null }: TProps) => {
-  // const res = await fetch(`${envClient.NEXT_PUBLIC_POSTS_API_URL}/${id}`, { cache: 'no-store' }); // Logic as homeWork requirements
-  const res = await fetch(`${envClient.NEXT_PUBLIC_POSTS_API_URL}/${id}`, { signal, next: { revalidate: 3600 } }); // changes after the meet
+export const getPostDetails = async ({ id, signal = null }: IProps) => {
+  const res = await restApiFetcher.get<IPostDetails>(`posts/${id}`, { signal }).json();
 
-  return (await res.json()) as IPostDetails;
+  return res;
 };

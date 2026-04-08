@@ -2,6 +2,8 @@ import { NextPage } from 'next';
 
 import { ItemsComponent } from '@/app/modules/items';
 
+export const revalidate = 3600;
+
 // interface
 interface IProps {}
 

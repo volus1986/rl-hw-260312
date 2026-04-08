@@ -1,29 +1,24 @@
-import { envClient } from '@/config/env';
+import { restApiFetcher } from '@/pkg/rest-api';
 
 import { type IPostList } from '../../models';
 
-type TProps = {
+interface IProps {
   page: number;
   limit: number;
   signal: AbortSignal;
-};
+}
 
-export const getPostList = async (props: TProps) => {
+export const getPostList = async (props: IProps) => {
   const { page, limit, signal } = props;
 
-  const res = await fetch(`${envClient.NEXT_PUBLIC_POSTS_API_URL}?_page=${page}&_limit=${limit}`, {
-    next: {
-      revalidate: 3600,
-    },
-    signal,
-  });
-
-  if (!res.ok) {
-    throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`);
-  }
+  const res = await restApiFetcher
+    .get<IPostList>(`posts?_page=${page}&_limit=${limit}`, {
+      signal,
+    })
+    .json();
 
   return {
-    data: (await res.json()) as IPostList,
-    meta: { total_results: 100 }, // mocked data because jsonplaceholder API has no data about the pagination items amount
+    data: res,
+    meta: { total_results: 100 }, // todo:  mocked data because jsonplaceholder API has no data about the pagination items amount
   };
 };

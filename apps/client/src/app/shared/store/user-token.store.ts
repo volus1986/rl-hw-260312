@@ -1,13 +1,13 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-type TTokenStore = {
+interface ITokenStore {
   token: string;
   setToken: (token: string) => void;
   clearToken: () => void;
-};
+}
 
-const userTokenStore = create<TTokenStore>()(
+const userTokenStore = create<ITokenStore>()(
   persist(
     (set) => ({
       token: '',
