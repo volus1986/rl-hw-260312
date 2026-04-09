@@ -1,40 +1,21 @@
-import { getTranslations } from 'next-intl/server';
 import { type FC, Suspense } from 'react';
 
-import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/app/shared/components';
-
-import { PaginationControlsComponent, TableRowsDynamicComponent, TableRowsSkeletonComponent } from './elements';
+import { ItemsListComponent, PaginationControlsComponent } from './elements';
 
 // interface
 interface IProps {}
 
 // component
 const ItemsComponent: FC<Readonly<IProps>> = async () => {
-  const t = await getTranslations('ItemsPage');
-
   // return
   return (
-    <div className='grid justify-center'>
+    <div className='grid justify-center py-8'>
       <div className='w-[960]'>
-        <h1 className='text-center'>{t('title')}</h1>
+        <h1 className='text-center'></h1>
 
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className='w-16'>ID</TableHead>
-              <TableHead className='w-16'>User ID</TableHead>
-              <TableHead>Title</TableHead>
-            </TableRow>
-          </TableHeader>
+        <ItemsListComponent />
 
-          <TableBody>
-            <Suspense fallback={<TableRowsSkeletonComponent />}>
-              <TableRowsDynamicComponent />
-            </Suspense>
-          </TableBody>
-        </Table>
-
-        <Suspense fallback={<div className='mt-4 h-10' />}>
+        <Suspense fallback={<div className='mt-4 h-10'>Loading...</div>}>
           <PaginationControlsComponent />
         </Suspense>
       </div>
