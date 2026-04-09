@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
 import { Button, LanguageSwitcherComponent } from '@/app/shared/components';
+import { ThemeSwitcherComponent } from '@/app/shared/components/theme-switcher';
 import { Link } from '@/pkg/locale';
 
 import { SignButtonComponent } from './elements/sign-button';
@@ -26,6 +27,7 @@ const HeaderComponent: FC = () => {
 
         <div className='flex items-center gap-6'>
           <LanguageSwitcherComponent />
+          <ThemeSwitcherComponent />
         </div>
       </div>
     </header>

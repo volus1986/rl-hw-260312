@@ -1,15 +1,2 @@
 export { LanguageSwitcherComponent } from './language-switcher';
-export { Button } from '@/pkg/shadcn/ui/components/button';
-export { Input } from '@/pkg/shadcn/ui/components/input';
-export { Label } from '@/pkg/shadcn/ui/components/label';
-export { Skeleton } from '@/pkg/shadcn/ui/components/skeleton';
-export {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/pkg/shadcn/ui/components/table';
-export { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/shadcn/ui/components/tabs';
+export * from '@/pkg/shadcn';
