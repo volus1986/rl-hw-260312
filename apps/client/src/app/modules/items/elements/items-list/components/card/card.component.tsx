@@ -37,10 +37,10 @@ const CardComponent = (props: IProps) => {
 
       <CardFooter>
         <Button className='group rounded-lg text-base has-[>svg]:px-6' size='lg' asChild>
-          <a href={detailsUrl}>
+          <Link href={detailsUrl}>
             Details
             <ArrowRightIcon className='transition-transform duration-200 group-hover:translate-x-0.5' />
-          </a>
+          </Link>
         </Button>
       </CardFooter>
     </Card>
