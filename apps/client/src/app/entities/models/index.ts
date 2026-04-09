@@ -1,2 +1,2 @@
-export { type IPostDetails } from './post-details.model';
-export { type IPostList } from './post-list.model';
+export { type IPhotoDetails } from './photo-details.model';
+export { type IPhotoList } from './photo-list.model';

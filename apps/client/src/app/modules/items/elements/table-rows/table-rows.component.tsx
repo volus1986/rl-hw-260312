@@ -1,11 +1,11 @@
 import { type FC } from 'react';
 
-import { type IPostList } from '@/app/entities/models';
+import { type IPhotoList } from '@/app/entities/models';
 import { TableCell, TableRow } from '@/app/shared/components';
 
 // interface
 interface IProps {
-  data?: IPostList;
+  data?: IPhotoList;
   handleItemClickCallback: (id: number) => void;
 }
 
@@ -20,12 +20,12 @@ const TableRowsComponent: FC<Readonly<IProps>> = (props) => {
   };
 
   // return
-  return data.map((post) => {
+  return data.map((photo) => {
     return (
-      <TableRow key={post.id} className='font-medium cursor-pointer' onClick={() => handleTableRowClick(post.id)}>
-        <TableCell>{post.id}</TableCell>
-        <TableCell>{post.userId}</TableCell>
-        <TableCell>{post.title}</TableCell>
+      <TableRow key={photo.id} className='font-medium cursor-pointer' onClick={() => handleTableRowClick(photo.id)}>
+        <TableCell>{photo.id}</TableCell>
+        <TableCell>{photo.albumId}</TableCell>
+        <TableCell>{photo.title}</TableCell>
       </TableRow>
     );
   });

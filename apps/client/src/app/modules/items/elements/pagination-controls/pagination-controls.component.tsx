@@ -4,7 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { usePostListQuery } from '@/app/entities/api/post-list';
+import { usePhotoListQuery } from '@/app/entities/api/photo-list';
 import { Button } from '@/app/shared/components';
 import { usePathname, useRouter } from '@/pkg/locale';
 
@@ -23,11 +23,11 @@ const PaginationControlsComponent: FC<Readonly<IProps>> = () => {
   const page = Number(searchParams.get(PAGINATION_PARAMS.pageParamKey)) || PAGINATION_PARAMS.defaultPage;
   const limit = Number(searchParams.get(PAGINATION_PARAMS.limitParamKey)) || PAGINATION_PARAMS.defaultLimit;
 
-  const posts = usePostListQuery(page, limit);
+  const photos = usePhotoListQuery(page, limit);
 
-  if (posts.isError) return null;
+  if (photos.isError) return null;
 
-  const pages = Math.floor((posts.data?.meta?.total_results ?? 0) / limit);
+  const pages = Math.floor((photos.data?.meta?.total_results ?? 0) / limit);
 
   const createPageURL = (pageNumber: number) => {
     const params = new URLSearchParams(searchParams);

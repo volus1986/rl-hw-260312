@@ -23,10 +23,9 @@ declare const messages: {
     "title": "Details",
     "previousPageButton": "Go to the Previous Page",
     "notFoundBackButton": "Go to the Items Page",
-    "postId": "Post ID",
-    "postUserId": "User ID",
-    "postTitle": "Title",
-    "postDescription": "Description"
+    "photoId": "Photo ID",
+    "photoAlbumId": "Album ID",
+    "photoTitle": "Title"
   },
   "SignPage": {
     "signInTab": "Sign In",

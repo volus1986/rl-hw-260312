@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { usePostDetailsQuery } from '@/app/entities/api/post-details';
+import { usePhotoDetailsQuery } from '@/app/entities/api/photo-details';
 import { Button, Table, TableBody, TableCell, TableRow } from '@/app/shared/components';
 import { useRouter } from '@/pkg/locale';
 
@@ -19,7 +19,7 @@ const ItemComponent: FC<Readonly<IProps>> = (props) => {
 
   const router = useRouter();
   const t = useTranslations('ItemPage');
-  const { data, isError } = usePostDetailsQuery(id);
+  const { data, isError } = usePhotoDetailsQuery(id);
 
   if (isError || !data?.id) {
     notFound();
@@ -37,23 +37,18 @@ const ItemComponent: FC<Readonly<IProps>> = (props) => {
         <Table>
           <TableBody>
             <TableRow className='font-medium'>
-              <TableCell>{t('postId')}</TableCell>
+              <TableCell>{t('photoId')}</TableCell>
               <TableCell className='text-wrap'>{data.id}</TableCell>
             </TableRow>
 
             <TableRow className='font-medium'>
-              <TableCell>{t('postUserId')}</TableCell>
-              <TableCell className='text-wrap'>{data.userId}</TableCell>
+              <TableCell>{t('photoAlbumId')}</TableCell>
+              <TableCell className='text-wrap'>{data.albumId}</TableCell>
             </TableRow>
 
             <TableRow className='font-medium'>
-              <TableCell>{t('postTitle')}</TableCell>
+              <TableCell>{t('photoTitle')}</TableCell>
               <TableCell className='text-wrap'>{data.title}</TableCell>
-            </TableRow>
-
-            <TableRow className='font-medium'>
-              <TableCell>{t('postDescription')}</TableCell>
-              <TableCell className='text-wrap'>{data.body}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

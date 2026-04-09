@@ -20,10 +20,9 @@
     "title": "Einzelheiten",
     "previousPageButton": "Zur vorherigen Seite",
     "notFoundBackButton": "Zur Seite „Einträge“",
-    "postId": "Beitrags-ID",
-    "postUserId": "Benutzer-ID",
-    "postTitle": "Titel",
-    "postDescription": "Beschreibung"
+    "photoId": "Foto-ID",
+    "photoAlbumId": "Album-ID",
+    "photoTitle": "Titel"
   },
   "SignPage": {
     "signInTab": "Anmelden",

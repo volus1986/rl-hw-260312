@@ -2,8 +2,8 @@ import type { Metadata, NextPage } from 'next';
 
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
-import { getPostDetails } from '@/app/entities/api';
-import { postDetailsQueryOptions } from '@/app/entities/api/post-details';
+import { getPhotoDetails } from '@/app/entities/api';
+import { photoDetailsQueryOptions } from '@/app/entities/api/photo-details';
 import { ItemComponent } from '@/app/modules/item';
 
 export const revalidate = 3600;
@@ -18,12 +18,12 @@ export const generateMetadata = async (props: Readonly<IProps>): Promise<Metadat
   const { params } = props;
 
   const { id } = await params;
-  const item = await getPostDetails({ id: Number(id) });
+  const item = await getPhotoDetails({ id: Number(id) });
 
   // return
   return {
-    title: item.title,
-    description: item.body,
+    title: `Photo ${item.id} Details page`,
+    description: item.title,
   };
 };
 
@@ -34,7 +34,7 @@ const Page: NextPage<Readonly<IProps>> = async (props) => {
   const id = Number((await params).id);
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(postDetailsQueryOptions(id));
+  await queryClient.prefetchQuery(photoDetailsQueryOptions(id));
 
   // return
   return (

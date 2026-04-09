@@ -1,3 +1,3 @@
-export { getPostDetails } from './post-details';
-export { getPostList } from './post-list';
+export { getPhotoDetails } from './photo-details';
+export { getPhotoList } from './photo-list';
 export { userSignIn } from './user';

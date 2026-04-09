@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { type FC } from 'react';
 
-import { usePostListQuery } from '@/app/entities/api/post-list';
+import { usePhotoListQuery } from '@/app/entities/api/photo-list';
 import { usePathname, useRouter } from '@/pkg/locale';
 
 import { PAGINATION_PARAMS } from '../../items.constant';
@@ -22,18 +22,18 @@ const TableRowsDynamicComponent: FC<Readonly<IProps>> = () => {
   const page = Number(searchParams.get(PAGINATION_PARAMS.pageParamKey)) || PAGINATION_PARAMS.defaultPage;
   const limit = Number(searchParams.get(PAGINATION_PARAMS.limitParamKey)) || PAGINATION_PARAMS.defaultLimit;
 
-  const posts = usePostListQuery(page, limit);
+  const photos = usePhotoListQuery(page, limit);
 
-  const handlePostClick = (id: number) => {
+  const handleItemClick = (id: number) => {
     router.push(`${pathname}/${id}`);
   };
 
-  if (posts.isLoading) return <TableRowsSkeletonComponent />;
+  if (photos.isLoading) return <TableRowsSkeletonComponent />;
 
-  if (posts.isError) return <p className='text-center text-destructive py-4'>{posts.error.message}</p>;
+  if (photos.isError) return <p className='text-center text-destructive py-4'>{photos.error.message}</p>;
 
   // return
-  return <TableRowsComponent data={posts.data?.data} handleItemClickCallback={handlePostClick} />;
+  return <TableRowsComponent data={photos.data?.data} handleItemClickCallback={handleItemClick} />;
 };
 
 export default TableRowsDynamicComponent;
