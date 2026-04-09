@@ -1,9 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test('has title', async ({ page }) => {
   await page.goto('/sign');
-
-  // await page.pause();
 
   await expect(page.getByRole('button', { name: 'Sign In' })).toBeVisible();
 
