@@ -26,7 +26,7 @@ const ItemsListComponent: FC<Readonly<IProps>> = () => {
   if (photos.isError) return <p className='text-center text-destructive py-4'>{photos.error.message}</p>;
 
   const cards = photos.data?.data.map((photo) => (
-    <CardComponent key={photo.id} id={photo.id} img={photo.thumbnailUrl} alt={photo.title} title={photo.title} />
+    <CardComponent key={photo.id} id={photo.id} img={photo.thumbnailUrl} title={photo.title} />
   ));
 
   // return
