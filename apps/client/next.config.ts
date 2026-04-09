@@ -7,6 +7,16 @@ const nextConfig: NextConfig = {
 
   // cacheComponents: true,
 
+  images: {
+    remotePatterns: [
+      {
+        // jsonplaceholder photos API (sometimes returns 404 error)
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+      },
+    ],
+  },
+
   logging: {
     fetches: {
       fullUrl: process.env.NODE_ENV !== 'production',
