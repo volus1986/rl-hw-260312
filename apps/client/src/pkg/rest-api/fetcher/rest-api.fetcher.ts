@@ -6,4 +6,5 @@ import { envClient } from '@/config/env';
 export const restApiFetcher: KyInstance = ky.create({
   prefix: `${envClient.NEXT_PUBLIC_REST_API_URL}`,
   throwHttpErrors: false,
+  retry: 3,
 });

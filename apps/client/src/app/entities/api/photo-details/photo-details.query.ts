@@ -7,7 +7,6 @@ export const photoDetailsQueryOptions = (id: number) => {
     queryKey: ['photoDetails', id],
     queryFn: ({ signal }) => getPhotoDetails({ id, signal }),
     staleTime: 60 * 60 * 1000,
-    retry: 3,
   });
 };
 

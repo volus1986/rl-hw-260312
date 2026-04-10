@@ -7,7 +7,6 @@ export const photoListQueryOptions = (page: number, limit: number) => {
     queryKey: ['photos', page, limit],
     queryFn: ({ signal }) => getPhotoList({ page, limit, signal }),
     staleTime: 60 * 60 * 1000,
-    retry: 3,
   });
 };
 
