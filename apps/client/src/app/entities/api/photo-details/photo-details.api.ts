@@ -8,7 +8,7 @@ interface IProps {
 }
 
 export const getPhotoDetails = async ({ id, signal = null }: IProps) => {
-  const res = await restApiFetcher.get<IPhotoDetails>(`photos/${id}`, { signal }).json();
+  const res = await restApiFetcher.get<IPhotoDetails>(`photos/${id}`, { signal, next: { revalidate: 3600 } }).json();
 
   return res;
 };

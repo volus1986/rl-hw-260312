@@ -14,6 +14,7 @@ export const getPhotoList = async (props: IProps) => {
   const res = await restApiFetcher
     .get<IPhotoList>(`photos?_page=${page}&_limit=${limit}`, {
       signal,
+      next: { revalidate: 3600 },
     })
     .json();
 
