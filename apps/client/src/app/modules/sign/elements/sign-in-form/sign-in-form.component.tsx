@@ -10,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { userSignIn } from '@/app/entities/api';
 import { Button, Input, Label } from '@/app/shared/components';
-import { userTokenStore, useUserStore } from '@/app/shared/store';
+import { useUserStore } from '@/app/shared/store';
 import { useRouter } from '@/pkg/locale';
 
 import { ErrorMessageComponent } from '../error-message';
@@ -40,10 +40,6 @@ const SignInFormComponent: FC<Readonly<IProps>> = () => {
     defaultValues: { email: '', password: '' },
     resolver: zodResolver(zodSchema),
   });
-
-  //  todo: logger, for testing
-  if (userTokenStore.getState().token) console.log('the token is already exists');
-  else console.log('the token not exists');
 
   useEffect(() => {
     if (userStore.user) {

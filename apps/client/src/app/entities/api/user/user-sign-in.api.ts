@@ -1,4 +1,4 @@
-import { userTokenStore, useUserStore } from '@/app/shared/store';
+import { useUserStore } from '@/app/shared/store';
 import { login } from '@/pkg/supabase/entities';
 
 interface IResponse {
@@ -21,8 +21,6 @@ export const userSignIn = async (email: string, password: string): Promise<IResp
       error: { message: error?.message ?? 'Login failed' },
     };
   }
-
-  userTokenStore.getState().setToken(data.token);
 
   useUserStore.getState().setUser({
     id: data.user.id,

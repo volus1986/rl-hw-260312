@@ -1,4 +1,4 @@
-import { userTokenStore, useUserStore } from '@/app/shared/store';
+import { useUserStore } from '@/app/shared/store';
 import { register } from '@/pkg/supabase/entities';
 
 interface IResponse {
@@ -29,8 +29,6 @@ export const userSignUp = async (props: Readonly<IProps>): Promise<IResponse> =>
       error: { message: error?.message ?? 'Registration failed' },
     };
   }
-
-  userTokenStore.getState().setToken(data.token);
 
   useUserStore.getState().setUser({
     id: data.user.id,

@@ -1,22 +1,32 @@
 'use server';
 
 import { jwtVerify } from 'jose';
+import { cookies } from 'next/headers';
 
 import { createServiceClient } from '@/pkg/supabase/server';
+
+const AUTH_COOKIE = 'auth-token';
 
 function getJwtSecret(): Uint8Array {
   return new TextEncoder().encode(process.env.JWT_SECRET!);
 }
 
-export const verifyBearerToken = async (authorizationHeader: string | null) => {
-  if (!authorizationHeader?.startsWith('Bearer ')) {
+export const verifyBearerToken = async (authorizationHeader?: string | null) => {
+  let token: string | null = null;
+
+  if (authorizationHeader?.startsWith('Bearer ')) {
+    token = authorizationHeader.slice(7);
+  } else {
+    const cookieStore = await cookies();
+    token = cookieStore.get(AUTH_COOKIE)?.value ?? null;
+  }
+
+  if (!token) {
     return {
       data: null,
       error: { message: 'Unauthorized' },
     };
   }
-
-  const token = authorizationHeader.slice(7);
 
   try {
     const { payload } = await jwtVerify(token, getJwtSecret());

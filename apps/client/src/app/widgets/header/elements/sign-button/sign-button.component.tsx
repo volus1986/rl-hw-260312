@@ -1,9 +1,12 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
 import { Button } from '@/app/shared/components';
-import { userTokenStore, useUserStore } from '@/app/shared/store';
+import { useUserStore } from '@/app/shared/store';
 import { Link, useRouter } from '@/pkg/locale';
+import { logout } from '@/pkg/supabase/entities';
 
 //interface
 interface IProps {}
@@ -16,10 +19,9 @@ const SignButtonComponent: FC<Readonly<IProps>> = () => {
   const userStore = useUserStore();
   const isLoggedIn = !!userStore.user?.id;
 
-  const handleLogoutButtonClick = () => {
+  const handleLogoutButtonClick = async () => {
+    await logout();
     userStore.clearUser();
-    userTokenStore.getState().clearToken();
-
     router.push('/sign');
   };
 

@@ -2,10 +2,13 @@
 
 import { createHash } from 'crypto';
 import { SignJWT } from 'jose';
+import { cookies } from 'next/headers';
 
 import { createServiceClient } from '@/pkg/supabase/server';
 
 const PASSWORD_SALT = '10';
+const AUTH_COOKIE = 'auth-token';
+const TOKEN_MAX_AGE = 7 * 24 * 60 * 60;
 
 function hashPassword(password: string): string {
   return createHash('sha256')
@@ -47,6 +50,16 @@ export const login = async (email: string, password: string) => {
     .setIssuedAt()
     .setExpirationTime('7d')
     .sign(getJwtSecret());
+
+  const cookieStore = await cookies();
+
+  cookieStore.set(AUTH_COOKIE, token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    maxAge: TOKEN_MAX_AGE,
+  });
 
   return {
     data: {
