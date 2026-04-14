@@ -7,11 +7,13 @@ import { useEffect } from 'react';
 
 import { Button } from './shared/components';
 
+// interface
 interface IProps {
   error: Error & { digest?: string };
   reset: () => void;
 }
 
+// component
 const Page: NextPage<Readonly<IProps>> = (props) => {
   const { error } = props;
 
@@ -20,6 +22,7 @@ const Page: NextPage<Readonly<IProps>> = (props) => {
     console.error(error);
   }, [error]);
 
+  // return
   return (
     <html>
       <body className='flex h-screen w-screen flex-col items-center justify-center'>

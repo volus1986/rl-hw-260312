@@ -14,7 +14,6 @@ const ItemNotFoundComponent: FC<Readonly<IProps>> = () => {
   const router = useRouter();
   const t = useTranslations('ItemsPage');
 
-  // handlers
   const handleClick = () => {
     router.push('/items');
   };

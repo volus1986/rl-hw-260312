@@ -10,18 +10,21 @@ import { Link } from '@/pkg/locale';
 import { Button } from '@/pkg/shadcn/ui/components/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/pkg/shadcn/ui/components/card';
 
+// interface
 interface IProps {
   id: number;
   img: string;
   title: string;
 }
 
+// component
 const CardComponent = (props: IProps) => {
   const { img, title, id } = props;
   const detailsUrl = `/items/${id}`;
   const t = useTranslations('ItemsPage');
   const [imgError, setImgError] = useState(false);
 
+  // return
   return (
     <Card className='pt-0 shadow-none max-lg:last:col-span-full'>
       <CardContent className='px-0'>

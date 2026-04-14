@@ -7,11 +7,14 @@ import { type FC } from 'react';
 import { Button } from '@/app/shared/components';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/app/shared/components';
 
+// interface
 interface IProps {}
 
+// component
 const ThemeSwitcherComponent: FC<Readonly<IProps>> = () => {
   const { setTheme } = useTheme();
 
+  // return
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -21,6 +24,7 @@ const ThemeSwitcherComponent: FC<Readonly<IProps>> = () => {
           <span className='sr-only'>Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
+
       <DropdownMenuContent align='end'>
         <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>

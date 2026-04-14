@@ -1,6 +1,13 @@
 import { useUserStore } from '@/app/shared/store';
 import { register } from '@/pkg/supabase/entities';
 
+// interface
+interface IProps {
+  email: string;
+  password: string;
+  name: string;
+}
+
 interface IResponse {
   data: {
     id: string;
@@ -12,18 +19,14 @@ interface IResponse {
   } | null;
 }
 
-interface IProps {
-  email: string;
-  password: string;
-  name: string;
-}
-
+// function
 export const userSignUp = async (props: Readonly<IProps>): Promise<IResponse> => {
   const { email, password, name } = props;
 
   const { data, error } = await register(email, password, name);
 
   if (error || !data) {
+    // return
     return {
       data: null,
       error: { message: error?.message ?? 'Registration failed' },
@@ -36,6 +39,7 @@ export const userSignUp = async (props: Readonly<IProps>): Promise<IResponse> =>
     name: data.user.name,
   });
 
+  // return
   return {
     data: data.user,
     error: null,
