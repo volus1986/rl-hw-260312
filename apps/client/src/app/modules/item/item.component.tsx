@@ -37,7 +37,7 @@ const ItemComponent: FC<Readonly<IProps>> = (props) => {
   return (
     <div className='grid justify-center'>
       <div className='text-wrap'>
-        <h1 className='text-center'>{t('title')}</h1>
+        <h1 className='text-center text-2xl'>{t('title')}</h1>
       </div>
 
       <section className='bg-muted py-8 sm:py-16 lg:py-24'>
