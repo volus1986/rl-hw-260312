@@ -2,13 +2,18 @@
 
 import { createHash } from 'crypto';
 import { SignJWT } from 'jose';
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 
 import { createServiceClient } from '@/pkg/supabase/server';
+import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
+// constant
 const PASSWORD_SALT = '10';
 const AUTH_COOKIE = 'auth-token';
 const TOKEN_MAX_AGE = 7 * 24 * 60 * 60;
+
+const REGISTER_MAX_ATTEMPTS = 3;
+const REGISTER_WINDOW_MS = 5 * 60 * 1000;
 
 function hashPassword(password: string): string {
   return createHash('sha256')
@@ -20,12 +25,33 @@ function getJwtSecret(): Uint8Array {
   return new TextEncoder().encode(process.env.JWT_SECRET!);
 }
 
+// function
 export const register = async (email: string, password: string, name: string) => {
+  const headerStore = await headers();
+  const ip = headerStore.get('x-forwarded-for') ?? headerStore.get('x-real-ip') ?? '127.0.0.1';
+
+  const { limited, retryAfterMs } = rateLimit({
+    key: `register:${ip}`,
+    maxAttempts: REGISTER_MAX_ATTEMPTS,
+    windowMs: REGISTER_WINDOW_MS,
+  });
+
+  if (limited) {
+    const seconds = Math.ceil(retryAfterMs / 1000);
+
+    // return
+    return {
+      data: null,
+      error: { message: `Too many registration attempts. Try again in ${seconds}s.` },
+    };
+  }
+
   const supabase = createServiceClient();
 
   const { data: existing } = await supabase.from('user_profiles').select('id').eq('email', email).single();
 
   if (existing) {
+    // return
     return {
       data: null,
       error: { message: 'Email is already taken' },
@@ -41,6 +67,7 @@ export const register = async (email: string, password: string, name: string) =>
     .single();
 
   if (error || !user) {
+    // return
     return {
       data: null,
       error: { message: error?.message ?? 'Registration failed' },
@@ -57,12 +84,13 @@ export const register = async (email: string, password: string, name: string) =>
 
   cookieStore.set(AUTH_COOKIE, token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
+    secure: true,
     sameSite: 'lax',
     path: '/',
     maxAge: TOKEN_MAX_AGE,
   });
 
+  // return
   return {
     data: {
       token,

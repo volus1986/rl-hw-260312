@@ -2,14 +2,20 @@
 
 import { createHash } from 'crypto';
 import { SignJWT } from 'jose';
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 
 import { createServiceClient } from '@/pkg/supabase/server';
+import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
+// constant
 const PASSWORD_SALT = '10';
 const AUTH_COOKIE = 'auth-token';
 const TOKEN_MAX_AGE = 7 * 24 * 60 * 60;
 
+const LOGIN_MAX_ATTEMPTS = 5;
+const LOGIN_WINDOW_MS = 60 * 1000;
+
+// function
 function hashPassword(password: string): string {
   return createHash('sha256')
     .update(password + PASSWORD_SALT)
@@ -21,6 +27,25 @@ function getJwtSecret(): Uint8Array {
 }
 
 export const login = async (email: string, password: string) => {
+  const headerStore = await headers();
+  const ip = headerStore.get('x-forwarded-for') ?? headerStore.get('x-real-ip') ?? '127.0.0.1';
+
+  const { limited, retryAfterMs } = rateLimit({
+    key: `login:${ip}`,
+    maxAttempts: LOGIN_MAX_ATTEMPTS,
+    windowMs: LOGIN_WINDOW_MS,
+  });
+
+  if (limited) {
+    const seconds = Math.ceil(retryAfterMs / 1000);
+
+    // return
+    return {
+      data: null,
+      error: { message: `Too many login attempts. Try again in ${seconds}s.` },
+    };
+  }
+
   const supabase = createServiceClient();
 
   const { data: user, error } = await supabase
@@ -61,6 +86,7 @@ export const login = async (email: string, password: string) => {
     maxAge: TOKEN_MAX_AGE,
   });
 
+  // return
   return {
     data: {
       token,
