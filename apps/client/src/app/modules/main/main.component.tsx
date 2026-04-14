@@ -1,27 +1,22 @@
-import { useTranslations } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import { type FC } from 'react';
 
-import { Link } from '@/pkg/locale';
+import { redirect } from '@/pkg/locale';
 
 // interface
 interface IProps {}
 
 // component
-const MainComponent: FC<Readonly<IProps>> = () => {
-  const t = useTranslations('RootPage');
+const MainComponent: FC<Readonly<IProps>> = async () => {
+  const currentLocale = await getLocale();
+
+  redirect({
+    href: '/items',
+    locale: currentLocale ?? 'en',
+  });
 
   // return
-  return (
-    <div className='flex flex-col items-center justify-center mt-80'>
-      <div>
-        <Link href={'items'}>{t('items')}</Link>
-      </div>
-
-      <div>
-        <Link href={'sign'}>{t('login')}</Link>
-      </div>
-    </div>
-  );
+  return null;
 };
 
 export default MainComponent;
