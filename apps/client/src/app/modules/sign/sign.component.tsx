@@ -14,7 +14,7 @@ const SignComponent: FC<Readonly<IProps>> = () => {
 
   // return
   return (
-    <div className='flex mt-80 justify-center items-center'>
+    <div className='flex mt-20 justify-center items-center'>
       <Tabs defaultValue='login' className='w-[400px]'>
         <TabsList>
           <TabsTrigger value='login'>{t('signInTab')}</TabsTrigger>

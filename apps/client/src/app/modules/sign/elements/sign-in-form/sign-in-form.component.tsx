@@ -12,6 +12,7 @@ import { userSignIn } from '@/app/entities/api';
 import { Button, Input, Label } from '@/app/shared/components';
 import { useUserStore } from '@/app/shared/store';
 import { useRouter } from '@/pkg/locale';
+import { Card, CardContent, CardHeader, CardTitle } from '@/pkg/shadcn/ui/components/card';
 
 import { ErrorMessageComponent } from '../error-message';
 
@@ -63,68 +64,76 @@ const SignInFormComponent: FC<Readonly<IProps>> = () => {
 
   // return
   return (
-    <form onSubmit={handleSubmit(handleSubmitSuccess)}>
-      <fieldset className='space-y-4' disabled={isSubmitting}>
-        <div className='space-y-1'>
-          <Label htmlFor='userEmail' className='leading-5'>
-            {t('emailLabel')}
-          </Label>
+    <Card className='w-full border-none shadow-md sm:max-w-lg'>
+      <CardHeader className='gap-6'>
+        <CardTitle className='mb-1.5 text-2xl'>{t('signInTab')}</CardTitle>
+      </CardHeader>
 
-          <Controller
-            name='email'
-            control={control}
-            render={({ field, fieldState }) => (
-              <>
-                <Input {...field} type='text' id='userEmail' placeholder={t('emailInputPlaceholder')} />
-                <ErrorMessageComponent message={fieldState?.error?.message && t(fieldState.error.message)} />
-              </>
-            )}
-          />
-        </div>
+      <CardContent>
+        <form onSubmit={handleSubmit(handleSubmitSuccess)}>
+          <fieldset className='space-y-4' disabled={isSubmitting}>
+            <div className='space-y-1'>
+              <Label htmlFor='userEmail' className='leading-5'>
+                {t('emailLabel')}
+              </Label>
 
-        <div className='w-full space-y-1'>
-          <Label htmlFor='password' className='leading-5'>
-            {t('passwordLabel')}
-          </Label>
+              <Controller
+                name='email'
+                control={control}
+                render={({ field, fieldState }) => (
+                  <>
+                    <Input {...field} type='text' id='userEmail' placeholder={t('emailInputPlaceholder')} />
+                    <ErrorMessageComponent message={fieldState?.error?.message && t(fieldState.error.message)} />
+                  </>
+                )}
+              />
+            </div>
 
-          <div className='relative'>
-            <Controller
-              name='password'
-              control={control}
-              render={({ field, fieldState }) => (
-                <>
-                  <Input
-                    {...field}
-                    id='password'
-                    type={isVisible ? 'text' : 'password'}
-                    placeholder='••••••••••••••••'
-                    className='pr-9'
-                  />
+            <div className='w-full space-y-1'>
+              <Label htmlFor='password' className='leading-5'>
+                {t('passwordLabel')}
+              </Label>
 
-                  <ErrorMessageComponent message={fieldState?.error?.message && t(fieldState?.error?.message)} />
-                </>
-              )}
-            />
+              <div className='relative'>
+                <Controller
+                  name='password'
+                  control={control}
+                  render={({ field, fieldState }) => (
+                    <>
+                      <Input
+                        {...field}
+                        id='password'
+                        type={isVisible ? 'text' : 'password'}
+                        placeholder='••••••••••••••••'
+                        className='pr-9'
+                      />
 
-            <Button
-              type='button'
-              variant='ghost'
-              size='icon'
-              onClick={() => setIsVisible((prevState) => !prevState)}
-              className='text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-l-none
-                hover:bg-transparent'>
-              {isVisible ? <EyeOffIcon /> : <EyeIcon />}
+                      <ErrorMessageComponent message={fieldState?.error?.message && t(fieldState?.error?.message)} />
+                    </>
+                  )}
+                />
 
-              <span className='sr-only'>{isVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
+                <Button
+                  type='button'
+                  variant='ghost'
+                  size='icon'
+                  onClick={() => setIsVisible((prevState) => !prevState)}
+                  className='text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-l-none
+                    hover:bg-transparent'>
+                  {isVisible ? <EyeOffIcon /> : <EyeIcon />}
+
+                  <span className='sr-only'>{isVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
+                </Button>
+              </div>
+            </div>
+
+            <Button className='w-full' type='submit'>
+              {t('signInTab')}
             </Button>
-          </div>
-        </div>
-
-        <Button className='w-full' type='submit'>
-          {t('signInTab')}
-        </Button>
-      </fieldset>
-    </form>
+          </fieldset>
+        </form>
+      </CardContent>
+    </Card>
   );
 };
 

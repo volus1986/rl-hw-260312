@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { userSignUp } from '@/app/entities/api/user';
 import { Button, Input, Label } from '@/app/shared/components';
 import { useRouter } from '@/pkg/locale';
+import { Card, CardContent, CardHeader, CardTitle } from '@/pkg/shadcn/ui/components/card';
 
 import { ErrorMessageComponent } from '../error-message';
 
@@ -69,102 +70,110 @@ const SignUpFormComponent: FC<Readonly<IProps>> = () => {
 
   // return
   return (
-    <form className='space-y-4' onSubmit={handleSubmit(handleSubmitSuccess)}>
-      <fieldset className='space-y-4' disabled={formState.isSubmitting}>
-        <div className='space-y-1'>
-          <Label htmlFor='userName' className='leading-5'>
-            {t('nameLabel')}
-          </Label>
+    <Card className='w-full border-none shadow-md sm:max-w-lg'>
+      <CardHeader className='gap-6'>
+        <CardTitle className='mb-1.5 text-2xl'>{t('signUpTab')}</CardTitle>
+      </CardHeader>
 
-          <Input {...register('name')} id='userName' placeholder={t('nameInputPlaceholder')} />
-          <ErrorMessageComponent message={formState.errors.name?.message && t(formState.errors.name?.message)} />
-        </div>
+      <CardContent>
+        <form className='space-y-4' onSubmit={handleSubmit(handleSubmitSuccess)}>
+          <fieldset className='space-y-4' disabled={formState.isSubmitting}>
+            <div className='space-y-1'>
+              <Label htmlFor='userName' className='leading-5'>
+                {t('nameLabel')}
+              </Label>
 
-        <div className='space-y-1'>
-          <Label htmlFor='userEmail' className='leading-5'>
-            {t('emailLabel')}
-          </Label>
+              <Input {...register('name')} id='userName' placeholder={t('nameInputPlaceholder')} />
+              <ErrorMessageComponent message={formState.errors.name?.message && t(formState.errors.name?.message)} />
+            </div>
 
-          <Input {...register('email')} id='userEmail' placeholder={t('emailInputPlaceholder')} />
-          <ErrorMessageComponent message={formState.errors.email?.message && t(formState.errors.email?.message)} />
-        </div>
+            <div className='space-y-1'>
+              <Label htmlFor='userEmail' className='leading-5'>
+                {t('emailLabel')}
+              </Label>
 
-        <div className='w-full space-y-1'>
-          <Label htmlFor='password' className='leading-5'>
-            {t('passwordLabel')}
-          </Label>
+              <Input {...register('email')} id='userEmail' placeholder={t('emailInputPlaceholder')} />
+              <ErrorMessageComponent message={formState.errors.email?.message && t(formState.errors.email?.message)} />
+            </div>
 
-          <div className='relative'>
-            <Input
-              {...register('password')}
-              id='password'
-              type={isPasswordVisible ? 'text' : 'password'}
-              placeholder='••••••••••••••••'
-              className='pr-9'
-            />
+            <div className='w-full space-y-1'>
+              <Label htmlFor='password' className='leading-5'>
+                {t('passwordLabel')}
+              </Label>
 
-            <Button
-              type='button'
-              variant='ghost'
-              size='icon'
-              onClick={() => setIsPasswordVisible((prevState) => !prevState)}
-              className='text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-l-none
-                hover:bg-transparent'>
-              {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
-              <span className='sr-only'>{isPasswordVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
+              <div className='relative'>
+                <Input
+                  {...register('password')}
+                  id='password'
+                  type={isPasswordVisible ? 'text' : 'password'}
+                  placeholder='••••••••••••••••'
+                  className='pr-9'
+                />
+
+                <Button
+                  type='button'
+                  variant='ghost'
+                  size='icon'
+                  onClick={() => setIsPasswordVisible((prevState) => !prevState)}
+                  className='text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-l-none
+                    hover:bg-transparent'>
+                  {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
+                  <span className='sr-only'>{isPasswordVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
+                </Button>
+              </div>
+
+              <ErrorMessageComponent
+                message={
+                  formState.errors.password?.message &&
+                  t(formState.errors.password?.message, {
+                    minLength: MIN_PASSWORD_LENGTH,
+                  })
+                }
+              />
+            </div>
+
+            <div className='w-full space-y-1'>
+              <Label htmlFor='confirm-password' className='leading-5'>
+                {t('confirmPasswordLabel')}
+              </Label>
+
+              <div className='relative'>
+                <Input
+                  id='confirm-password'
+                  type={isConfirmPasswordVisible ? 'text' : 'password'}
+                  placeholder='••••••••••••••••'
+                  className='pr-9'
+                  {...register('confirmPassword')}
+                />
+                <Button
+                  type='button'
+                  variant='ghost'
+                  size='icon'
+                  onClick={() => setIsConfirmPasswordVisible((prevState) => !prevState)}
+                  className='text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-l-none
+                    hover:bg-transparent'>
+                  {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
+                  <span className='sr-only'>{isPasswordVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
+                </Button>
+              </div>
+
+              <ErrorMessageComponent
+                message={
+                  formState.errors.confirmPassword?.message &&
+                  t(formState.errors.confirmPassword?.message, {
+                    minLength: MIN_PASSWORD_LENGTH,
+                  })
+                }
+              />
+            </div>
+
+            <Button className='w-full' type='submit'>
+              {t('signUpButton')}
             </Button>
-          </div>
-
-          <ErrorMessageComponent
-            message={
-              formState.errors.password?.message &&
-              t(formState.errors.password?.message, {
-                minLength: MIN_PASSWORD_LENGTH,
-              })
-            }
-          />
-        </div>
-
-        <div className='w-full space-y-1'>
-          <Label htmlFor='confirm-password' className='leading-5'>
-            {t('confirmPasswordLabel')}
-          </Label>
-
-          <div className='relative'>
-            <Input
-              id='confirm-password'
-              type={isConfirmPasswordVisible ? 'text' : 'password'}
-              placeholder='••••••••••••••••'
-              className='pr-9'
-              {...register('confirmPassword')}
-            />
-            <Button
-              type='button'
-              variant='ghost'
-              size='icon'
-              onClick={() => setIsConfirmPasswordVisible((prevState) => !prevState)}
-              className='text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-l-none
-                hover:bg-transparent'>
-              {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
-              <span className='sr-only'>{isPasswordVisible ? t('hidePasswordText') : t('showPasswordText')}</span>
-            </Button>
-          </div>
-
-          <ErrorMessageComponent
-            message={
-              formState.errors.confirmPassword?.message &&
-              t(formState.errors.confirmPassword?.message, {
-                minLength: MIN_PASSWORD_LENGTH,
-              })
-            }
-          />
-        </div>
-
-        <Button className='w-full' type='submit'>
-          {t('signUpButton')}
-        </Button>
-      </fieldset>
-    </form>
+          </fieldset>
+        </form>
+      </CardContent>
+    </Card>
   );
 };
 
