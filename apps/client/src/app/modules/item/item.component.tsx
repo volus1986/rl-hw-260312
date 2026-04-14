@@ -33,14 +33,14 @@ const ItemComponent: FC<Readonly<IProps>> = (props) => {
     router.back();
   };
 
-  // return (based on shadcn-studio/blocks/cta-section-12/cta-section-12)
+  // return
   return (
     <div className='grid justify-center'>
       <div className='text-wrap'>
         <h1 className='text-center text-2xl'>{t('title')}</h1>
       </div>
 
-      <section className='bg-muted py-8 sm:py-16 lg:py-24'>
+      <section className='py-8 sm:py-16 lg:py-24'>
         <div className='container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8'>
           <Card className='shadow-none'>
             <CardContent>
