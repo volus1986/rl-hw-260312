@@ -25,7 +25,8 @@
     "notFoundBackButton": "Zur Seite „Einträge“",
     "photoId": "Foto-ID",
     "photoAlbumId": "Album-ID",
-    "photoTitle": "Titel"
+    "photoTitle": "Titel",
+    "openSourceButton": "Open Source (neuer Tab)"
   },
   "SignPage": {
     "signInTab": "Anmelden",

@@ -28,7 +28,8 @@ declare const messages: {
     "notFoundBackButton": "Go to the Items Page",
     "photoId": "Photo ID",
     "photoAlbumId": "Album ID",
-    "photoTitle": "Title"
+    "photoTitle": "Title",
+    "openSourceButton": "Open source (new tab)"
   },
   "SignPage": {
     "signInTab": "Sign In",
