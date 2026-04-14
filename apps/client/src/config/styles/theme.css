@@ -31,9 +31,9 @@
   --sidebar-border: oklch(0.93 0.01 261.82);
   --sidebar-ring: oklch(0.48 0.2 260.47);
 
-  --font-sans: Inter, sans-serif;
-  --font-serif: Source Serif 4, serif;
-  --font-mono: IBM Plex Mono, monospace;
+  --font-sans: 'Gabriela', Inter, sans-serif;
+  --font-serif: 'Delius Swash Caps', Source Serif 4, serif;
+  --font-mono: 'Space Mono', IBM Plex Mono, monospace;
 
   --radius: 0.375rem;
 

@@ -1,6 +1,7 @@
 import { type Metadata } from 'next';
 import { type FC, type ReactNode } from 'react';
 
+import { fontMono, fontSans, fontSerif } from '@/config/styles/fonts';
 import { ThemeProvider } from '@/pkg/shadcn';
 
 import '@/config/styles/globals.css';
@@ -21,7 +22,10 @@ const RootLayout: FC<Readonly<IProps>> = (props) => {
 
   // return
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html
+      lang='en'
+      suppressHydrationWarning
+      className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable}`}>
       <body>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
           {children}
