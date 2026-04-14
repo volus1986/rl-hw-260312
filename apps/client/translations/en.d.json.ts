@@ -5,7 +5,8 @@ declare const messages: {
   "Header": {
     "login": "Login",
     "logout": "Logout",
-    "items": "Items"
+    "items": "Items",
+    "userInfoGreeting": "Welcome, {name}"
   },
   "RootPage": {
     "login": "Login",
@@ -13,11 +14,13 @@ declare const messages: {
   },
   "ItemsPage": {
     "title": "Items",
+    "description": "You can enjoy the beautiful photos",
     "prevNavButton": "Prev",
     "nextNavButton": "Next",
     "pageNotFoundTitle": "Page Not Found",
     "pageNotFoundDescription": "Selected item not exists",
-    "pageNotFoundGoToItemsPageButton": "Go to the Items Page"
+    "pageNotFoundGoToItemsPageButton": "Go to the Items Page",
+    "cartDetailsButton": "Details"
   },
   "ItemPage": {
     "title": "Details",

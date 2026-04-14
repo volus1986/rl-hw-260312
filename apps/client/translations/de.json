@@ -2,7 +2,8 @@
   "Header": {
     "login": "Anmelden",
     "logout": "Abmelden",
-    "items": "Einträge"
+    "items": "Einträge",
+    "userInfoGreeting": "Willkommen, {name}"
   },
   "RootPage": {
     "login": "Anmelden",
@@ -10,11 +11,13 @@
   },
   "ItemsPage": {
     "title": "Einträge",
+    "description": "Sie können die schönen Fotos genießen",
     "prevNavButton": "Zurück",
     "nextNavButton": "Weiter",
     "pageNotFoundTitle": "Seite nicht gefunden",
     "pageNotFoundDescription": "Der ausgewählte Eintrag existiert nicht",
-    "pageNotFoundGoToItemsPageButton": "Zur Einträge"
+    "pageNotFoundGoToItemsPageButton": "Zur Einträge",
+    "cartDetailsButton": "Einzelheiten"
   },
   "ItemPage": {
     "title": "Einzelheiten",

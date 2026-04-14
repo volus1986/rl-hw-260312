@@ -34,7 +34,7 @@ const ItemsListComponent: FC<Readonly<IProps>> = () => {
     <section className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
       <div className='mb-4 space-y-4 text-center sm:mb-16 lg:mb-8'>
         <h1 className='text-primary text-sm font-medium'>{t('title')}</h1>
-        <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>You can enjoy the beautiful photos.</h2>
+        <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>{t('description')}</h2>
       </div>
 
       <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>{cards}</div>
