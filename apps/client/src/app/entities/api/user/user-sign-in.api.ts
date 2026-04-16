@@ -1,21 +1,19 @@
 import { useUserStore } from '@/app/shared/store';
 import { login } from '@/pkg/supabase/entities';
+import { type TUserRes } from '@/pkg/supabase/entities/dto';
 
+// interface
 interface IResponse {
-  data: {
-    id: string;
-    email: string;
-    name: string;
-  } | null;
-  error: {
-    message: string;
-  } | null;
+  data: TUserRes | null;
+  error: { message: string } | null;
 }
 
+// function
 export const userSignIn = async (email: string, password: string): Promise<IResponse> => {
   const { data, error } = await login(email, password);
 
   if (error || !data) {
+    // return
     return {
       data: null,
       error: { message: error?.message ?? 'Login failed' },
@@ -28,6 +26,7 @@ export const userSignIn = async (email: string, password: string): Promise<IResp
     name: data.user.name,
   });
 
+  // return
   return {
     data: data.user,
     error: null,

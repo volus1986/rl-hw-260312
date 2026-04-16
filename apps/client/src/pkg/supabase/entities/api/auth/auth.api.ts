@@ -3,15 +3,23 @@
 import { jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 
+import { type TUserRes } from '@/pkg/supabase/entities/dto';
 import { createServiceClient } from '@/pkg/supabase/server';
 
 const AUTH_COOKIE = 'auth-token';
 
+// interface
+interface IAuthResponse {
+  data: TUserRes | null;
+  error: { message: string } | null;
+}
+
+// function
 function getJwtSecret(): Uint8Array {
   return new TextEncoder().encode(process.env.JWT_SECRET!);
 }
 
-export const verifyBearerToken = async (authorizationHeader?: string | null) => {
+export const verifyBearerToken = async (authorizationHeader?: string | null): Promise<IAuthResponse> => {
   let token: string | null = null;
 
   if (authorizationHeader?.startsWith('Bearer ')) {
@@ -41,12 +49,14 @@ export const verifyBearerToken = async (authorizationHeader?: string | null) => 
       .single();
 
     if (error || !user) {
+      // return
       return {
         data: null,
         error: { message: 'User not found' },
       };
     }
 
+    // return
     return {
       data: {
         id: user.id as string,
@@ -56,6 +66,7 @@ export const verifyBearerToken = async (authorizationHeader?: string | null) => 
       error: null,
     };
   } catch {
+    // return
     return {
       data: null,
       error: { message: 'Invalid or expired token' },

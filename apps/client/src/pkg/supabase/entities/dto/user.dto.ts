@@ -6,3 +6,5 @@ export const SUserRes = z.object({
   email: z.string(),
   name: z.string(),
 });
+
+export type TUserRes = z.infer<typeof SUserRes>;

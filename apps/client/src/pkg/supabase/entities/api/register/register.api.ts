@@ -4,8 +4,15 @@ import { createHash } from 'crypto';
 import { SignJWT } from 'jose';
 import { cookies, headers } from 'next/headers';
 
+import { type TRegisterRes } from '@/pkg/supabase/entities/dto';
 import { createServiceClient } from '@/pkg/supabase/server';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
+
+// interface
+interface IRegisterResponse {
+  data: TRegisterRes | null;
+  error: { message: string } | null;
+}
 
 // constant
 const PASSWORD_SALT = '10';
@@ -15,6 +22,7 @@ const TOKEN_MAX_AGE = 7 * 24 * 60 * 60;
 const REGISTER_MAX_ATTEMPTS = 3;
 const REGISTER_WINDOW_MS = 5 * 60 * 1000;
 
+// function
 function hashPassword(password: string): string {
   return createHash('sha256')
     .update(password + PASSWORD_SALT)
@@ -25,8 +33,7 @@ function getJwtSecret(): Uint8Array {
   return new TextEncoder().encode(process.env.JWT_SECRET!);
 }
 
-// function
-export const register = async (email: string, password: string, name: string) => {
+export const register = async (email: string, password: string, name: string): Promise<IRegisterResponse> => {
   const headerStore = await headers();
   const ip = headerStore.get('x-forwarded-for') ?? headerStore.get('x-real-ip') ?? '127.0.0.1';
 

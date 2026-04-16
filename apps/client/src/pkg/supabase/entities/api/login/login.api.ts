@@ -4,8 +4,15 @@ import { createHash } from 'crypto';
 import { SignJWT } from 'jose';
 import { cookies, headers } from 'next/headers';
 
+import { type TLoginRes } from '@/pkg/supabase/entities/dto';
 import { createServiceClient } from '@/pkg/supabase/server';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
+
+// interface
+interface ILoginResponse {
+  data: TLoginRes | null;
+  error: { message: string } | null;
+}
 
 // constant
 const PASSWORD_SALT = '10';
@@ -26,7 +33,7 @@ function getJwtSecret(): Uint8Array {
   return new TextEncoder().encode(process.env.JWT_SECRET!);
 }
 
-export const login = async (email: string, password: string) => {
+export const login = async (email: string, password: string): Promise<ILoginResponse> => {
   const headerStore = await headers();
   const ip = headerStore.get('x-forwarded-for') ?? headerStore.get('x-real-ip') ?? '127.0.0.1';
 
