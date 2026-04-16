@@ -47,6 +47,9 @@
     "minLengthErrorMessage": "Die Mindestlänge beträgt {minLength} Zeichen",
     "invalidCredentialsErrorMessage": "Ungültige E-Mail-Adresse oder falsches Passwort",
     "tooManyAttemptsErrorMessage": "Zu viele Anmeldeversuche. Versuchen Sie es in {seconds}s erneut.",
-    "loginFailedErrorMessage": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut."
+    "loginFailedErrorMessage": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "emailAlreadyTakenErrorMessage": "Diese E-Mail-Adresse ist bereits vergeben",
+    "tooManyRegistrationAttemptsErrorMessage": "Zu viele Registrierungsversuche. Versuchen Sie es in {seconds}s erneut.",
+    "registrationFailedErrorMessage": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut."
   }
 }

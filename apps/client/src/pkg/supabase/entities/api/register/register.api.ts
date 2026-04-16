@@ -9,9 +9,14 @@ import { createServiceClient } from '@/pkg/supabase/server';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
 // interface
+interface IRegisterError {
+  message: string;
+  seconds?: number;
+}
+
 interface IRegisterResponse {
   data: TRegisterRes | null;
-  error: { message: string } | null;
+  error: IRegisterError | null;
 }
 
 // constant
@@ -49,7 +54,7 @@ export const register = async (email: string, password: string, name: string): P
     // return
     return {
       data: null,
-      error: { message: `Too many registration attempts. Try again in ${seconds}s.` },
+      error: { message: 'tooManyRegistrationAttemptsErrorMessage', seconds },
     };
   }
 
@@ -61,7 +66,7 @@ export const register = async (email: string, password: string, name: string): P
     // return
     return {
       data: null,
-      error: { message: 'Email is already taken' },
+      error: { message: 'emailAlreadyTakenErrorMessage' },
     };
   }
 
@@ -77,7 +82,7 @@ export const register = async (email: string, password: string, name: string): P
     // return
     return {
       data: null,
-      error: { message: error?.message ?? 'Registration failed' },
+      error: { message: 'registrationFailedErrorMessage' },
     };
   }
 

@@ -5,7 +5,7 @@ import { type TRegisterReq, type TUserRes } from '@/pkg/supabase/entities/dto';
 // interface
 interface IResponse {
   data: TUserRes | null;
-  error: { message: string } | null;
+  error: { message: string; seconds?: number } | null;
 }
 
 // function
@@ -18,7 +18,7 @@ export const userSignUp = async (props: Readonly<TRegisterReq>): Promise<IRespon
     // return
     return {
       data: null,
-      error: { message: error?.message ?? 'Registration failed' },
+      error: { message: error?.message ?? 'registrationFailedErrorMessage', seconds: error?.seconds },
     };
   }
 

@@ -50,7 +50,10 @@ declare const messages: {
     "minLengthErrorMessage": "Min length is {minLength} symbols",
     "invalidCredentialsErrorMessage": "Invalid email or password",
     "tooManyAttemptsErrorMessage": "Too many login attempts. Try again in {seconds}s.",
-    "loginFailedErrorMessage": "Login failed. Please try again."
+    "loginFailedErrorMessage": "Login failed. Please try again.",
+    "emailAlreadyTakenErrorMessage": "This email is already taken",
+    "tooManyRegistrationAttemptsErrorMessage": "Too many registration attempts. Try again in {seconds}s.",
+    "registrationFailedErrorMessage": "Registration failed. Please try again."
   }
 };
 export default messages;

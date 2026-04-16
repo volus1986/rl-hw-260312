@@ -41,6 +41,7 @@ const SignUpFormComponent: FC<Readonly<IProps>> = () => {
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+  const [apiError, setApiError] = useState<{ message: string; seconds?: number } | null>(null);
 
   const { handleSubmit, register, formState } = useForm({
     defaultValues: {
@@ -59,11 +60,13 @@ const SignUpFormComponent: FC<Readonly<IProps>> = () => {
       name: data.name,
     });
 
-    if (res.error?.message) {
-      console.log('error:', res.error.message);
+    if (res.error) {
+      setApiError(res.error);
     } else if (res.data?.id) {
+      setApiError(null);
       router.push('/items'); // Handle case when login after registration.
     } else {
+      setApiError(null);
       window.location.reload(); // Handle case when not login after registration.
     }
   };
@@ -171,6 +174,9 @@ const SignUpFormComponent: FC<Readonly<IProps>> = () => {
               {t('signUpButton')}
             </Button>
           </fieldset>
+          <ErrorMessageComponent
+            message={apiError ? t(apiError.message, { seconds: apiError.seconds ?? 0 }) : undefined}
+          />
         </form>
       </CardContent>
     </Card>
