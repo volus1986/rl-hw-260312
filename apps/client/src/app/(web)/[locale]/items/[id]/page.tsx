@@ -1,10 +1,11 @@
 import type { Metadata, NextPage } from 'next';
 
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
 import { getPhotoDetails } from '@/app/entities/api';
 import { photoDetailsQueryOptions } from '@/app/entities/api/photo-details';
 import { ItemComponent } from '@/app/modules/item';
+import { getQueryClient } from '@/pkg/rest-api';
 
 export const revalidate = 3600;
 
@@ -32,7 +33,7 @@ const Page: NextPage<Readonly<IProps>> = async (props) => {
   const { params } = props;
 
   const id = Number((await params).id);
-  const queryClient = new QueryClient();
+  const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery(photoDetailsQueryOptions(id));
 
