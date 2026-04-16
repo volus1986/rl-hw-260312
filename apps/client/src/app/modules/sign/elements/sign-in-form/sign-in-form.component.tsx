@@ -134,6 +134,7 @@ const SignInFormComponent: FC<Readonly<IProps>> = () => {
               {t('signInTab')}
             </Button>
           </fieldset>
+
           <ErrorMessageComponent
             message={apiError ? t(apiError.message, { seconds: apiError.seconds ?? 0 }) : undefined}
           />

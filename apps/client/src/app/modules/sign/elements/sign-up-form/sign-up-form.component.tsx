@@ -174,6 +174,7 @@ const SignUpFormComponent: FC<Readonly<IProps>> = () => {
               {t('signUpButton')}
             </Button>
           </fieldset>
+
           <ErrorMessageComponent
             message={apiError ? t(apiError.message, { seconds: apiError.seconds ?? 0 }) : undefined}
           />
