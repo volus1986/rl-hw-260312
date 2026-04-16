@@ -5,7 +5,7 @@ import { type TUserRes } from '@/pkg/supabase/entities/dto';
 // interface
 interface IResponse {
   data: TUserRes | null;
-  error: { message: string } | null;
+  error: { message: string; seconds?: number } | null;
 }
 
 // function
@@ -16,7 +16,7 @@ export const userSignIn = async (email: string, password: string): Promise<IResp
     // return
     return {
       data: null,
-      error: { message: error?.message ?? 'Login failed' },
+      error: { message: error?.message ?? 'loginFailedErrorMessage', seconds: error?.seconds },
     };
   }
 

@@ -44,6 +44,9 @@
     "requiredErrorMessage": "Erforderlich",
     "incorrectEmailErrorMessage": "Ungültiges E-Mail-Format",
     "passwordsAreNotMatchErrorMessage": "Passwörter stimmen nicht überein",
-    "minLengthErrorMessage": "Die Mindestlänge beträgt {minLength} Zeichen"
+    "minLengthErrorMessage": "Die Mindestlänge beträgt {minLength} Zeichen",
+    "invalidCredentialsErrorMessage": "Ungültige E-Mail-Adresse oder falsches Passwort",
+    "tooManyAttemptsErrorMessage": "Zu viele Anmeldeversuche. Versuchen Sie es in {seconds}s erneut.",
+    "loginFailedErrorMessage": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut."
   }
 }

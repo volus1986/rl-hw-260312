@@ -9,9 +9,14 @@ import { createServiceClient } from '@/pkg/supabase/server';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
 // interface
+interface ILoginError {
+  message: string;
+  seconds?: number;
+}
+
 interface ILoginResponse {
   data: TLoginRes | null;
-  error: { message: string } | null;
+  error: ILoginError | null;
 }
 
 // constant
@@ -49,7 +54,7 @@ export const login = async (email: string, password: string): Promise<ILoginResp
     // return
     return {
       data: null,
-      error: { message: `Too many login attempts. Try again in ${seconds}s.` },
+      error: { message: 'tooManyAttemptsErrorMessage', seconds },
     };
   }
 
@@ -64,7 +69,7 @@ export const login = async (email: string, password: string): Promise<ILoginResp
   if (error || !user) {
     return {
       data: null,
-      error: { message: 'Invalid credentials' },
+      error: { message: 'invalidCredentialsErrorMessage' },
     };
   }
 
@@ -73,7 +78,7 @@ export const login = async (email: string, password: string): Promise<ILoginResp
   if (user.password !== hashedPassword) {
     return {
       data: null,
-      error: { message: 'Invalid credentials' },
+      error: { message: 'invalidCredentialsErrorMessage' },
     };
   }
 

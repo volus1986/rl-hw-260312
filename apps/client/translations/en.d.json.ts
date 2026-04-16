@@ -47,7 +47,10 @@ declare const messages: {
     "requiredErrorMessage": "Required",
     "incorrectEmailErrorMessage": "Incorrect email format",
     "passwordsAreNotMatchErrorMessage": "Passwords are tor match",
-    "minLengthErrorMessage": "Min length is {minLength} symbols"
+    "minLengthErrorMessage": "Min length is {minLength} symbols",
+    "invalidCredentialsErrorMessage": "Invalid email or password",
+    "tooManyAttemptsErrorMessage": "Too many login attempts. Try again in {seconds}s.",
+    "loginFailedErrorMessage": "Login failed. Please try again."
   }
 };
 export default messages;

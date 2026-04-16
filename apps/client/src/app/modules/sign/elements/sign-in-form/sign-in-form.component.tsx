@@ -31,6 +31,7 @@ const SignInFormComponent: FC<Readonly<IProps>> = () => {
   const router = useRouter();
   const t = useTranslations('SignPage');
   const [isVisible, setIsVisible] = useState(false);
+  const [apiError, setApiError] = useState<{ message: string; seconds?: number } | null>(null);
   const userStore = useUserStore();
 
   const {
@@ -52,13 +53,15 @@ const SignInFormComponent: FC<Readonly<IProps>> = () => {
     try {
       const res = await userSignIn(data.email, data.password);
 
-      if (!res.error?.message) {
+      if (!res.error) {
+        setApiError(null);
         router.push('/items');
       } else {
-        console.log('error:', res.error.message);
+        setApiError(res.error);
       }
     } catch (err) {
       console.error(err);
+      setApiError({ message: 'loginFailedErrorMessage' });
     }
   };
 
@@ -131,6 +134,9 @@ const SignInFormComponent: FC<Readonly<IProps>> = () => {
               {t('signInTab')}
             </Button>
           </fieldset>
+          <ErrorMessageComponent
+            message={apiError ? t(apiError.message, { seconds: apiError.seconds ?? 0 }) : undefined}
+          />
         </form>
       </CardContent>
     </Card>
