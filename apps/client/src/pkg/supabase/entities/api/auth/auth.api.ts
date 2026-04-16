@@ -3,7 +3,7 @@
 import { jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 
-import { type TUserRes } from '@/pkg/supabase/entities/dto';
+import { SUserRes, type TUserRes } from '@/pkg/supabase/entities/dto';
 import { createServiceClient } from '@/pkg/supabase/server';
 
 const AUTH_COOKIE = 'auth-token';
@@ -58,11 +58,7 @@ export const verifyBearerToken = async (authorizationHeader?: string | null): Pr
 
     // return
     return {
-      data: {
-        id: user.id as string,
-        email: user.email as string,
-        name: user.name as string,
-      },
+      data: SUserRes.parse(user),
       error: null,
     };
   } catch {

@@ -4,7 +4,7 @@ import { createHash } from 'crypto';
 import { SignJWT } from 'jose';
 import { cookies, headers } from 'next/headers';
 
-import { type TLoginRes } from '@/pkg/supabase/entities/dto';
+import { SLoginRes, type TLoginRes } from '@/pkg/supabase/entities/dto';
 import { createServiceClient } from '@/pkg/supabase/server';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
@@ -95,14 +95,7 @@ export const login = async (email: string, password: string): Promise<ILoginResp
 
   // return
   return {
-    data: {
-      token,
-      user: {
-        id: user.id as string,
-        email: user.email as string,
-        name: user.name as string,
-      },
-    },
+    data: SLoginRes.parse({ token, user }),
     error: null,
   };
 };

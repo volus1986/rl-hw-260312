@@ -4,7 +4,7 @@ import { createHash } from 'crypto';
 import { SignJWT } from 'jose';
 import { cookies, headers } from 'next/headers';
 
-import { type TRegisterRes } from '@/pkg/supabase/entities/dto';
+import { SRegisterRes, type TRegisterRes } from '@/pkg/supabase/entities/dto';
 import { createServiceClient } from '@/pkg/supabase/server';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
@@ -99,14 +99,7 @@ export const register = async (email: string, password: string, name: string): P
 
   // return
   return {
-    data: {
-      token,
-      user: {
-        id: user.id as string,
-        email: user.email as string,
-        name: user.name as string,
-      },
-    },
+    data: SRegisterRes.parse({ token, user }),
     error: null,
   };
 };
