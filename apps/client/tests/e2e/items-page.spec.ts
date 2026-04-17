@@ -3,8 +3,6 @@ import { expect, test } from '@playwright/test';
 test('items page', async ({ page }) => {
   await page.goto('/items');
 
-  // await page.pause();
-
   await expect(page.getByRole('heading', { name: 'Items' })).toBeVisible();
 
   await expect(page.getByRole('link', { name: 'Details' }).first()).toBeVisible();
