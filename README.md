@@ -35,9 +35,9 @@
 
 **Other scripts:**
 
-- `npm run build` — Production build
-- `npm run start` — Run the built app
-- `npm run lint` — ESLint,
-- `npm test` — Playwright.
+- `yarn build` — Production build
+- `yarn start` — Run the built app
+- `yarn lint` — ESLint,
+- `yarn test` — Playwright.
 
 <br>
