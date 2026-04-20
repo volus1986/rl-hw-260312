@@ -2,9 +2,9 @@
 
 import { cookies } from 'next/headers';
 
-const AUTH_COOKIE = 'auth-token';
+import { envServer } from '@/config/env';
 
 export const logout = async () => {
   const cookieStore = await cookies();
-  cookieStore.delete(AUTH_COOKIE);
+  cookieStore.delete(envServer.AUTH_COOKIE);
 };
