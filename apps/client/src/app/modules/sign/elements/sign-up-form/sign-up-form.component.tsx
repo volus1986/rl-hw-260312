@@ -2,7 +2,7 @@
 
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { type FC, useState } from 'react';
+import { type FC, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import z from 'zod';
 
@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { userSignUp } from '@/app/entities/api/user';
 import { Button, Input, Label } from '@/app/shared/components';
+import { useUserStore } from '@/app/shared/store/user.store';
 import { useRouter } from '@/pkg/locale';
 import { Card, CardContent, CardHeader, CardTitle } from '@/pkg/shadcn/ui/components/card';
 
@@ -36,12 +37,19 @@ interface IProps {}
 
 // component
 const SignUpFormComponent: FC<Readonly<IProps>> = () => {
-  const router = useRouter();
-  const t = useTranslations('SignPage');
-
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
   const [apiError, setApiError] = useState<{ message: string; seconds?: number } | null>(null);
+
+  const t = useTranslations('SignPage');
+  const router = useRouter();
+  const userStore = useUserStore();
+
+  useEffect(() => {
+    if (userStore.user) {
+      router.push('/items');
+    }
+  }, [userStore.user]);
 
   const { handleSubmit, register, formState } = useForm({
     defaultValues: {
@@ -64,7 +72,6 @@ const SignUpFormComponent: FC<Readonly<IProps>> = () => {
       setApiError(res.error);
     } else if (res.data?.id) {
       setApiError(null);
-      router.push('/items'); // Handle case when login after registration.
     } else {
       setApiError(null);
       window.location.reload(); // Handle case when not login after registration.

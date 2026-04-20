@@ -28,10 +28,11 @@ interface IProps {}
 
 // component
 const SignInFormComponent: FC<Readonly<IProps>> = () => {
-  const router = useRouter();
-  const t = useTranslations('SignPage');
   const [isVisible, setIsVisible] = useState(false);
   const [apiError, setApiError] = useState<{ message: string; seconds?: number } | null>(null);
+
+  const t = useTranslations('SignPage');
+  const router = useRouter();
   const userStore = useUserStore();
 
   const {
@@ -55,7 +56,6 @@ const SignInFormComponent: FC<Readonly<IProps>> = () => {
 
       if (!res.error) {
         setApiError(null);
-        router.push('/items');
       } else {
         setApiError(res.error);
       }
