@@ -1,5 +1,5 @@
-import { notFound } from 'next/navigation';
+import { NotFoundComponent } from '@/app/modules/not-found';
 
 export default function NotFoundCatchAll() {
-  notFound();
+  return <NotFoundComponent />;
 }
