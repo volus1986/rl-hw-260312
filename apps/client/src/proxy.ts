@@ -8,12 +8,14 @@ import { routing } from './pkg/locale/routing';
 
 const intlMiddleware = createIntlMiddleware(routing);
 
+// function
 export async function proxy(request: NextRequest) {
   const supabaseResponse = await updateSession(request);
   const intlResponse = intlMiddleware(request);
 
   mergeCookies(supabaseResponse, intlResponse);
 
+  // return
   return intlResponse;
 }
 

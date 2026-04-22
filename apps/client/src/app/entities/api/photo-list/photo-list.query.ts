@@ -2,6 +2,7 @@ import { queryOptions, useQuery } from '@tanstack/react-query';
 
 import { getPhotoList } from '@/app/entities/api';
 
+// function
 export const photoListQueryOptions = (page: number, limit: number) => {
   return queryOptions({
     queryKey: ['photos', page, limit],
@@ -10,6 +11,8 @@ export const photoListQueryOptions = (page: number, limit: number) => {
   });
 };
 
+// function
 export const usePhotoListQuery = (page: number, limit: number) => {
+  // return
   return useQuery(photoListQueryOptions(page, limit));
 };

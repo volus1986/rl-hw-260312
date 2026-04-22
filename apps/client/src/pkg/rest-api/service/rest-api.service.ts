@@ -4,6 +4,7 @@ let browserQueryClient: QueryClient | undefined = undefined;
 
 // make query client
 const makeQueryClient = () => {
+  // return
   return new QueryClient({
     defaultOptions: {
       queries: {
@@ -14,6 +15,7 @@ const makeQueryClient = () => {
       },
       dehydrate: {
         shouldDehydrateQuery: (query) => {
+          // return
           return defaultShouldDehydrateQuery(query) || query.state.status === 'pending';
         },
       },
@@ -24,9 +26,11 @@ const makeQueryClient = () => {
 // query client
 export const getQueryClient = () => {
   if (environmentManager.isServer()) {
+    // return
     return makeQueryClient();
   } else {
     if (!browserQueryClient) browserQueryClient = makeQueryClient();
+    // return
     return browserQueryClient;
   }
 };

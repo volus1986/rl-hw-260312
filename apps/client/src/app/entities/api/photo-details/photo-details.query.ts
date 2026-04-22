@@ -2,7 +2,9 @@ import { queryOptions, useQuery } from '@tanstack/react-query';
 
 import { getPhotoDetails } from '@/app/entities/api';
 
+// function
 export const photoDetailsQueryOptions = (id: number) => {
+  // return
   return queryOptions({
     queryKey: ['photoDetails', id],
     queryFn: ({ signal }) => getPhotoDetails({ id, signal }),
@@ -10,6 +12,8 @@ export const photoDetailsQueryOptions = (id: number) => {
   });
 };
 
+// function
 export const usePhotoDetailsQuery = (id: number) => {
+  // return
   return useQuery(photoDetailsQueryOptions(id));
 };

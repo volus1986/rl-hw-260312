@@ -10,9 +10,14 @@ import { Link } from '@/pkg/locale';
 import { SignButtonComponent } from './elements/sign-button';
 import { UserInfoComponent } from './elements/user-info';
 
-const HeaderComponent: FC = () => {
+// interface
+interface IProps {}
+
+// component
+const HeaderComponent: FC<Readonly<IProps>> = () => {
   const t = useTranslations('Header');
 
+  // return
   return (
     <header className='bg-background sticky top-0 z-50'>
       <div className='mx-auto flex max-w-7xl items-center justify-between gap-8 px-4 py-7 sm:px-6'>

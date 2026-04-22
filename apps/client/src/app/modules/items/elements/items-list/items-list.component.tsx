@@ -23,7 +23,10 @@ const ItemsListComponent: FC<Readonly<IProps>> = () => {
 
   const photos = usePhotoListQuery(page, limit);
 
-  if (photos.isError) return <p className='text-center text-destructive py-4'>{photos.error.message}</p>;
+  if (photos.isError) {
+    // return
+    return <p className='text-center text-destructive py-4'>{photos.error.message}</p>;
+  }
 
   const cards = photos.data?.data.map((photo) => (
     <CardComponent key={photo.id} id={photo.id} img={photo.thumbnailUrl} title={photo.title} />

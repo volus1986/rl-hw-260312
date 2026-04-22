@@ -16,6 +16,7 @@ const UserInfoComponent: FC<Readonly<IProps>> = () => {
   const user = userStore.user;
 
   if (!user) {
+    // return
     return null;
   }
 

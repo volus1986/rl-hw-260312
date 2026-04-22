@@ -25,7 +25,10 @@ const PaginationControlsComponent: FC<Readonly<IProps>> = () => {
 
   const photos = usePhotoListQuery(page, limit);
 
-  if (photos.isError) return null;
+  if (photos.isError) {
+    // return
+    return null;
+  }
 
   const pages = Math.floor((photos.data?.meta?.total_results ?? 0) / limit);
 
@@ -34,6 +37,7 @@ const PaginationControlsComponent: FC<Readonly<IProps>> = () => {
 
     params.set('page', pageNumber.toString());
 
+    // return
     return `${pathname}?${params.toString()}`;
   };
 
