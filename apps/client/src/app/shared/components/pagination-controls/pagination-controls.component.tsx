@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { Link } from '@/pkg/locale';
+import { useRouter } from '@/pkg/locale';
 import { Button } from '@/pkg/shadcn';
 
 // interface
@@ -15,29 +15,18 @@ interface IProps {
 // component
 const PaginationControlsComponent: FC<Readonly<IProps>> = ({ page, totalPages, prevHref, nextHref }) => {
   const t = useTranslations('ItemsPage');
+  const router = useRouter();
 
   // return
   return (
     <div className='mt-4 flex gap-1 justify-center'>
-      {page <= 1 ? (
-        <Button disabled>{t('prevNavButton')}</Button>
-      ) : (
-        <Button asChild>
-          <Link href={prevHref} scroll={false}>
-            {t('prevNavButton')}
-          </Link>
-        </Button>
-      )}
+      <Button disabled={page <= 1} onClick={() => router.push(prevHref, { scroll: false })}>
+        {t('prevNavButton')}
+      </Button>
 
-      {page >= totalPages ? (
-        <Button disabled>{t('nextNavButton')}</Button>
-      ) : (
-        <Button asChild>
-          <Link href={nextHref} scroll={false}>
-            {t('nextNavButton')}
-          </Link>
-        </Button>
-      )}
+      <Button disabled={page >= totalPages} onClick={() => router.push(nextHref, { scroll: false })}>
+        {t('nextNavButton')}
+      </Button>
     </div>
   );
 };
