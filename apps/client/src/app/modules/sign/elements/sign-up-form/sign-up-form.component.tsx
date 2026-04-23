@@ -9,12 +9,11 @@ import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { userSignUp } from '@/app/entities/api/user';
+import { ErrorMessageComponent } from '@/app/shared/components/error-message';
 import { useUserStore } from '@/app/shared/store/user.store';
 import { useRouter } from '@/pkg/locale';
 import { Button, Input, Label } from '@/pkg/shadcn';
 import { Card, CardContent, CardHeader, CardTitle } from '@/pkg/shadcn/ui/components/card';
-
-import { ErrorMessageComponent } from '../error-message';
 
 const MIN_PASSWORD_LENGTH = 8;
 

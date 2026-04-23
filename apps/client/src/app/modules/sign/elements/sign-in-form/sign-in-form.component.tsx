@@ -9,12 +9,11 @@ import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { userSignIn } from '@/app/entities/api';
+import { ErrorMessageComponent } from '@/app/shared/components/error-message';
 import { useUserStore } from '@/app/shared/store';
 import { useRouter } from '@/pkg/locale';
 import { Button, Input, Label } from '@/pkg/shadcn';
 import { Card, CardContent, CardHeader, CardTitle } from '@/pkg/shadcn/ui/components/card';
-
-import { ErrorMessageComponent } from '../error-message';
 
 const zodSchema = z.object({
   email: z.email('incorrectEmailErrorMessage').nonempty('requiredErrorMessage'),
