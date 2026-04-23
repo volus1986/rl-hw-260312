@@ -5,7 +5,7 @@ import Error from 'next/error';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
-import { Button } from './shared/components';
+import { Button } from '@/pkg/shadcn';
 
 // interface
 interface IProps {

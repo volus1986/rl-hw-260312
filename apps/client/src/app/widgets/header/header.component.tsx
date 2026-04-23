@@ -3,9 +3,10 @@
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { Button, LanguageSwitcherComponent } from '@/app/shared/components';
+import { LanguageSwitcherComponent } from '@/app/shared/components/language-switcher';
 import { ThemeSwitcherComponent } from '@/app/shared/components/theme-switcher';
 import { Link } from '@/pkg/locale';
+import { Button } from '@/pkg/shadcn';
 
 import { SignButtonComponent } from './elements/sign-button';
 import { UserInfoComponent } from './elements/user-info';

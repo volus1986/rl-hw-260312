@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
 import { usePhotoListQuery } from '@/app/entities/api/photo-list';
-import { CardComponent } from '@/app/shared/components';
+import { CardComponent } from '@/app/shared/components/card';
 
 import { PAGINATION_PARAMS } from '../../items.constant';
 

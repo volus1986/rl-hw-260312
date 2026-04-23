@@ -3,9 +3,9 @@
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { Button } from '@/app/shared/components';
 import { useUserStore } from '@/app/shared/store';
 import { Link, useRouter } from '@/pkg/locale';
+import { Button } from '@/pkg/shadcn';
 import { logout } from '@/pkg/supabase/entities';
 
 //interface

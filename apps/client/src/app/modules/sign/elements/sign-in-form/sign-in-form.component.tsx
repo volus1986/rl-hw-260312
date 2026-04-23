@@ -9,9 +9,9 @@ import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { userSignIn } from '@/app/entities/api';
-import { Button, Input, Label } from '@/app/shared/components';
 import { useUserStore } from '@/app/shared/store';
 import { useRouter } from '@/pkg/locale';
+import { Button, Input, Label } from '@/pkg/shadcn';
 import { Card, CardContent, CardHeader, CardTitle } from '@/pkg/shadcn/ui/components/card';
 
 import { ErrorMessageComponent } from '../error-message';

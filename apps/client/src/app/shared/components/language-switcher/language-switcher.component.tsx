@@ -3,8 +3,8 @@
 import { useParams } from 'next/navigation';
 import { FC } from 'react';
 
-import { Tabs, TabsList, TabsTrigger } from '@/app/shared/components';
 import { usePathname, useRouter } from '@/pkg/locale';
+import { Tabs, TabsList, TabsTrigger } from '@/pkg/shadcn';
 
 // constants
 const locales = ['en', 'de'] as const;

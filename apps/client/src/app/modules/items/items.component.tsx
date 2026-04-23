@@ -4,7 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { type FC } from 'react';
 
 import { usePhotoListQuery } from '@/app/entities/api/photo-list';
-import { PaginationControlsComponent } from '@/app/shared/components';
+import { PaginationControlsComponent } from '@/app/shared/components/pagination-controls';
 import { usePathname } from '@/pkg/locale';
 
 import { ItemsListComponent } from './elements';

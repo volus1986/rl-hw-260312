@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/shared/components';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/shadcn';
 
 import { SignInFormComponent, SignUpFormComponent } from './elements';
 

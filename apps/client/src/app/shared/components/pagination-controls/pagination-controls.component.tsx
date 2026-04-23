@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { Button } from '@/app/shared/components';
 import { Link } from '@/pkg/locale';
+import { Button } from '@/pkg/shadcn';
 
 // interface
 interface IProps {

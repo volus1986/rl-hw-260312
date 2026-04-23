@@ -4,8 +4,7 @@ import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { type FC } from 'react';
 
-import { Button } from '@/app/shared/components';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/app/shared/components';
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/pkg/shadcn';
 
 // interface
 interface IProps {}
