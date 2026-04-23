@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { type FC, useState } from 'react';
 
@@ -23,10 +22,10 @@ const ItemComponent: FC<Readonly<IProps>> = (props) => {
 
   const router = useRouter();
   const t = useTranslations('ItemPage');
-  const { data, isError } = usePhotoDetailsQuery(id);
+  const { data } = usePhotoDetailsQuery(id);
 
-  if (isError || !data?.id) {
-    notFound();
+  if (!data?.id) {
+    return null;
   }
 
   const handlePreviousPageButtonClick = () => {

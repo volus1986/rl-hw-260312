@@ -1,4 +1,5 @@
 import type { Metadata, NextPage } from 'next';
+import { notFound } from 'next/navigation';
 
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
@@ -19,13 +20,22 @@ export const generateMetadata = async (props: Readonly<IProps>): Promise<Metadat
   const { params } = props;
 
   const { id } = await params;
-  const item = await getPhotoDetails({ id: Number(id) });
 
-  // return
-  return {
-    title: `Photo ${item.id} Details page`,
-    description: item.title,
-  };
+  try {
+    const item = await getPhotoDetails({ id: Number(id) });
+
+    if (!item?.id) {
+      return { title: 'Not Found' };
+    }
+
+    // return
+    return {
+      title: `Photo ${item.id} Details page`,
+      description: item.title,
+    };
+  } catch {
+    return { title: 'Not Found' };
+  }
 };
 
 // component
@@ -33,6 +43,17 @@ const Page: NextPage<Readonly<IProps>> = async (props) => {
   const { params } = props;
 
   const id = Number((await params).id);
+
+  try {
+    const item = await getPhotoDetails({ id });
+
+    if (!item?.id) {
+      notFound();
+    }
+  } catch {
+    notFound();
+  }
+
   const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery(photoDetailsQueryOptions(id));
