@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { type FC, useState } from 'react';
 
 import { usePhotoDetailsQuery } from '@/app/entities/api/photo-details';
-import NoImageSvg from '@/app/shared/assets/svg/no-image.svg';
+import { IconNotFound } from '@/app/shared/assets/svg/icons/common';
 import { Link, useRouter } from '@/pkg/locale';
 import { Button } from '@/pkg/shadcn';
 import { Card, CardContent } from '@/pkg/shadcn/ui/components/card';
@@ -73,7 +73,7 @@ const ItemComponent: FC<Readonly<IProps>> = (props) => {
                 <div className='relative h-64 sm:h-80 lg:h-auto rounded-lg overflow-hidden'>
                   {imgError ? (
                     <div className='flex aspect-video w-full h-full items-center justify-center bg-muted'>
-                      <NoImageSvg className='h-16 w-16 text-muted-foreground' />
+                      <IconNotFound className='h-16 w-16 text-muted-foreground' />
                     </div>
                   ) : (
                     <Image

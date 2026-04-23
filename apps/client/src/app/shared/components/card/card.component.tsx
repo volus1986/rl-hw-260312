@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
-import NoImageSvg from '@/app/shared/assets/svg/no-image.svg';
+import { IconNotFound } from '@/app/shared/assets/svg/icons/common';
 import { Link } from '@/pkg/locale';
 import { Button } from '@/pkg/shadcn/ui/components/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/pkg/shadcn/ui/components/card';
@@ -30,7 +30,7 @@ const CardComponent = (props: IProps) => {
       <CardContent className='px-0'>
         {imgError ? (
           <div className='flex aspect-video h-60 w-full items-center justify-center rounded-t-xl bg-muted'>
-            <NoImageSvg className='h-16 w-16 text-muted-foreground' />
+            <IconNotFound className='h-16 w-16 text-muted-foreground' />
           </div>
         ) : (
           <Image
