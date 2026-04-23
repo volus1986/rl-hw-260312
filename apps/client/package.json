@@ -8,9 +8,6 @@
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss}\"",
     "type-check": "tsc --noEmit",
     "format": "yarn run type-check && yarn run lint && yarn run prettier",
-    "deploy": "opennextjs-cloudflare build --env=$CLOUDFLARE_ENV && opennextjs-cloudflare deploy --env=$CLOUDFLARE_ENV",
-    "devsafe": "rm -rf .next && rm -rf .open-next && next dev",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview --env=$CLOUDFLARE_ENV",
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start"
