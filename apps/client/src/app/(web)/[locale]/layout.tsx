@@ -1,9 +1,20 @@
+import { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { ThemeProvider } from 'next-themes';
 import type { FC, ReactNode } from 'react';
 
 import { Header } from '@/app/widgets/header';
+import { fontMono, fontSans, fontSerif } from '@/config/styles/fonts';
 import { RestApiProvider } from '@/pkg/rest-api';
+
+import '@/config/styles/globals.css';
+
+// metadata
+export const metadata: Metadata = {
+  title: 'rl hw 260312',
+  description: 'rl hw 260312',
+};
 
 // interface
 interface IProps {
@@ -20,13 +31,22 @@ const LocaleLayout: FC<Readonly<IProps>> = async (props) => {
 
   // return
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
-      <RestApiProvider>
-        <Header />
+    <html
+      lang='en'
+      suppressHydrationWarning
+      className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable}`}>
+      <body>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <RestApiProvider>
+              <Header />
 
-        {children}
-      </RestApiProvider>
-    </NextIntlClientProvider>
+              {children}
+            </RestApiProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 };
 
