@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { type FC, useState } from 'react';
 
 import { usePhotoDetailsQuery } from '@/app/entities/api/photo-details';
-import { IconNotFound } from '@/app/shared/assets/svg/icons/common';
+import { IconNotFound } from '@/app/shared/assets/icons/common';
 import { Link, useRouter } from '@/pkg/locale';
 import { Button } from '@/pkg/shadcn';
 import { Card, CardContent } from '@/pkg/shadcn/ui/components/card';

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
-import { IconNotFound } from '@/app/shared/assets/svg/icons/common';
+import { IconNotFound } from '@/app/shared/assets/icons/common';
 import { Link } from '@/pkg/locale';
 import { Button } from '@/pkg/shadcn/ui/components/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/pkg/shadcn/ui/components/card';
