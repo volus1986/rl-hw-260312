@@ -5,23 +5,35 @@ import { Button } from '@/app/shared/components';
 import { Link } from '@/pkg/locale';
 
 // interface
-interface IProps {}
+interface IProps {
+  title?: string;
+  description?: string;
+  message?: string;
+  backButtonUrl?: string;
+  backButtonText?: string;
+}
 
 // component
-const NotFound: FC<Readonly<IProps>> = () => {
+const NotFound: FC<Readonly<IProps>> = (props: IProps) => {
+  const {
+    title = `Whoops!`,
+    description = `The page you're looking for isn't found, we suggest you back to home.`,
+    message = 'Something went wrong',
+    backButtonUrl = '/',
+    backButtonText = 'Back to home page',
+  } = props;
+
   // return
   return (
     <div className='grid min-h-screen grid-cols-1 lg:grid-cols-2'>
       <div className='flex flex-col items-center justify-center px-4 py-8 text-center'>
-        <h2 className='mb-6 text-5xl font-semibold'>Whoops!</h2>
-        <h3 className='mb-1.5 text-3xl font-semibold'>Something went wrong</h3>
+        <h2 className='mb-6 text-5xl font-semibold'>{title}</h2>
+        <h3 className='mb-1.5 text-3xl font-semibold'>{description}</h3>
 
-        <p className='text-muted-foreground mb-6 max-w-sm'>
-          The page you&apos;re looking for isn&apos;t found, we suggest you back to home.
-        </p>
+        <p className='text-muted-foreground mb-6 max-w-sm'>{message}</p>
 
         <Button asChild size='lg' className='rounded-lg text-base'>
-          <Link href='/'>Back to home page</Link>
+          <Link href={backButtonUrl}>{backButtonText}</Link>
         </Button>
       </div>
 
