@@ -1,3 +1,3 @@
-export { signIn } from './sign-in.api';
-export { signOut } from './sign-out.api';
-export { signUp } from './sign-up.api';
+export * from './sign-in';
+export * from './sign-out';
+export * from './sign-up';
