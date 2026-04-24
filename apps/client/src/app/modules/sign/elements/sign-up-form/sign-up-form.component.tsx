@@ -8,7 +8,7 @@ import z from 'zod';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { signUp } from '@/app/entities/api/sign';
+import { signUp } from '@/app/entities/api';
 import { ErrorMessageComponent } from '@/app/shared/components/error-message';
 import { useUserStore } from '@/app/shared/store/user.store';
 import { useRouter } from '@/pkg/locale';

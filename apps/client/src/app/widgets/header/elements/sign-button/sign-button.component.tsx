@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { signOut } from '@/app/entities/api/sign';
+import { signOut } from '@/app/entities/api';
 import { useUserStore } from '@/app/shared/store';
 import { Link, useRouter } from '@/pkg/locale';
 import { Button } from '@/pkg/shadcn';
