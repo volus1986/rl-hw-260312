@@ -4,14 +4,15 @@ import { createHash } from 'crypto';
 import { SignJWT } from 'jose';
 import { cookies, headers } from 'next/headers';
 
-import { type TUserRes } from '@/app/entities/api/sign/dto';
 import { envServer } from '@/config/env';
 import { getUserByEmail } from '@/pkg/supabase/api';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
+import { SSignInRes, TSignInRes } from './sign-in.dto';
+
 // interface
 interface IResponse {
-  data: TUserRes | null;
+  data: TSignInRes | null;
   error: { message: string; seconds?: number } | null;
 }
 
@@ -76,7 +77,11 @@ export const signIn = async (email: string, password: string): Promise<IResponse
     maxAge: envServer.TOKEN_MAX_AGE,
   });
 
-  const userData: TUserRes = { id: user.id, email: user.email, name: user.name };
+  const userData = SSignInRes.parse({
+    id: user.id,
+    email: user.email,
+    name: user.name,
+  });
 
   // return
   return {

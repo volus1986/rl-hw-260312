@@ -4,18 +4,12 @@ import { createHash } from 'crypto';
 import { SignJWT } from 'jose';
 import { cookies, headers } from 'next/headers';
 
+import { IUserProfile } from '@/app/entities/models/user-profile.model';
 import { envServer } from '@/config/env';
 import { createUser } from '@/pkg/supabase/api';
-import { type TUserRes } from '@/app/entities/api/sign/dto';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
-import { type TRegisterReq } from '../dto/sign-up.dto';
-
-// interface
-interface IResponse {
-  data: TUserRes | null;
-  error: { message: string; seconds?: number } | null;
-}
+import { SSignUpRes } from './sign-up.dto';
 
 // constant
 const REGISTER_MAX_ATTEMPTS = 3;
@@ -32,7 +26,20 @@ function getJwtSecret(): Uint8Array {
   return new TextEncoder().encode(process.env.JWT_SECRET!);
 }
 
-export const signUp = async (props: Readonly<TRegisterReq>): Promise<IResponse> => {
+// interface
+interface IProps {
+  email: string;
+  password: string;
+  name: string;
+}
+
+interface IResponse {
+  data: IUserProfile | null;
+  error: { message: string; seconds?: number } | null;
+}
+
+// function
+export const signUp = async (props: Readonly<IProps>): Promise<IResponse> => {
   const { email, password, name } = props;
 
   const headerStore = await headers();
@@ -80,9 +87,11 @@ export const signUp = async (props: Readonly<TRegisterReq>): Promise<IResponse> 
     maxAge: envServer.TOKEN_MAX_AGE,
   });
 
+  const userData = SSignUpRes.parse({ id: user.id, email: user.email, name: user.name });
+
   // return
   return {
-    data: { id: user.id, email: user.email, name: user.name },
+    data: userData,
     error: null,
   };
 };
