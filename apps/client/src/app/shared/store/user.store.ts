@@ -16,6 +16,6 @@ export const useUserStore = create<IUserStore>()(
       setUser: (user: IUser) => set(() => ({ user })),
       clearUser: () => set({ user: null }),
     }),
-    { name: 'user-storage' },
+    { name: 'user-storage', version: 1 },
   ),
 );
