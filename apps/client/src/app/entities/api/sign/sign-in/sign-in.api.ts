@@ -1,10 +1,8 @@
 'use server';
 
-import { createHash } from 'crypto';
-import { SignJWT } from 'jose';
-import { cookies, headers } from 'next/headers';
+import { headers } from 'next/headers';
 
-import { envServer } from '@/config/env';
+import { createSession, hashPassword } from '@/app/shared/utils';
 import { getUserByEmail } from '@/pkg/supabase/api';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
@@ -21,16 +19,6 @@ const LOGIN_MAX_ATTEMPTS = 5;
 const LOGIN_WINDOW_MS = 60 * 1000;
 
 // function
-function hashPassword(password: string): string {
-  return createHash('sha256')
-    .update(password + envServer.PASSWORD_SALT)
-    .digest('hex');
-}
-
-function getJwtSecret(): Uint8Array {
-  return new TextEncoder().encode(process.env.JWT_SECRET!);
-}
-
 export const signIn = async (email: string, password: string): Promise<IResponse> => {
   const headerStore = await headers();
   const ip = headerStore.get('x-forwarded-for') ?? headerStore.get('x-real-ip') ?? '127.0.0.1';
@@ -61,21 +49,7 @@ export const signIn = async (email: string, password: string): Promise<IResponse
     };
   }
 
-  const token = await new SignJWT({ sub: user.id, email: user.email })
-    .setProtectedHeader({ alg: 'HS256' })
-    .setIssuedAt()
-    .setExpirationTime('7d')
-    .sign(getJwtSecret());
-
-  const cookieStore = await cookies();
-
-  cookieStore.set(envServer.AUTH_COOKIE, token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    path: '/',
-    maxAge: envServer.TOKEN_MAX_AGE,
-  });
+  await createSession(user.id, user.email);
 
   const userData = SSignInRes.parse({
     id: user.id,
