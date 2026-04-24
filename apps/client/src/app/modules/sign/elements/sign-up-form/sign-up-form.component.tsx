@@ -69,7 +69,8 @@ const SignUpFormComponent: FC<Readonly<IProps>> = () => {
 
     if (res.error) {
       setApiError(res.error);
-    } else if (res.data?.id) {
+    } else if (res.data) {
+      userStore.setUser(res.data);
       setApiError(null);
     } else {
       setApiError(null);
