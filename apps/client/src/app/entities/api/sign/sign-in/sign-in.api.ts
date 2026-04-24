@@ -4,9 +4,9 @@ import { createHash } from 'crypto';
 import { SignJWT } from 'jose';
 import { cookies, headers } from 'next/headers';
 
+import { type TUserRes } from '@/app/entities/api/sign/dto';
 import { envServer } from '@/config/env';
 import { getUserByEmail } from '@/pkg/supabase/api';
-import { type TUserRes } from '@/pkg/supabase/entities/dto';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
 // interface

@@ -6,10 +6,10 @@ import { cookies, headers } from 'next/headers';
 
 import { envServer } from '@/config/env';
 import { createUser } from '@/pkg/supabase/api';
-import { type TUserRes } from '@/pkg/supabase/entities/dto';
+import { type TUserRes } from '@/app/entities/api/sign/dto';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
-import { type TRegisterReq } from './sign-up.dto';
+import { type TRegisterReq } from '../dto/sign-up.dto';
 
 // interface
 interface IResponse {
