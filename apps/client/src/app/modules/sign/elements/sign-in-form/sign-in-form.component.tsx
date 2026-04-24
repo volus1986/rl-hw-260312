@@ -53,7 +53,8 @@ const SignInFormComponent: FC<Readonly<IProps>> = () => {
     try {
       const res = await signIn(data.email, data.password);
 
-      if (!res.error) {
+      if (!res.error && res.data) {
+        userStore.setUser(res.data);
         setApiError(null);
       } else {
         setApiError(res.error);
