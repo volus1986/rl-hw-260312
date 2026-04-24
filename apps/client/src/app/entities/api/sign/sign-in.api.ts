@@ -1,6 +1,6 @@
 import { useUserStore } from '@/app/shared/store';
-import { register } from '@/pkg/supabase/entities';
-import { type TRegisterReq, type TUserRes } from '@/pkg/supabase/entities/dto';
+import { login } from '@/pkg/supabase/entities';
+import { type TUserRes } from '@/pkg/supabase/entities/dto';
 
 // interface
 interface IResponse {
@@ -9,16 +9,14 @@ interface IResponse {
 }
 
 // function
-export const userSignUp = async (props: Readonly<TRegisterReq>): Promise<IResponse> => {
-  const { email, password, name } = props;
-
-  const { data, error } = await register(email, password, name);
+export const signIn = async (email: string, password: string): Promise<IResponse> => {
+  const { data, error } = await login(email, password);
 
   if (error || !data) {
     // return
     return {
       data: null,
-      error: { message: error?.message ?? 'registrationFailedErrorMessage', seconds: error?.seconds },
+      error: { message: error?.message ?? 'loginFailedErrorMessage', seconds: error?.seconds },
     };
   }
 

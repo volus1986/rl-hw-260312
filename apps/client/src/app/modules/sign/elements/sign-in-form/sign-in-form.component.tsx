@@ -8,7 +8,7 @@ import z from 'zod';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { userSignIn } from '@/app/entities/api';
+import { signIn } from '@/app/entities/api';
 import { ErrorMessageComponent } from '@/app/shared/components/error-message';
 import { useUserStore } from '@/app/shared/store';
 import { useRouter } from '@/pkg/locale';
@@ -51,7 +51,7 @@ const SignInFormComponent: FC<Readonly<IProps>> = () => {
 
   const handleSubmitSuccess: SubmitHandler<TInputs> = async (data) => {
     try {
-      const res = await userSignIn(data.email, data.password);
+      const res = await signIn(data.email, data.password);
 
       if (!res.error) {
         setApiError(null);
