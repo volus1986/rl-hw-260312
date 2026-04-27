@@ -19,10 +19,15 @@ interface IProps {
 export const generateMetadata = async (props: Readonly<IProps>): Promise<Metadata> => {
   const { params } = props;
 
-  const { id } = await params;
+  const { id: rawId } = await params;
+  const id = Number(rawId);
+
+  if (!id) {
+    return { title: 'Not Found' };
+  }
 
   try {
-    const item = await getPhotoDetails({ id: Number(id) });
+    const item = await getPhotoDetails({ id });
 
     if (!item?.id) {
       return { title: 'Not Found' };
@@ -42,21 +47,25 @@ export const generateMetadata = async (props: Readonly<IProps>): Promise<Metadat
 const Page: NextPage<Readonly<IProps>> = async (props) => {
   const { params } = props;
 
+  const queryClient = getQueryClient();
+
   const id = Number((await params).id);
 
-  try {
-    const item = await getPhotoDetails({ id });
+  if (!id) {
+    notFound();
+  }
 
-    if (!item?.id) {
-      notFound();
-    }
+  let item;
+
+  try {
+    item = await queryClient.fetchQuery(photoDetailsQueryOptions(id));
   } catch {
     notFound();
   }
 
-  const queryClient = getQueryClient();
-
-  await queryClient.prefetchQuery(photoDetailsQueryOptions(id));
+  if (!item?.id) {
+    notFound();
+  }
 
   // return
   return (
