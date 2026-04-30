@@ -2,15 +2,14 @@
 
 import { headers } from 'next/headers';
 
+import { SSignRes, TSignRes } from '@/app/entities/models';
 import { createSession, hashPassword } from '@/app/shared/utils';
 import { getUserByEmail } from '@/pkg/supabase/api';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
 
-import { SSignInRes, TSignInRes } from './sign-in.dto';
-
 // interface
 interface IResponse {
-  data: TSignInRes | null;
+  data: TSignRes | null;
   error: { message: string; seconds?: number } | null;
 }
 
@@ -51,7 +50,7 @@ export const signIn = async (email: string, password: string): Promise<IResponse
 
   await createSession(user.id, user.email);
 
-  const userData = SSignInRes.parse({
+  const userData = SSignRes.parse({
     id: user.id,
     email: user.email,
     name: user.name,

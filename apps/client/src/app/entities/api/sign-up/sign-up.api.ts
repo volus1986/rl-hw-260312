@@ -2,12 +2,11 @@
 
 import { headers } from 'next/headers';
 
+import { SSignRes } from '@/app/entities/models';
 import { IUserProfile } from '@/app/entities/models/user-profile.model';
 import { createSession, hashPassword } from '@/app/shared/utils';
 import { createUser } from '@/pkg/supabase/api';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
-
-import { SSignUpRes } from './sign-up.dto';
 
 // constant
 const REGISTER_MAX_ATTEMPTS = 3;
@@ -60,7 +59,7 @@ export const signUp = async (props: Readonly<IProps>): Promise<IResponse> => {
 
   await createSession(user.id, user.email);
 
-  const userData = SSignUpRes.parse({ id: user.id, email: user.email, name: user.name });
+  const userData = SSignRes.parse({ id: user.id, email: user.email, name: user.name });
 
   // return
   return {
