@@ -3,7 +3,7 @@
 import { headers } from 'next/headers';
 
 import { SSignRes } from '@/app/entities/models';
-import { IUserProfile } from '@/app/entities/models/user-profile.model';
+import { IUserProfile } from '@/app/entities/models';
 import { createSession, hashPassword } from '@/app/shared/utils';
 import { createUser } from '@/pkg/supabase/api';
 import { rateLimit } from '@/pkg/supabase/utils/rate-limit';
