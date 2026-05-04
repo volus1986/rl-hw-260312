@@ -1,5 +1,6 @@
 ---
-trigger: always_on
+name: architecture
+description: Use when creating, moving, or naming files in apps/client/src, or when deciding which layer code belongs to. Covers the layer hierarchy ((web), modules, widgets, features, entities, shared, config, pkg), allowed import directions between layers, and file/directory naming conventions (*.module.tsx, *.component.tsx, *.service.ts, *.store.ts, *.hook.tsx, *.api.ts, *.query.ts, *.mutation.ts, *.model.ts, *.interface.ts, kebab-case dirs).
 ---
 
 # Client Architecture Guide (Next.js)
@@ -319,6 +320,7 @@ Layers can only import from lower layers in the hierarchy:
 6. **Server Components by default** — Use `'use client'` only when needed
 
 ## Testing Structure
+
 ```
 tests/
 ├── unit/
