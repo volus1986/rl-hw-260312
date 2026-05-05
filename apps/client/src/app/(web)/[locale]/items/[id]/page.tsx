@@ -29,10 +29,6 @@ export const generateMetadata = async (props: Readonly<IProps>): Promise<Metadat
   try {
     const item = await getPhotoDetails({ id });
 
-    if (!item?.id) {
-      return { title: 'Not Found' };
-    }
-
     // return
     return {
       title: `Photo ${item.id} Details page`,
@@ -55,15 +51,9 @@ const Page: NextPage<Readonly<IProps>> = async (props) => {
     notFound();
   }
 
-  let item;
-
   try {
-    item = await queryClient.fetchQuery(photoDetailsQueryOptions(id));
+    await queryClient.fetchQuery(photoDetailsQueryOptions(id));
   } catch {
-    notFound();
-  }
-
-  if (!item?.id) {
     notFound();
   }
 

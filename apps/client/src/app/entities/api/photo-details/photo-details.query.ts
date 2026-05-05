@@ -1,6 +1,6 @@
 import { queryOptions, useQuery } from '@tanstack/react-query';
 
-import { getPhotoDetails } from '@/app/entities/api';
+import { getPhotoDetails } from './photo-details.api';
 
 // function
 export const photoDetailsQueryOptions = (id: number) => {

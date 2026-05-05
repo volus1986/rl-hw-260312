@@ -10,14 +10,16 @@ interface IProps {
 
 // function
 export const getPhotoDetails = async ({ id, signal = null }: IProps) => {
-  const res = await restApiFetcher
-    .get<IPhotoDetails>(`photos/${id}`, {
-      signal,
-      cache: 'force-cache',
-      next: { revalidate: 3600 },
-    })
-    .json();
+  const res = await restApiFetcher.get(`photos/${id}`, {
+    signal,
+    cache: 'force-cache',
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch photo ${id}: ${res.status} ${res.statusText}`);
+  }
 
   // return
-  return res;
+  return res.json<IPhotoDetails>();
 };

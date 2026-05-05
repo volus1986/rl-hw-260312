@@ -1,6 +1,6 @@
 import { queryOptions, useQuery } from '@tanstack/react-query';
 
-import { getPhotoList } from '@/app/entities/api';
+import { getPhotoList } from './photo-list.api';
 
 // function
 export const photoListQueryOptions = (page: number, limit: number) => {
