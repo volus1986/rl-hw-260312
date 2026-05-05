@@ -1,7 +1,12 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { IUser } from '../interfaces';
+//interface
+interface IUser {
+  id: string;
+  name: string;
+  email: string;
+}
 
 interface IUserStore {
   user: IUser | null;
